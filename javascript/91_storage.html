@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // local storage : 영구 저장 가능
+        // session storage : 세션이 유지되는 동안 데이터 저장
+
+        // setItem() 저장
+        // getItem() 조회
+        // removeItem() 삭제
+        
+        // 저장
+        // localStorage.setItem("str", "storage");
+        localStorage.setItem("str", JSON.stringify("storage"));
+        // localStorage.setItem("obj", {userName: "hong", age: 17});
+        localStorage.setItem("obj", JSON.stringify({userName: "hong", age: 17}));
+        localStorage.setItem("num", 123);
+
+        // 조회
+        console.log(localStorage.getItem("str"));
+        console.log(localStorage.getItem("obj"));
+        console.log(localStorage.getItem("num"));
+        
+        
+        console.log(JSON.parse(localStorage.getItem("str")));
+        console.log(JSON.parse(localStorage.getItem("obj")));
+        console.log(JSON.parse(localStorage.getItem("num")));
+
+        // 삭제
+        localStorage.removeItem("str");
+        // localStorage.clear(); // 전체 삭제
+
+        //sessionStorage
+        sessionStorage.setItem("str", JSON.stringify("storage"));
+        sessionStorage.setItem("obj", JSON.stringify({userName: "hong", age: 17}));
+        sessionStorage.setItem("num", 123);
+        console.log(sessionStorage.getItem("str"));
+        console.log(sessionStorage.getItem("obj"));
+        console.log(sessionStorage.getItem("num"));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

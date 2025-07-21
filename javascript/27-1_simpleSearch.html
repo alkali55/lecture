@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1) 방 50개 짜리 1차원 배열을 만들고, 각 방 안에
+        // 1 ~ 200까지의 랜덤한 수를 넣고,
+        // 2) 유저가 어떤 수를 입력했을때, 유저가 입력한 값이 배열에 있다면,
+        // 입력한 수가 있는 곳(?번째) 을 알려주시고,
+        // 없다면, "찾지 못했습니다!"라고 출력하는 프로그램을 작성
+
+        // 1. 배열 생성 후, 랜덤한 수 넣기
+        let data = new Array(50);
+        
+        console.log(Math.floor(Math.random() * 200 + 1));
+
+        for (let i = 0; i < data.length; i++){
+            data[i] = Math.floor(Math.random() * 200 + 1);
+        }
+        console.log(data);
+        // data [10] = 30;
+        // 1-1. data를 table로 출력 (5행 10열)
+        let table = "<table border='1'>";
+        let cnt = 0;
+        for (let r = 0; r < 5; r++){
+            table += "<tr>";
+                for (let c = 0; c < 10; c++){
+                    table +=`<td>${data[cnt++]}</td>`;
+                }
+            table += "</tr>";
+        }
+        table += "</table>";
+        document.write(table);
+
+
+        // 2. 순차 탐색
+        let findNum = 30;
+        let result = "";
+        let isFind = false; // 못찾은 경우
+
+        for (let i = 0; i < data.length; i++){
+            if (data[i] == findNum){
+                result += i + ", ";
+                isFind = true;
+            }
+        }
+
+        console.log(result);
+
+        // 3. 출력
+        if (isFind == false) {
+            document.write(`${findNum}은 찾지 못했습니다!`);
+        } else {
+            document.write(`${findNum}은 ${result}번째 있습니다.`);
+            let tds = document.getElementsByTagName("td");
+            console.log(tds[0].innerHTML);
+
+            for (let td of tds) {
+                if (findNum == td.innerHTML){
+                    td.style.backgroundColor = "yellow";
+                    td.innerHTML = "★" + findNum;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

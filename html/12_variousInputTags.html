@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다양한 input 타입들</title>
+    <script>
+        function changeSal(obj){
+            console.log(obj);
+            console.log(obj.value);
+            document.getElementById("hopeSal").innerHTML ="<strong>" + obj.value + "<strong>";
+        }
+    </script>
+    <style>
+        fieldset{
+            display: inline-block;
+        }
+    </style>
+
+</head>
+<body>
+   <form action="actionPage.html" method="get"> 
+    <div>
+        <div>
+        <label for="userName">이름 :</label>
+        <input 
+            type="text" 
+            id="userName" 
+            placeholder="이름을 입력하세요..." 
+            maxlength="5"
+            autocomplete="off"
+            name="userName"
+        >
+        </div>
+        <div>
+        <label for="userPwd">비밀번호:</label>
+        <input 
+            type="password" 
+            placeholder="비밀번호를 입력하세요.."
+            maxlength="8"
+            id="userPwd"
+            name="userPwd"
+        >
+        </div>
+        
+
+    </div>
+
+    <div>
+        메모 : 
+        <textarea cols="20" rows="10" name="memo">안녕하세요</textarea>
+    </div>
+    <div>
+        좋아하는 음식:
+        <input type="checkbox" name="favFood" value="jjajang"> 짜장면
+        <input type="checkbox" name="favFood" value="ssal"> 쌀국수
+        <input type="checkbox" name="favFood" value="kimchi"> 김치찌개
+    </div>
+
+    <div>
+        <fieldset>
+        좋아하는 음식:
+        <input type="checkbox" name="favFood" value="jjajang"> 짜장면
+        <input type="checkbox" name="favFood" value="ssal"> 쌀국수
+        <input type="checkbox" name="favFood" value="kimchi"> 김치찌개
+        </fieldset>
+    </div>
+
+    <div>
+        <!-- 라디오 버튼은 name 속성을 같게 설정해줘야한다. (하나만 선택이 된다.) -->
+        성별: 
+        <input type="radio" name="gender" value="female"> 여성 
+        <input type="radio" name="gender" value="male"> 남성
+    </div>
+
+    <hr>
+
+    <div>
+        통신사:
+        <select name="comm" id="">
+            <option value="에스케이티">SKT</option>
+            <option value="케이티">KT</option>
+            <option value="엘지">LGU+</option>
+        </select>
+    </div>
+    
+    <div>
+        <input type="hidden" name="hid" value="10">
+    </div>
+
+    <div>
+        생년월일: <input type="date" name="birth" max="2010-01-01" min="1900-01-01">
+    </div>
+    
+    <div>
+        이메일:
+        <!-- <input type="email" name="useremail" required > -->
+        <input type="email" name="useremail" >
+    </div>
+
+    <div>
+        <input type="text" value="readonly" readonly>
+    </div>
+    
+    <div>
+        첨부파일:
+        <input type="file">
+    </div>
+
+    <div>
+        나이 :
+        <input type="number" name="age" min="0" max="150">
+    </div>
+
+    <div>
+        희망연봉:
+        <input type="range" name="annSal" min="3000" max="9000" step="100" onchange="changeSal(this);" >
+        <span id="hopeSal">6000</span>만원
+    </div>
+
+    <button type="submit">전송</button>
+    <button type="reset">취소</button>
+   </form>
+
+</body>
+</html>

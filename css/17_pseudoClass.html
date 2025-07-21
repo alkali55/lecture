@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: cornflowerblue;
+            transition: 1s;
+        }
+
+        .box:hover {
+            width: 300px;
+            background-color: darkorchid;
+        }
+
+        input:focus {
+            background-color: chartreuse;
+        }
+
+        input:checked + label {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div><input type="text"></div>
+    <ul>
+        <li>
+            <input type="radio" id="basic" checked name="room">
+            <label for="basic">기본형</label>
+        </li>
+        <li>
+            <input type="radio" id="family" name="room">
+            <label for="family">가족형</label>
+        </li>
+    </ul>
+</body>
+</html>

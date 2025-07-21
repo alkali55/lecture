@@ -1,0 +1,21 @@
+INDEX VERSION 1.134
+C:\lecture\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\996497690.index
+\jsp_friends\src\main\java
+C:\lecture\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\846417585.index
+\JSPBasic\src\main\java
+C:\lecture\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\776890972.index
+\JSPBasic\src\main\java
+C:\lecture\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3045423371.index
+\JSP_FriendManagement\src\main\java
+C:\lecture\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3182686412.index
+\jsp_friends\src\main\java
+C:\lecture\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3770013894.index
+\JSP_FriendManagement\src\main\java
+C:\lecture\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\664374730.index
+\JSPBasic\src\main\java
+C:\lecture\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\517446357.index
+\TeamProject\src\main\java
+C:\lecture\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1394658141.index
+\TeamProject\src\main\java
+C:\lecture\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2014737721.index
+\JSPBasic\src\main\java

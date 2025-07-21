@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            let parent = document.querySelector(".parent");
+            console.log(parent);
+            console.log(parent.children); // 자식 요소
+            console.log(parent.childNodes); // 자식 노드
+
+            let elem = document.getElementById("child2");
+            console.log(elem);
+
+            let qs = document.querySelector(".child:first-child");
+            // let qs = document.querySelector(".child");
+            console.log(qs);
+
+            
+
+            let elems = document.getElementsByClassName("child");
+            console.log(elems);
+
+            let qsAll = document.querySelectorAll(".child");
+            console.log(qsAll);
+    
+            qsAll.forEach(function (element){
+                console.log(element.innerHTML);
+            });
+
+            //유사 배열을 배열로 변환
+            console.log(Array.from(qsAll));
+            console.log(Array.from(qsAll).reverse());
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <div class="parent">
+        <!-- 주석 -->
+        <div class="child">content-1</div>
+        <div class="child" id="child2">content-2</div>
+    </div>
+</body>
+</html>

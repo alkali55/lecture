@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <title>Jquery를 이용해 태그를 탐색 및 조작</title>
+    <script>
+        $(function(){
+            $("#list1 li:odd").css("background-color", "yellow");
+            $("#list1 li:even").css("background-color", "gray");
+            $("#list1 li:first").css("color", "red");
+            $("#list1 li:last").css("color", "green");
+
+            $("#list1 li").eq(2).css("font-style", "italic");
+            // $("#list1 li:eq(2)").css("font-style", "italic");
+
+            //find()
+            $("#list2 li").find("a").css("text-decoration", "none");
+            $("#list2 li").find("a").css("border", "1px solid red");
+
+            // html()
+            console.log($(".theTitle").html()); // E.innerHTML ~ 컨텐츠를 가져온다 (getter역할)
+            $(".theTitle").html("<em>jquery 재밌어유?</em>"); // E.innerHTML = 값 ~ 컨텐츠 수정 (setter 역할)
+            
+            // 속성
+            console.log($("ul").eq(0).attr("id")); // list1
+            console.log($("#list2 li").eq(1).attr("class")); // list9
+
+            $("#list2 li").eq(1).attr("class", "newClass");
+            $("#list1 li").eq(0).attr("id", "id1");
+            $(".newClass").text("<em>배고파요</em>");
+
+            // 추가
+            $("#list3").append("<ul><li>새로운 리스트 추가 append()</li></ul>");
+            $("#list3").prepend("<li>역시 새로운 태그 추가 prepend() </li>");
+
+            $("#list3").after("<ul><li>새로운 리스트 추가 after()</li></ul>");
+
+            $("<li>새로운 리스트 태그 insertBefore() </li>").insertBefore($("#list3 li").eq(4));
+            
+            // 삭제
+            $("#btn1").click(function(){
+                $("#div1").remove();
+            });
+
+            $("#btn2").click(function(){
+                $("#div2").empty();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <h1>탐색 및 조작</h1>
+        <h2>탐색을 위해 css3 선택자를 이용한다.</h2>
+        <h3>LIST 1</h3>
+        <ul id="list1">
+            <li>리스트1</li>
+            <li>리스트2</li>
+            <li>리스트3</li>
+            <li>리스트4</li>
+            <li>리스트5</li>
+            <li>리스트6</li>
+            <li>리스트7</li>
+        </ul>
+        <ul id="list2">
+            <li>리스트8</li>
+            <li class="list9">리스트9</li>
+            <li>리스트10</li>
+            <li>리스트11</li>
+            <li><a href="#">리스트12</a></li>
+            <li>리스트13</li>
+            <li><span><a href="#">링크</a></span>리스트14</span></li>
+        </ul>
+
+        <h2 class="theTitle">html조작</h2>
+        <ul id="list3">
+            <li>리스트_1</li>
+            <li>리스트_2</li>
+            <li>리스트_3</li>
+            <li>리스트_4</li>
+            <li>리스트_5</li>
+        </ul>
+        <hr />
+        <div>
+            <button id="btn1">remove div1</button>
+            <div id="div1" style="height: 100px; width: 300px; border: 1px solid black; background-color: yellow;">
+                <p>paragraph 1</p>
+                <p>paragraph 2</p>
+            </div>
+        </div>
+        <hr />
+        <div>
+            <button id="btn2">remove div2</button>
+            <div id="div2" style="height: 100px; width: 300px; border: 1px solid black; background-color: yellow;">
+                <p>paragraph 1</p>
+                <p>paragraph 2</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

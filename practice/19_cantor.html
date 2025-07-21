@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // function cantor(n) {
+        //     if (n = 0){
+        //         return "<span>-</span>"
+        //     }
+        //     document.getElementById("cantor").innerHTML = cantor(n-1) + cantor(n-1) + cantor (n-1);
+
+        // }
+        document.write(cantor(window.prompt("숫자를 입력하세요")));
+        
+        function cantor(n) {
+            if (n == 0){
+                return "-";
+            }
+            let sum = "";
+            sum += cantor(n-1) + nbsp(n) + cantor(n-1);
+            // sum += nbsp(n);
+            // sum += cantor(n-1);
+            return sum;
+        }
+
+        // function hipe(n) {
+        //     let hipe = "";
+        //     for(let i = 0; i < 3**(n-1); i++){
+        //         hipe += "-";
+        //     }
+        //     return hipe;
+        // }
+
+        function nbsp(n) {
+            let nbsp = "";
+            for(let i = 0; i < 3**(n-1); i++){
+                nbsp += "&nbsp";
+            }
+            return nbsp;
+        }
+        // console.log("여기부터", nbsp(5), "여기까지");
+        // document.write(`여기부터 ${nbsp(5)} 여기까지`);
+    </script>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>

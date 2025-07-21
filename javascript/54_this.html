@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+    <script>
+        console.log(this); // window 객체
+
+        func();
+        function func() {
+            console.log(this); // window 객체
+        }
+
+        // 일반함수의 this는 호출되는 위치에서 정의
+        // 화살표함수의 this는 상위scope
+        const player = {
+            playername: "이대호",
+            hit: function (){
+                console.log(this); // player 객체
+                console.log(this.playername); // 이대호
+            },
+            // hit: () => {
+            //     console.log(this); // window 객체
+            //     console.log(this.playername); // undefined
+            // },
+        }
+
+        player.hit();
+
+        // 상위 함수
+
+        const player1 = {
+            playername: "이승엽",
+            
+            hit: function () {
+                let arrowFunc = () => {
+                    console.log(this); // window 객체
+                    console.log(this.playername); // undefined
+                };
+                arrowFunc();
+            },
+        };
+        
+        player1.hit();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <title>Document</title>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+  
+        function drawChart() {
+  
+          var data = google.visualization.arrayToDataTable([
+            ['bloodType', 'count'],
+            ['A type', 3],
+            ['B type', 4],
+            ['O type', 2],
+            ['AB type', 0],
+          ]);
+  
+          var options = {
+            title: 'Blood Types of goot5'
+          };
+  
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  
+          chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+</body>
+</html>

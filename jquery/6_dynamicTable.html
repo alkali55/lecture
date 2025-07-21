@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <title>Document</title>
+    <script>
+
+        $(function(){
+            $("body").prepend("<div id='container'></div>");
+            $("#container").append("<tr></tr><tr></tr>")
+            $("tr").eq(0).append("<td>상품명</td><td>수량</td><td>가격</td><td>추가</td><td>삭제</td>")
+            
+            createTags($("tr").eq(1));
+
+            $("div").eq(1).on("click", ".send", function(){
+                $("body").append("<div id = 'jsonResult'></div>");
+                // console.log($("tr"));
+                $("#jsonResult").html("");
+                let arr = new Array();
+                $.each($("tr"), function(index, item){
+                    let val1 = $(item).children().eq(0).children().val()
+                    let val2 = $(item).children().eq(1).children().val()
+                    let val3 = $(item).children().eq(2).children().val()
+                    if (index > 0 && val1 != "" || val2 != "" || val3 != ""){
+                        let obj = new Object();
+                        // console.log($(item).children().eq(0).val());
+                        obj.name = val1;
+                        obj.quantity = val2;
+                        obj.price = val3;
+                        arr.push(obj);
+                        
+                    }
+                    
+
+                })
+                // console.log(arr);
+                // console.log(JSON.stringify(arr));
+                $("#jsonResult").html(JSON.stringify(arr));
+                
+            })
+        });
+
+        function createTags(whereCreated){
+            whereCreated.append("<td><input type='text' placeholder='상품명'></td>");
+            whereCreated.append("<td><input type='text' placeholder='수량'></td>");
+            whereCreated.append("<td><input type='text' placeholder='가격'></td>");
+            // whereCreated.append("<td><button onclick='addRow(this)'>+</button></td>")
+            // whereCreated.append("<td><button onclick='removeRow(this)'>-</button></td>")
+            whereCreated.append("<td><button>+</button></td>")
+            whereCreated.append("<td><button>-</button></td>")
+            $(whereCreated).children().eq(3).children().click(function(){
+                addRow(this);
+            });
+            $(whereCreated).children().eq(4).children().click(function(){
+                removeRow(this);
+            });
+        }
+
+        function addRow(thisBtn){
+            let grandParent = $(thisBtn).parent().parent();
+            grandParent.after("<tr></tr>");
+            createTags(grandParent.next());
+        }
+
+        function removeRow(thisBtn){
+            if($("tr").length > 2){
+                $(thisBtn).parent().parent().remove();
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <div><button class="send">전송</button></div>
+</body>
+</html>

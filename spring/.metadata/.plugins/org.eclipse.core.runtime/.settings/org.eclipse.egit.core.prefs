@@ -1,0 +1,5 @@
+GitRepositoriesView.GitDirectories=C\:\\lecture\\spring\\to-do-list\\.git;C\:\\lecture\\spring\\legacy-diary\\.git;
+GitRepositoriesView.GitDirectories.relative=to-do-list\\.git;legacy-diary\\.git;
+RepositorySearchDialogSearchPath=C\:\\lecture\\spring\\to-do-list
+core_autoIgnoreDerivedResources=false
+eclipse.preferences.version=1

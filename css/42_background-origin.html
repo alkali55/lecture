@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경 이미지</title>
+    <style>
+        div {
+            width: 400px;
+            height: 250px;
+            padding: 20px;
+            border: 20px dashed darkgray;
+            margin-bottom: 20px;
+            background-image: url("img/star.png");
+            background-repeat: no-repeat;
+            background-size: 100px;
+            background-position: right top;
+        }
+        #bg1 {
+            background-origin: padding-box;
+        }
+        #bg2 {
+            background-origin: border-box;
+        }
+        #bg3 {
+            background-origin: content-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="bg1">
+        <h2>Title</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet eius illo inventore atque cumque eos animi quam neque. Iure accusantium praesentium officia autem inventore reprehenderit incidunt nulla fugit animi ratione.</p>
+    </div>
+    <div id="bg2">
+        <h2>Title</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet eius illo inventore atque cumque eos animi quam neque. Iure accusantium praesentium officia autem inventore reprehenderit incidunt nulla fugit animi ratione.</p>
+    </div>
+    <div id="bg3">
+        <h2>Title</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet eius illo inventore atque cumque eos animi quam neque. Iure accusantium praesentium officia autem inventore reprehenderit incidunt nulla fugit animi ratione.</p>
+    </div>
+</body>
+</html>

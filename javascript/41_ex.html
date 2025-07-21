@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 99개의 값을 저장할 수 있는 배열이 있다.
+        // 1 ~ 100까지의 수 중에서 무작위로 꺼내어 배열에 저장한다.
+        // 단, 중복된 값은 저장하지 않는다.
+        // 배열의 크기가 99개 이므로, 1 ~ 100사이의 수 중에 하나의 숫자가 남는다.
+        // 그 남은 수가 어떤 수인지 확인하는 프로그램을 작성하세요.
+
+        let pool = new Array(100);
+        let items = new Array(99);
+
+        for (let i = 0; i < 100; i++){
+            pool[i] = i + 1;
+        }
+        console.log(pool);
+
+        for (let i = 0; i < items.length; i++){
+            let num = Math.floor(Math.random() * pool.length);
+            // console.log(num);
+            items[i] = pool[num];
+            pool.splice(num, 1);
+        }
+        // console.log(items);
+        console.log(pool);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>splice 이용해서 lotto번호 추첨</title>
+    <script>
+
+        let pool = new Array(45);
+        let lotto = new Array(6);
+
+        for (let i = 0; i < pool.length; i++){
+            pool[i] = i + 1;
+        }
+
+        console.log(pool);
+
+        for (let i = 0; i < lotto.length; i++){
+            let ind = Math.floor(Math.random() * (45 - i));
+            lotto[i] = pool[ind];
+            pool.splice(ind, 1);
+        }
+        console.log(pool);
+        console.log(lotto);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

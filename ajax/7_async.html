@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+
+        // console.log(transData());
+
+        let returnVal = transData(function(result){
+            console.log(result);
+            return "반환값";
+        })
+
+        console.log(returnVal);
+        function transData(callback) {
+            let val1 ="val-1"
+            $.ajax({
+                url: "https://www.mbn.co.kr/rss/enter/", // 데이터가 송수신될 서버의 주소
+                type: "GET", // 통신 방식 (GET, POST, PUT, DELETE)
+                dataType: "xml", // 수신받을 데이터의 타입 (MIME TYPE)
+                success: function(data){ // 통신이 성공하면 수행할 함수
+                    console.log(data);
+                    val1 = "val-1-1";
+                    // return val1;
+                    console.log(callback(val1));
+                    cons(val1);
+                },
+                error: function(){},
+                complete: function(){}
+            });
+            return val1;
+        };
+
+        function cons(result){
+            console.log(result);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최대값, 최소값 구하기</title>
+    <script>
+        // 1~ 100까지 랜덤한 수 10개를 배열에 넣어두고,
+        // 그 랜덤 수 중에 max(최대값), min(최소값) 을 각각 구해 출력하세요.
+        // (optional: max값은 빨강, min값은 파랑으로 칠하기)
+
+        let room = new Array(10);
+        let table = "<table border = '1'><tr>";
+
+        for (i = 0; i < room.length; i++){
+            room[i] = Math.ceil(Math.random() * 100);
+            table += `<td>${room[i]}</td>`;
+            // console.log(room[i]);
+        }
+
+        
+        // for (i = 0; i < 10; i++){
+        //     table += `<td>${room[i]}</td>`;
+        // }
+
+        table += "</tr></table>";
+        document.write(table);
+
+        let max = 0;
+        // let min = 100;
+        let min = Infinity;
+        
+        for(let item of room){
+            if (item > max){
+                max = item;
+            }
+            if (item < min){
+                min = item;
+            }
+        }
+        // console.log(max);
+        // console.log(min);
+        
+        let tds = document.getElementsByTagName("td");
+        // console.log(tds);
+
+
+        for(let item of tds){
+            if (item.innerHTML == max){
+                item.style.backgroundColor = "red";
+                item.style.color = "white";
+            }
+            if (item.innerHTML == min){
+                item.style.backgroundColor = "blue";
+                item.style.color = "white";
+            }
+            if (max == min){
+                // 벼락 3번 맞을 확률
+                item.style.backgroundColor = "purple";
+                item.style.color = "white";
+            }
+        }
+
+        document.write(`최대값은 ${max}이고, 최소값은 ${min}입니다`);
+    </script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

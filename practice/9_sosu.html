@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let goal = 0;
+        let num = 1;
+        let sum = 0;
+        while(goal != 10001) {
+            for(i=1; i<=num; i++){
+                if(num % i == 0){
+                    sum = sum + i;
+                    if(i==num && sum == num + 1) {
+                        goal = goal + 1
+
+                    }
+
+                }
+            }
+            if(goal == 10001) {
+                document.write(num)
+            }
+            num = num + 1;
+            sum = 0;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

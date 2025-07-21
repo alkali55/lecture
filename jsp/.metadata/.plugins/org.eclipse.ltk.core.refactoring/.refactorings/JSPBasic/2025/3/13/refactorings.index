@@ -1,0 +1,22 @@
+1742871805787	Move 'hello.jsp' to 'webapp'
+1742889086544	Rename resource 'triangleGet.jsp'
+1742889102580	Rename resource 'ex1_triangleGet.jsp'
+1742889125045	Rename resource 'triangleGet.jsp'
+1742889139868	Rename type 'TriangleGet'
+1742889164143	Rename resource 'loginPost.jsp'
+1742889169044	Rename type 'LoginPost'
+1742955535762	Delete element
+1742969373451	Copy file
+1742969377329	Delete element
+1742970994973	Copy file
+1743053867202	Rename type 'loginServlet'
+1743062671823	Copy file
+1743062728793	Copy file
+1743126269661	Delete element
+1743143829016	Delete element
+1743146353022	Copy file
+1743147336275	Delete element
+1743147427433	Delete element
+1743147492473	Delete element
+1743149937980	Copy file
+1743149943427	Rename resource 'jstl_foreach.jsp'

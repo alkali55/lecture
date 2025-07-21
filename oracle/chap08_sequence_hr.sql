@@ -1,0 +1,121 @@
+-- 시퀀스 (sequence)
+
+-- 게시판 테이블 생성
+create table board(
+    bno number(6) primary key,
+    title varchar2(100),
+    writer varchar2(20)
+);
+
+-- 글 저장
+insert into board values(1, '제목1', '작성자1');
+insert into board values(2, '제목2', '작성자2');
+insert into board values(3, '제목3', '작성자3');
+
+select * from board;
+
+select max(bno) from board;
+
+insert into board values((select max(bno) + 1 from board), '제목4', '작성자4');
+
+select count(*) from board;
+delete from board where bno = 2;
+
+-- 시퀀스 생성
+
+--CREATE SEQUENCE 시퀀스이름
+--	[START WITH N] -- 시퀀스의 시작 값
+--	[INCREMENT BY N] -- 증가하거나 감소하는 값
+--	[MAXVALUE N | NOMAXVALUE] -- 최대값
+--	[MINVALUE N | NOMINVALUE] -- 최소값
+--	[CYCLE | NOCYCLE] -- CYCLE로 지정하면 최대값까지 증가가 완료된 후 최소값부터 다시 시작
+--	[CACHE N | NOCACHE] -- 오라클 서버가 미리 지정하고 메모리에 확보할 값, (기본 20)
+
+CREATE SEQUENCE SEQ_TEST
+START WITH 1
+INCREMENT BY 1;
+
+SELECT * FROM USER_SEQUENCES;
+
+SELECT SEQ_TEST.CURRVAL FROM DUAL;
+
+DROP TABLE BOARD;
+
+create table board(
+    bno number(6) primary key,
+    title varchar2(100),
+    writer varchar2(20)
+);
+
+INSERT INTO BOARD VALUES(SEQ_TEST.NEXTVAL, 'TITLE1', 'WRITER1');
+
+SELECT * FROM BOARD;
+
+SELECT SEQ_TEST.CURRVAL FROM DUAL; -- 1
+SELECT SEQ_TEST.NEXTVAL FROM DUAL; -- 2 ( 참조하는 것만으로 시퀀스 값이 증가!!!!)
+
+INSERT INTO BOARD VALUES(SEQ_TEST.NEXTVAL, 'TITLE2', 'WRITER2'); -- BNO = 3 
+
+SELECT SEQ_TEST.CURRVAL FROM DUAL; -- 3
+SELECT SEQ_TEST.NEXTVAL FROM DUAL; -- 4
+SELECT SEQ_TEST.NEXTVAL FROM DUAL; -- 5
+
+-- 모니터 생산
+-- 250224_SEQN
+
+CREATE SEQUENCE SEQ_TEST2
+ START WITH 1
+ INCREMENT BY 1
+ MAXVALUE 5
+ CYCLE
+ CACHE 2;
+ 
+CREATE TABLE PRODUCT (
+    SERIAL_NO VARCHAR2(10) CONSTRAINT PRODUCT_SERIALNO_PK PRIMARY KEY,
+    PROD_NAME VARCHAR2(14)
+);
+
+SELECT TO_CHAR(SYSDATE, 'YYMMDD') || '_' || SEQ_TEST2.NEXTVAL;
+INSERT INTO PRODUCT VALUES(TO_CHAR(SYSDATE, 'YYMMDD') || '_' || SEQ_TEST2.NEXTVAL, 'MONITOR');
+
+SELECT * FROM PRODUCT;
+INSERT INTO PRODUCT VALUES(TO_CHAR(SYSDATE, 'YYMMDD') || '_' || SEQ_TEST2.NEXTVAL, 'MONITOR');
+INSERT INTO PRODUCT VALUES(TO_CHAR(SYSDATE, 'YYMMDD') || '_' || SEQ_TEST2.NEXTVAL, 'MONITOR');
+INSERT INTO PRODUCT VALUES(TO_CHAR(SYSDATE, 'YYMMDD') || '_' || SEQ_TEST2.NEXTVAL, 'MONITOR');
+INSERT INTO PRODUCT VALUES(TO_CHAR(SYSDATE, 'YYMMDD') || '_' || SEQ_TEST2.NEXTVAL, 'MONITOR');
+SELECT SEQ_TEST2.NEXTVAL FROM DUAL;
+
+--INSERT INTO PRODUCT VALUES(TO_CHAR(SYSDATE, 'YYMMDD') || '_' || SEQ_TEST2.NEXTVAL, 'MONITOR'); 
+-- ORA-00001: unique constraint (HR.PRODUCT_SERIALNO_PK) violated
+
+SELECT SEQ_TEST2.CURRVAL FROM DUAL;
+
+-- 시퀀스 수정
+ALTER SEQUENCE SEQ_TEST2
+MAXVALUE 20;
+
+SELECT * FROM USER_SEQUENCES;
+INSERT INTO PRODUCT VALUES(TO_CHAR(SYSDATE, 'YYMMDD') || '_' || SEQ_TEST2.NEXTVAL, 'MONITOR');
+SELECT * FROM PRODUCT;
+
+-- 시퀀스의 START 번호는 수정이 불가
+--ALTER SEQUENCE SEQ_TEST2
+--START WITH 11; -- ORA-02283: cannot alter starting sequence number
+
+-- 시퀀스 삭제
+DROP SEQUENCE SEQ_TEST2;
+
+-- ==============================================
+-- 인덱스 확인
+SELECT * FROM USER_INDEXES WHERE TABLE_NAME = 'EMPLOYEES';
+SELECT * FROM USER_INDEXES WHERE TABLE_NAME = 'BOARD';
+
+-- 인덱스 생성
+CREATE INDEX IND_BOARD_WRITER
+ON BOARD(WRITER);
+
+DROP TABLE TEST;
+CREATE TABLE TEST (
+    USERID VARCHAR2(10) CONSTRAINT TEST_USERID_PK PRIMARY KEY,
+    EMAIL VARCHAR2(20) CONSTRAINT TEST_EMAIL_UQ UNIQUE
+);

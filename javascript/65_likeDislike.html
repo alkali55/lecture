@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/a5e7637fb6.js" crossorigin="anonymous"></script>
+    <script>
+        // 찜하기 (좋아요 ) 기능
+        window.onload = function() {
+            let heart = document.querySelector("i");
+            let heartC = heart.classList;
+            // console.log(heart);
+            // console.log(heart.classList.item(0));
+
+            heart.addEventListener("click", function(){
+                // console.log(heart.classList);
+                heartC.toggle("fa-solid");
+                heartC.toggle("fa-regular");
+                // if(heartC.contains("fa-solid")){
+                //     // console.log("dd");
+                //    heartC.remove("fa-solid");
+                //    heartC.add("fa-regular");
+                // } else {
+                //    heartC.remove("fa-regular");
+                //    heartC.add("fa-solid");
+                // }
+            });
+
+            // 리스트 태그
+            let list = document.getElementById("list");
+            console.log(list);
+
+            list.onclick = function (e) {
+                // console.log(e);
+                // console.log(e.target);
+                let target = e.target;
+                // console.log(this);
+                // console.log(target.classList);
+                // target.classList.toggle("text-red");
+
+                let result = target.classList.toggle("text-red");
+                console.log(target.classList);
+                console.log(result);
+            }
+        }
+
+    </script>
+    <style>
+        i{
+            font-size: 100px;
+        }
+        .text-red{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <i class="fa-regular fa-heart"></i>
+
+    <div>
+        <ul id = "list">
+            <li>list1</li>
+            <li>list2</li>
+            <li>list3</li>
+        </ul>
+    </div>
+</body>
+</html>

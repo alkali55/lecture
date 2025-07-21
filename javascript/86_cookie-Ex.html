@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿠키 Main page</title>
+    <script src="js/commonJS.js"></script>
+    <script>
+        // window.onload = function(){
+        //     let cook = document.cookie;
+        //     let cookArr = cook.split("; ");
+        //     let isChecked = false;
+        //     // console.log(cookArr);
+        //     let searchName = "oneDay";
+
+        //     for (i = 0; i < cookArr.length; i++){
+        //         let cookName = cookArr[i].split("=");
+        //         if (cookName[0] == searchName){
+        //             isChecked = true;
+        //         }
+        //     }
+
+        //     if (!isChecked) {
+        //         window.open("86-1_sub.html", "sub", "top=200, left=200, width=400, height=400");
+        //     } 
+        //     // else {
+        //     //     window.alert("Notice 스킵");
+        //     // }
+
+
+            
+        // }
+
+        window.onload = function() {
+            // notice쿠키가 있는지 없는지 판별
+            // 쿠키가 있으면 팝업창을 띄우지 않는다.
+            if (readCookie("notice") !== "Y"){
+                window.open("86-1_sub.html", "sub", "top=200, left=200, width=400, height=400");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Main Page</h1>
+</body>
+</html>

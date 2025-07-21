@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>
+        let price = 0;
+        let text = "";
+
+        window.onload = function (){
+            let itemPrice = parseInt(document.getElementById("itemPrice").innerHTML);
+
+            let sideMenu = document.getElementsByClassName("checkbox");
+            let total = document.getElementById("totalPrice");
+
+            for (let checkbox of sideMenu){
+                checkbox.addEventListener("click", function(e){
+                    let value = parseInt(e.target.value);
+                    console.log(value);
+                    itemPrice += e.target.checked ? value : -value;
+                    total.value = itemPrice;
+                })
+            }
+
+
+            // for (let item of sideMenu){
+            //     item.onclick = function (){
+            //         let menuTxt = this.nextSibling.cloneNode().textContent;
+            //         let aaa = document.getElementById("text").childNodes;
+            //         console.log(aaa);
+            //         let output = document.getElementById("output");
+            //         if (this.checked){
+            //             text += menuTxt;
+            //             price += Number(this.value);
+            //         } else {
+            //             text -= menuTxt;
+            //             price -= Number(this.value);
+            //         }
+            //         console.log(text);
+            //         // output.prepend(text);
+            //         document.getElementById("text").innerHTML = `추가된 메뉴는 ${text} `
+            //         document.getElementById("price").innerHTML = `${price}원 입니다.`
+            //     }
+            // }
+            
+        }
+    </script>
+</head>
+<body>
+    <h1>와퍼</h1>
+    <p id="itemPrice">6000원</p>
+
+    <input type="checkbox" class = "checkbox" value = "500">양상추 (500원)
+    <input type="checkbox" class = "checkbox" value = "2000">패티 (2000원)
+    <input type="checkbox" class = "checkbox" value = "1500">새우 (1500원)
+    <input type="checkbox" class = "checkbox" value = "1000">치즈 (1000원)
+    <!-- <div id = "output"><span id = "text"></span><span id = "price"></span></div> -->
+    <input type="text" id="totalPrice">
+</body>
+</html>

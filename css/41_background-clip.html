@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경범위</title>
+    <style>
+        .box {
+            width: 350px;
+            background-color: coral;
+            border: 5px dashed #222;
+            padding: 20px;
+        }
+        #clip-border {
+            background-clip: border-box;
+        }
+        #clip-padding {
+            background-clip: padding-box;
+        }
+        #clip-content {
+            background-clip: content-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="box" id="clip-border">
+            <h1>border-box</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse maiores doloremque eaque voluptas accusantium ex, alias dolores aliquam placeat magnam ratione quam ad unde suscipit impedit amet perspiciatis minus aliquid.</p>
+        </div>
+        <div class="box" id="clip-padding">
+            <h1>padding-box</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse maiores doloremque eaque voluptas accusantium ex, alias dolores aliquam placeat magnam ratione quam ad unde suscipit impedit amet perspiciatis minus aliquid.</p>
+        </div>
+        <div class="box" id="clip-content">
+            <h1>content-box</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse maiores doloremque eaque voluptas accusantium ex, alias dolores aliquam placeat magnam ratione quam ad unde suscipit impedit amet perspiciatis minus aliquid.</p>
+        </div>
+    </div>
+</body>
+</html>

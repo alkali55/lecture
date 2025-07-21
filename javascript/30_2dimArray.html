@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2차원 배열</title>
+    <script>
+        // 2행, 3열의 2차원 배열
+        let arr = new Array(2);
+        arr[0] = new Array(3);
+        arr[1] = new Array(3);
+
+        // 0번째 행
+        arr[0][0] = "a";
+        arr[0][1] = "b";
+        arr[0][2] = "c";
+
+        // 1번째 행
+        arr[1][0] = "d";
+        arr[1][1] = "e";
+        arr[1][2] = "f";
+
+        console.log(arr);
+        console.log(arr.length);
+        
+        //arr의 모든 데이터를 테이블 태그를 이용해서 출력
+        let output = "<table border = '1'>";
+        
+        for (let i = 0; i < arr.length; i++){
+            output += "<tr>";
+            for (let j = 0; j < arr[i].length; j++){
+                output += `<td>${arr[i][j]}</td>`;
+            }
+            output += "</tr>";
+        }
+        output += "</table>";
+        document.write(output);
+
+        // jagged 배열 : 행마다 열의 길이가 각각 다른 구조의 2차원 배열
+        let jagged = new Array(3);
+        jagged[0] = [45, 24, 12];
+        jagged[1] = [45, 23];
+        jagged[2] = [77, 66, 77, 45];
+        console.log(jagged);
+        
+    </script>
+
+
+</head>
+<body>
+    
+</body>
+</html>

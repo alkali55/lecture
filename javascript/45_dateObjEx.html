@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 사용자에게 날짜를 입력받아
+        // 현재 시간이 입력받은 날짜로부터
+        // 얼마나 지났는지 (며칠) 계산을 해보세요.
+        let date = new Date();
+        let maxDate = "";
+        maxDate += date.getFullYear();
+        if (date.getMonth() + 1 < 10){
+            maxDate += "-0" + (date.getMonth() + 1);
+        } else {
+            maxDate += "-" + date.getMonth() + 1;
+        }
+        if (date.getDate() < 10){
+            maxDate += "-0" + date.getDate();
+        } else {
+            maxDate += "-" + date.getDate();
+        }
+        console.log(maxDate);
+        window.onload = function(){
+            document.getElementById("inputDate").max = maxDate;
+        }
+
+        function calDate() {
+            // alert("dd?");
+            // console.log(document.getElementById("inputDate").value);
+            // console.log(document.getElementsByTagName("input")[0].value);
+            let userInput = document.getElementById("inputDate").value;
+            let inputDate = new Date(userInput);
+            // console.log(userInput === ""); // 날짜를 선택하지 않고 확인버튼만 누르는 경우 ""
+            // console.log(inputDate);
+            let nowDate = new Date();
+            let calDate = Math.floor(((nowDate.getTime() - inputDate.getTime()) / 1000 / 60**2 / 24));
+            // if (userInput === ""){
+            if (!userInput){
+                // 유저가 날짜를 선택하지 않은 경우
+                document.getElementById("result").innerHTML = "날짜를 선택해 주세요"
+                document.getElementById("result").style.color = "red";
+            } else {
+                document.getElementById("result").innerHTML = `입력한 날짜로부터 ${calDate}일 지났습니다.`
+                document.getElementById("result").style.color = "black";
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <div id="calendar">
+        지정일을 입력하고, 확인버튼을 누르세요.
+        <input type="date" id = "inputDate" min="1900-01-01">
+        <button onclick="calDate()">확인</button>
+    </div>
+    <div id="result"></div>
+</body>
+</html>

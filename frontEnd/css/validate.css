@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+
+fieldset {
+    padding: 10px;
+    background-color: #ddd;
+    margin-top: 20px;
+
+}
+
+legend {
+    background-color: gray;
+    color: white;
+    padding: 5px 10px;
+    font-size: 17px;
+}
+
+.signupBtn {
+    background-color: green;
+}
+
+.cancelBtn {
+    background-color: red;
+}
+
+.errMsg {
+    color: red;
+}

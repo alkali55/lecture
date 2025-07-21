@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function check(obj) {
+            console.log(obj);
+            console.log(obj.value.length);
+            document.getElementsByTagName("span")[0].innerHTML = obj.value.length;
+        }
+
+        window.onload = function () {
+            let inputTag = document.getElementById("inputTxt");
+            inputTag.addEventListener("focus", function() {
+                inputTag.style.backgroundColor = "lightgreen";
+            })
+            inputTag.addEventListener("blur", function() {
+                inputTag.style.backgroundColor = "lightblue";
+            })
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="inputTxt" onkeyup="check(this);">
+    <div><span></span>자 입력중.....</div>
+</body>
+</html>

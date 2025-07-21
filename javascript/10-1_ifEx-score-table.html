@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let name = "", kScore = 0, eScore = 0, mScore = 0, sum = 0, avg = 0, grade ="";
+
+
+        function process() {
+            name = document.getElementById("name").value;
+            kScore = Number(document.getElementById("korean").value);
+            eScore = Number(document.getElementById("english").value);
+            mScore = Number(document.getElementById("math").value);
+            sum = kScore + eScore + mScore;
+            avg = sum / 3;
+
+            console.log(name);
+
+            if (avg >= 90 && avg <= 100) {
+                grade = "A";
+            } else if (avg >= 80 && avg < 90) {
+                grade = "B";
+            } else if (avg >= 70 && avg < 80) {
+                grade = "C";
+            } else if (avg >= 60 && avg < 70) {
+                grade = "D";
+            } else if (avg < 60) {
+                grade = "F";
+            }
+
+            document.getElementById("tname").textContent = name;
+            document.getElementById("tkScore").textContent = kScore;
+            document.getElementById("teScore").textContent = eScore;
+            document.getElementById("tmScore").textContent = mScore;
+            document.getElementById("tsum").textContent = sum;
+            document.getElementById("tavg").textContent = avg.toFixed(1);
+            document.getElementById("tgrade").textContent = grade;
+
+        }
+    </script>
+    
+</head>
+<body>
+    <div class="container1">
+        <p>이름</p>
+        <input type="text" id="name">
+        <p>국어</p>
+        <input type="text" id="korean">
+        <p>영어</p>
+        <input type="text" id="english">
+        <p>수학</p>
+        <input type="text" id="math">
+    </div>
+    <button onclick="process()">결과</button>
+    <div class="container2">
+      <table>
+        <thead>
+            <th>이름</th>
+            <th>국어</th>
+            <th>영어</th>
+            <th>수학</th>
+            <th>총점</th>
+            <th>평균</th>
+            <th>학점</th>
+        </thead>
+        <tr>
+            <!-- <td id = "tname">dd</td> -->
+            <td id="tname"></td>
+            <td id = "tkScore"></td>
+            <td id = "teScore"></td>
+            <td id = "tmScore"></td>
+            <td id = "tsum"></td>
+            <td id = "tavg"></td>
+            <td id = "tgrade"></td>
+        </tr>
+      </table>
+    </div>
+    
+</body>
+</html>

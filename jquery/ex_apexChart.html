@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>ApexCharts 도넛 진행률</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <style>
+    #chart {
+      max-width: 400px;
+      margin: 50px auto;
+    }
+  </style>
+</head>
+<body>
+
+<div id="chart"></div>
+
+<script>
+  const progress = 72;
+
+  const options = {
+    chart: {
+      type: 'donut'
+    },
+    series: [progress, 100 - progress],
+    labels: ['진행률', '미진행'],
+    colors: ['#00BFFF', '#aaaaaa'],
+    plotOptions: {
+      pie: {
+        donut: {
+          size: '70%',
+          labels: {
+            show: true,
+            total: {
+              show: true,
+              label: '진행률',
+              fontSize: '16px',
+              fontWeight: 600,
+              formatter: () => `${progress}%`
+            },
+            name: {
+                show: true,
+                offsetY: -10
+            },
+            value: {
+                show: true,
+                offsetY: 10,
+                formatter: function (val) {
+                    return `${val}%`;
+                }
+            }
+          }
+        },
+        states: {
+            hover: {
+                filter: {
+                    type: 'none'
+                }
+            }
+        }
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    legend: {
+      show: false
+    },
+    tooltip: {
+      enabled: false
+    }
+  };
+
+  const chart = new ApexCharts(document.querySelector("#chart"), options);
+  chart.render();
+</script>
+
+</body>
+</html>

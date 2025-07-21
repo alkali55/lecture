@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // if a <= 0 or b <= 0 or c <= 0, then w(a, b, c) returns: 1
+
+        // if a > 20 or b > 20 or c > 20, then w(a, b, c) returns: w(20, 20, 20)
+
+        // if a < b and b < c, then w(a, b, c) returns: w(a, b, c-1) + w(a, b-1, c-1) - w(a, b-1, c)
+
+        // otherwise it returns: w(a-1, b, c) + w(a-1, b-1, c) + w(a-1, b, c-1) - w(a-1, b-1, c-1)
+
+        let memo = [];
+
+        // console.log(typeof memo[1]);
+
+        function dpEx(a, b, c){
+            
+            if (memo[a] == undefined) {
+                memo[a] = [];
+                memo[a][b] = [];
+                memo[a][b][c] = basic(a, b, c);
+                return memo[a][b][c];
+            } else if (memo[a][b] == undefined){
+                memo[a][b] = [];
+                memo[a][b][c] = basic(a, b, c);
+                return memo[a][b][c];
+            } else if (memo[a][b][c] == undefined){
+                memo[a][b][c] = basic(a, b, c);
+                return memo[a][b][c];
+            } else {
+                return memo[a][b][c];
+            }
+
+                // for (let i = 0; i < memo.length; i++){
+                // memo[i] 를 오브젝트로 만든 후 abc밸류와 결과값 검사?
+                // abc밸류가 저장되어 있는 메모가 없으면
+                // 아래 식 적용 후 메모에 push,
+                // 이후 return memo[memo.length - 1]
+
+                // xxxxxxxxxxxxxx
+                
+                // 3차원 배열로 만들기
+                // }
+
+
+        }
+
+        function basic (a, b, c) {
+                if (a <= 0 || b <= 0 || c <= 0){
+                    return 1;
+                }
+                if (a > 20 || b > 20 || c > 20){
+                    return dpEx(20, 20, 20);
+                }
+                if (a < b && b < c){
+                    return dpEx(a, b, c - 1) + dpEx(a, b - 1, c - 1) - dpEx(a, b - 1, c);
+                }
+                return dpEx(a - 1, b, c) + dpEx(a - 1, b - 1, c) + dpEx(a - 1, b, c - 1) - dpEx(a - 1, b - 1, c - 1);
+        }
+
+        console.log(dpEx(-1, 7, 18));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

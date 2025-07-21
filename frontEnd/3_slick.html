@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> -->
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>이미지 슬라이더</title>
+    <script>
+        $(document).ready(function(){
+            $(".multiple-items").slick({
+                // infinite: true,
+                // slidesToShow: 3,
+                // slidesToScroll: 3
+
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            })
+        })
+    </script>
+</head>
+<body>
+    <div style="padding: 50px 100px; background-color: darkgray;">
+        <div class="multiple-items">
+            <div><img src="images/icons8-0-100.png"></div>
+            <div><img src="images/icons8-1-100.png"></div>
+            <div><img src="images/icons8-2-100.png"></div>
+            <div><img src="images/icons8-3-100.png"></div>
+            <div><img src="images/icons8-4-100.png"></div>
+        </div>
+    </div>
+</body>
+</html>

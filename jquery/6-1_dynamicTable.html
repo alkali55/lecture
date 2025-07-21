@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            // $(".addBtn").click(function(){
+            $("table").on("click", ".addBtn", function(){
+                // alert("!");
+                console.log(this);
+                let copyTr = $(this).parent().parent(); // 복제할 tr
+                console.log(copyTr);
+                
+                let newTr = copyTr.clone();
+                console.log(newTr);
+                clearContents($(newTr).children()); // 복사된 행의 input태그 내용 삭제
+                newTr.insertAfter(copyTr); // 요소 추가
+            });
+
+            $("table").on("click", ".remBtn", function(){
+                // 행 삭제
+                if($("tr").length > 2){
+                    $(this).parent().parent().remove();
+                } else {
+                    alert("더 이상 삭제할 수 없습니다.");
+                }
+            });
+
+            $("div").eq(0).on("click", ".send", function(){
+                // console.log($("tr"));
+                $("#jsonResult").html("");
+                let arr = new Array();
+
+                $.each($("tr"), function(index, item){
+                    let product = new Object();
+                    if (index > 0){
+                        // let obj = new Object();
+                        // // console.log($(item).children().eq(0).val());
+                        // obj.name = $(item).children().eq(0).children().val();
+                        // obj.quantity = $(item).children().eq(1).children().val();
+                        // obj.price = $(item).children().eq(2).children().val();
+                        // arr[index - 1] = obj;
+                        $(item).children().each(function (ind, inputTd){
+                            if (ind < 3){
+                                // 0, 1, 2번째 td의 input태그 값을 읽어오자
+                                console.log($(inputTd).children().attr("name"));
+                                product[$(inputTd).children().attr("name")] = $(inputTd).children().val();
+                            }
+                        })
+                        arr.push(product);
+                    }
+                }); // end tr each
+                // console.log(arr);
+                // console.log(JSON.stringify(arr));
+                $("#jsonResult").html(JSON.stringify(arr));                
+            });
+
+            function clearContents(tdArr){
+                console.log(tdArr);
+                $.each(tdArr, function(index, item){
+                    $(item).children().val("");
+                });
+            }
+
+        });
+    </script>
+</head>
+<body>
+    <table border = "1">
+        <tr>
+            <td>상품명</td>
+            <td>수량</td>
+            <td>가격</td>
+            <td>추가</td>
+            <td>삭제</td>
+        </tr>
+        <tr>
+            <td><input type="text" name="name"></td>
+            <td><input type="text" name="quantity"></td>
+            <td><input type="text" name="price"></td>
+            <td><button class="addBtn">+</button></td>
+            <td><button class="remBtn">-</button></td>
+        </tr>
+    </table>
+    <div><button class="send">전송</button></div>
+    <div id="jsonResult"></div>
+</body>
+</html>

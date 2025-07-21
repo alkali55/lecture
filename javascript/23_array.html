@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 (Array)의 기본 운용 방법</title>
+    <script>
+        // ==== 배열 생성 ====
+        // (1) 빈 배열 생성
+        let arr1 = [];
+        arr1[0] = 40;
+        arr1[1] = "웹개발";
+        arr1[2] = 3.14;
+        arr1[3] = true;
+
+        console.log(arr1);
+        console.log(arr1.length); // 배열.length : 배열의 크기값
+
+        // (2) 배열의 생성과 할당을 동시에 할 수 있다.
+        let arr2 = [40, '웹개발', 3.14, true];
+        console.log(arr2);
+
+        // (3) new 연산자를 이용한 배열 생성
+        let arr3 = new Array(4); // 크기가 4인 빈배열을 arr3이라는 이름으로 생성.
+        arr3[0] = 40;
+        arr3[1] = "웹개발";
+        arr3[2] = 3.14;
+        arr3[3] = true;
+        console.log(arr3);
+
+        // 배열의 인덱싱
+        console.log(arr1[1]);
+        console.log(arr1.at(1));
+        console.log(arr1.at(-1)); // 가장 마지막 요소
+        console.log(arr1.at(-2)); // 끝에서 2번째 요소
+
+        console.log(arr1[arr1.length - 1]); // 마지막 요소
+
+        // 배열에 데이터 추가
+        arr1[4] = "졸려요";
+        console.log(arr1);
+        console.log(arr1.length);
+
+        // isArray() : 배열인지 아닌지 판단하여 boolean으로 반환
+
+        let arr = ["Hello", "Array"];
+        let str = "HelloArray";
+    
+        console.log(Array.isArray(arr));
+        console.log(Array.isArray(str));
+
+        // ===== push(), pop(), unshift(), shift()
+        arr.push("!"); // 배열의 끝에 요소를 추가
+        console.log(arr);
+
+        arr.pop(); // 배열의 끝에 있는 요소를 삭제
+        console.log(arr);
+
+        arr.unshift("chapter1."); // 배열의 0번째에 요소 추가
+        console.log(arr);
+
+        arr.shift(); // 배열의 0번째 요소 삭제
+        console.log(arr);
+
+        // ====== splice() ======
+        arr. push("❤", "🎯", "🎃", "This", "is", "an", "array", "of", "javascript");
+        console.log(arr);
+        
+        // 1) splice()의 매개변수가 1개 : start 인덱스 요소부터 맨 끝 요소까지 삭제
+        let removedArr = arr.splice(1);
+        console.log(removedArr);
+        console.log(arr);
+
+        // 2) splice()의 매개변수가 2개 : (삭제할 인덱스 값, 삭제할 요소 갯수)
+        let removedArr1 = removedArr.splice(2, 1);
+        console.log(removedArr1);
+        console.log(removedArr);
+
+        
+        // 3) splice()의 매개변수가 3개 : 
+        let removedArr2 = removedArr.splice(3, 1, "🎈");
+        console.log(removedArr2);
+        console.log(removedArr);
+
+        console.clear();
+        //
+        let months = ["1월", "3월", "4월", "6월"];
+        console.log(months);
+        months.splice(1, 0, "2월");
+        console.log(months);
+        months.splice(4, 1, "5월");
+        console.log(months);
+        months.splice(5, 0, "6월", "7월");
+        console.log(months);
+        let reversedMonth = months.reverse();
+        console.log(reversedMonth);
+        console.log(months);
+        months.reverse();
+        console.log(months);
+        // let monthStr = months.join("/");
+        // let monthStr = months.join("");
+        let monthStr = months.join();
+        console.log(monthStr);
+        console.log(months);
+
+        // concat을 이용해서 12월 까지 추가
+        let secondHalf = ["8월", "9월", "10월", "11월", "12월"];
+        let fullYear = months.concat(secondHalf);
+        console.log(fullYear);
+
+        //
+        let myBirthMonth = fullYear.slice(3, 4);
+        console.log(myBirthMonth);
+        console.log(fullYear);
+
+        // 반복문
+        for (let i = 0; i < 12; i++){
+            document.write(fullYear[i] + "<br/>");
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

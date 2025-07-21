@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            const $box1 = $("#box1");
+            console.log($box1.attr("checked")); // checked
+            console.log($box1.prop("checked")); // true
+
+            const $box2 = $("#box2");
+            console.log($box2.attr("checked")); // undefined
+            console.log($box2.prop("checked")); // false
+
+            $box1.click(function(){
+                // console.log($(this)); // input#box1
+                console.log($(this).attr("checked"));
+                console.log($(this).prop("checked"));
+            });
+
+            $box2.click(function(){
+                // console.log($(this)); // input#box2
+                console.log($(this).attr("checked"));
+                console.log($(this).prop("checked"));
+
+                // 계속 바뀌는 상태변화 > prop으로 확인
+            });
+        })
+    </script>
+</head>
+<body>
+    <input type="checkbox" id="box1" checked>체크박스1
+    <input type="checkbox" id="box2">체크박스2
+</body>
+</html>

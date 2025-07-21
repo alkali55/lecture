@@ -1,0 +1,17 @@
+package bb;
+
+public class TestSplit {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String test = "HELLOEXAMPLESENTENCE";
+		String[] output = test.split("E");
+		
+		
+		boolean[] ary = new boolean[256];
+		System.out.println(ary.toString());
+	
+
+	}
+
+}

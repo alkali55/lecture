@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <title>Hello, JQuery</title>
+    <script>
+        // window.onload = function() {
+        //     console.log($("h1"));
+        // }
+        $(document).ready(function() {
+            // document.getElementsByTagName("h1")[0].style.color = "pink";
+            // console.log($("h1"));
+            // console.log($("h2")[0]);
+            $("h1").css("color", "blue");
+            $("h2").eq(0).css("color", "orange"); // zero-based index
+            $("h2").eq(1).css("color", "green");
+
+            $("div").eq(0).click(function(){
+                // alert("jquery 참 쉽나요?");
+                $(this).html("jquery");
+            }); 
+
+
+            // $(".big").css("display", "none");
+            $(".small").mouseover(function(){
+                $(".big").show("fast"); // slow, fast
+            })
+
+            $(".small").mouseout(function(){
+                $(".big").hide(3000);
+            })
+
+        });
+    </script>
+    <style>
+        .big {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, JQuery!</h1>
+    <h2>첫번째 h2</h2>
+    <h2>두번째 h2</h2>
+    <div>jQuery는 빠르고 작지만 풍부한 기능을 갖춘 자바스크립트 라이브러리입니다.</div>
+    <div>
+        <img src="images/hamburger.jpg" class="small" width="20%">
+    </div>
+    <div>
+        <img src="images/hamburger.jpg" class="big" width="40%">
+    </div>
+</body>
+</html>

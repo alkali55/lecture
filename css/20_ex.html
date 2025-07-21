@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li.new::after {
+            content: "NEW!!";
+            font-size: x-small;
+            background-color: red;
+            color: wheat;
+            padding: 2px 4px;
+            margin: 0 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>새상품</h1>
+        <ul>
+            <li class="new">상품 A</li>
+            <li>상품 B</li>
+            <li>상품 C</li>
+            <li class="new">상품 D</li>
+        </ul>
+    </div>
+</body>
+</html>

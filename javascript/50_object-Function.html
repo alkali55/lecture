@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성자 함수를 이용하여 객체 생성</title>
+    <script>
+        function Account(owner, accNum, balance) {
+            // 객체 속성
+            this.owner = owner; // account.owner = "홍길동";
+            this.accNum = accNum;
+            this.balance = balance;
+            this.name = "직장인 비과세 예금";
+            this.bankname = "우리은행";
+
+            //객체 기능(메서드)
+            this.deposit = function (money) {
+                // 예금
+                this.balance += money;
+            };
+            
+            this.checkBalance = function(){
+                // 잔액조회
+                return this.balance;
+            };
+
+            this.withdraw = function (money) {
+                //인출
+                if (this.balance >= money){
+                    this.balance -= money;
+                } else {
+                    window.alert("잔액이 부족합니다.");
+                }
+            };
+        }
+
+
+        let acc1 = new Account("홍길동", "1111-023-04-56789", 1000);
+        console.log(acc1);
+        acc1.deposit(20000);
+        console.log(acc1.checkBalance());
+        acc1.withdraw(15000);
+        console.log(acc1.checkBalance());
+        console.log(acc1.balance);
+
+
+        let acc2 = new Account("이승엽", "1111-023-04-56791", 0);
+        console.log(acc2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

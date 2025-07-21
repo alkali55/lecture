@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function func1 (){
+            console.log("func-1");
+            func2();
+            setInterval(null, 1000);
+        }
+
+        function func2(){
+            // console.log("func-2");
+            setTimeout(function(){
+                console.log("func-2");
+                // func3()
+            }, 100); // 비동기 방식
+            func3();
+        }
+
+        function func3(){
+            console.log("func-3");
+        }
+
+        func1();
+    </script>
+</head>
+<body>
+</body>
+</html>

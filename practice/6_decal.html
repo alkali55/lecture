@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let num = 0;
+        let sum = 0;
+        let c1 = 0;
+        let c2 = 0;
+        let c3 = 0;
+        let c4 = 0;
+        let c5 = 0;
+        let c6 = 0;
+        for(i=100; i<=999; i++){
+            for(v=100; v<=999; v++){
+                num = i * v
+                // console.log(num)
+                if(Math.floor(num / 100000) != 0){
+                   c6 =  Math.floor(num / 100000);
+                   num = num - (c6 * 100000);
+                   c5 =  Math.floor(num / 10000);
+                   num = num - (c5 * 10000);
+                   c4 =  Math.floor(num / 1000);
+                   num = num - (c4 * 1000);
+                   c3 =  Math.floor(num / 100);
+                   num = num - (c3 * 100);
+                   c2 =  Math.floor(num / 10);
+                   num = num - (c2 * 10);
+                   c1 =  Math.floor(num / 1);
+                   num = num - (c1 * 1);
+                   if(c6 == c1 && c5 == c2 && c4 == c3){
+                    sum = 0;
+                    sum = (c6*100000)+(c5*10000)+(c4*1000)+(c3*100)+(c2*10)+(c1*1)
+                    if(sum >= 900000) {
+                        document.write(sum + "\n")
+                    }
+                   }
+                }
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

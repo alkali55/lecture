@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/account.js"></script>
+    <title>배열에 객체를 담아 관리</title>
+    <script>
+        let acc1 = new Account("홍길동", "1111-023-04-56789", 1000);
+        console.log(acc1);
+
+        let acc2 = new Account("이승엽", "1111-023-04-56791", 0);
+        console.log(acc2);
+        
+        let clients = [];
+        clients.push(acc1);
+        clients.push(acc2);
+
+        console.log(clients);
+
+        // 화면 출력
+        let output = "<ul>";
+
+        for(let client of clients){
+            output += `<li>예금주: ${client.owner}, 계좌번호: ${client.accNum}, 잔액: ${client.balance}</li>`;
+        }
+
+        output +="</ul>";
+
+        document.write(output);
+        
+        document.write(JSON.stringify(clients));
+        let jsonStr = JSON.stringify(clients);
+        console.log(typeof jsonStr); // string
+        let jsonObj = JSON.parse(JSON.stringify(clients));
+        console.log(typeof jsonObj); // object
+        console.log(jsonObj);
+        console.log(jsonObj[0].owner);
+        
+        clients[0].deposit(1000);
+        console.log(clients[0].checkBalance());
+
+        // JSON
+        console.log("json ---------")
+        console.log(JSON.stringify("Hello, JSON"));
+        let jsonStr1 = JSON.stringify(1000);
+        console.log(JSON.stringify(1000));
+        console.log(typeof jsonStr1);
+        console.log(JSON.stringify([1, 2, 3, 4, 5]));
+        console.log(JSON.stringify({name: "홍길동", backNo: 10}));
+        console.log(JSON.stringify(true));
+        console.log(JSON.stringify(null));
+        console.log(JSON.stringify(undefined));
+
+        console.log(JSON.parse('"Hello, JSON"'));
+        let jsStr = JSON.parse('"Hello, JSON"');
+        console.log(typeof jsStr);
+
+        let num = JSON.parse("1000");
+        console.log(typeof num);
+
+        let arr = (JSON.parse("[1,2,3,4,5]"));
+        console.log(typeof arr);
+        console.log(arr[0]);
+
+        let bool = JSON.parse("true");
+        console.log(typeof bool);
+        
+        console.log(JSON.parse("null"));
+        // console.log(JSON.parse("undefined"));
+
+        let obj = JSON.parse('{"name":"홍길동","backNo":10}');
+        console.log(typeof obj);
+        console.log(obj.name);
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

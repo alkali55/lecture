@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>특정 아이템만 정렬방법 지정</title>
+    <style>
+        .container {
+            width: 450px;
+            height: 150px;
+            background-color: royalblue;
+            display: flex;
+            align-items: center;
+        }
+        .box {
+            background-color: lightgray;
+            margin: 5px;
+            padding: 5px 45px;
+            text-align: center;
+        }
+        /* 특정 플렉스 아이템의 교차축 정렬 방식을 설정 */
+        #box1 {
+            align-self: flex-start;
+        }
+        #box3 {
+            align-self: stretch;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container1">
+        <div class="box" id="box1">1</div>
+        <div class="box">2</div>
+        <div class="box" id="box3">3</div>
+        <div class="box">4</div>
+    </div>
+</body>
+</html>

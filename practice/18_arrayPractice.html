@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let N = Math.ceil(Math.random() * 100);
+        let M = Math.ceil(Math.random() * 100);
+        let I = 0;
+        let J = 0;
+        let K = 0;
+        console.log(N, M);
+        let basket = new Array(N);
+
+        for (i = 0; i < M; i++){
+            I = Math.ceil(Math.random() * N);
+            J = Math.ceil(Math.random() * (N - I)) + I - 1;
+            K = Math.ceil(Math.random() * N);
+            // console.log(N, I, J);
+            for (j = 0; j < J - I + 1; j++){
+                basket[j + I - 1] = K;
+            }
+        }
+        console.log(basket);
+
+        for (i = 0; i < N; i++){
+            if (isNaN(basket[i])){
+                basket[i] = 0;
+            }
+            document.write(basket[i] + "&nbsp");
+        }
+
+        // document.write(basket + "<br/>");
+        
+        
+        
+        
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

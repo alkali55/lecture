@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회문</title>
+    <script>
+        // 우영우, 기러기, eye, madam
+        // 앞에서 읽으나, 뒤에서 읽으나 똑같은 단어를 회문이라고 한다.
+        // 유저에게 문자열을 입력받아, 입력된 문자가 회문인지 아닌지 판단하는 함수를 만드세요.
+        // 입력된 문자가 회문이면 true, 아니면 false를 반환하도록 만드세요.
+
+        let input = window.prompt("문자를 입력해주세요...");
+        
+        console.log(arrPal(input));
+        console.log(noSpacePal(input));
+        console.log(strPal(input));
+
+
+
+
+        
+        function arrPal(userState) {
+            // let userState = new String(window.prompt("문자를 입력해주세요..."));
+            // console.log(userState);
+            let arrUS = userState.split("");
+            // console.log(arrUS);
+            let revUS = arrUS.slice();
+            revUS.reverse();
+            // console.log(arrUS, revUS);
+    
+            if (arrUS.join("") == revUS.join("")){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+        //------------------------------------------------------
+        
+        // 공백 제거 후 비교 ver.
+
+        function noSpacePal(userState) {
+            // let userState = new String(window.prompt("문자를 입력해주세요..."));
+            // console.log(userState);
+            let arrUS = userState.split(" ").join("").split("");
+            // console.log(arrUS);
+            let revUS = arrUS.slice();
+            revUS.reverse();
+            // console.log(arrUS, revUS);
+    
+            if (arrUS.join("") == revUS.join("")){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+
+        // -----------------------------------------------
+        
+        // 배열변환 x
+
+        function strPal(userState) {
+            // let userState = new String(window.prompt("문자를 입력해주세요..."));
+            let flag = Boolean(true);
+            // console.log(flag);
+            // flag = true;
+            // console.log(flag);
+            // console.log(userState.length);
+            // console.log(userState[1]);
+            for (let i = 0; i < Math.floor(userState.length/2); i++){
+                // console.log(userState[i], userState[userState.length - i - 1]);
+                if (userState[i] != userState[userState.length - i - 1]){
+                    flag = false;
+                }
+            }
+            
+            if (flag){
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일반 형제, 동위, 이웃 선택자</title>
+    <style>
+        div ~ p {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sibling Selector</h1>
+    <p>Sibling 선택자로 스타일을 꾸미면 어떻게 될까요?</p>
+    <div>
+        <p>div내부 p태그</p>
+        <p>div내부 p태그</p>
+        <p>div내부 p태그</p>
+    </div>
+    <p>div외부 p태그</p>
+    <p>div외부 p태그</p>
+    <p>div외부 p태그</p>
+</body>
+</html>

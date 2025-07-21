@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function (){
+            let parentElt = document.querySelector(".parent");
+            console.log(parentElt.tagName); // DIV
+            console.log(parentElt.tagName == "div"); // false
+            console.log(parentElt.tagName == "DIV"); // true
+
+            let childElt = document.querySelector(".child");
+            console.log(childElt.id);
+            childElt.id = "id-child1";
+            console.log(childElt.id);
+
+
+            // dataset
+            // 'data-' 속성 값을 읽어오거나, 할당해 줄 수 있다.
+            let str = "Hello World";
+            childElt.dataset.helloWorld = str;
+            
+            let obj = { a: 1, b: 2};
+            childElt.dataset.object = JSON.stringify(obj);
+
+
+            console.log(childElt.dataset.object);
+            console.log(JSON.parse(childElt.dataset.object));
+
+            // className
+            console.log(childElt.className);
+            childElt.className += " first accent";
+
+            console.log(childElt.classList);
+            console.log(childElt.classList.item(1));
+            console.log(childElt.classList.item(5));
+
+            childElt.classList.remove("accent");
+            childElt.classList.add("add-accent");
+
+            console.log(childElt.classList.contains("first"));
+            console.log(childElt.classList.contains("accent"));
+        }
+    </script>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">content-1</div>
+        <div class="child" id="child2">content-2</div>
+    </div>
+</body>
+</html>

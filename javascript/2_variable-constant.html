@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수와 상수</title>
+    <script>
+        // 변수
+        let name; // let이라는 키워드로 변수를 선언(declare). 값은 할당하지 않은 상태.
+        console.log(name); // undefined 
+        name = "홍길동"; // 변수에 값을 할당 (assign)
+        console.log(name);
+
+        let email = "abc"; // 선언 + 할당
+        
+        name="고길동";
+        console.log(name);
+        
+        // 변수 재선언 불가!
+        // let name="김길동"; // ERROR :  Identifier 'name' has already been declared
+        
+        // var는 변수 재선언이 가능. 되도록 지양한다!
+        var age = 10;
+        console.log(age);
+
+        var age = 20;
+
+        {
+            var a = 4; // 코드블럭 밖에서도 출력
+            // let a = 4; // 코드블럭 밖에서는 에러 : a is not defined
+            console.log(a);
+        }
+        console.log(a);
+
+        // 상수: 선언하면서 초기값을 대입할 수는 있지만,
+        // 상수에 있는 값을 변경할 수 없다.
+        const hero ="아이언맨"; // 상수는 관례적으로 대문자_대문자 식으로 이름지음. ex) MIN_VALUE
+        // hero = "스파이더맨"; // Assignment to constant variable.
+
+        console.log(Number.MIN_VALUE);
+
+        b = 3;
+        console.log(b);
+
+        console.log(c);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

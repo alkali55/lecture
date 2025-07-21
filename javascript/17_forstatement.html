@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문 - for문</title>
+    <script>
+        // 1) 안녕하세요를 화면에 5번 출력하세요.
+        for (let i = 0; i < 5; i++) {
+            document.write(`<div>${i + 1}번째 안녕하세요</div>`);
+        }
+        document.write("<hr/>");
+        for (let i = 0; i < 5; i += 2) {
+            document.write(`<div>${i + 1}번째 안녕하세요</div>`);
+        }
+
+        // 2) ul태그 안에 li태그가 4번이 나오도록, li태그 안에 1, 2, 3, 4가 들어가도록 만드세요.
+
+        // document.write(`<ul id = "ul1"></ul>`);
+        // for (let i = 0; i < 4; i++) {
+        //     document.getElementById("ul1").innerHTML += `<li>${i + 1}</li>`;
+        // }
+
+        let output = "<ul>";
+        for (let i = 0; i < 4; i++) {
+            output += `<li>${i + 1}</li>`;
+        }
+        output += "</ul>";
+        document.write(output);
+
+        // 3) 4행 3열 테이블을 만드세요 (for문 한번만 사용)
+        // td 태그 안에 1부터 1씩 증가하는 숫자를 넣으세요.
+
+        // let table = "<table><tr>";
+        // for (let i = 0; i < 12; i++) {
+        //     table += `<td>${i + 1}</td>`;
+        //     if (i + 1 == 3 || i + 1 == 6 || i + 1 == 9 || i + 1 == 12){
+        //         table += "</tr>";
+        //     }
+        // }
+        // table += "</table>"
+        // document.write(table);
+        
+
+        let tableOutput = "<table>";
+        // for (let i = 0; i < 4; i++) {
+        //     tableOutput += `<tr><td>${3 * i + 1}</td><td>${3 * i + 2}</td><td>${3 * i + 3}</td></tr>`;
+        // }
+        let cnt = 1;
+        for (let i = 0; i < 4; i++) {
+            tableOutput +=  `<tr><td>${cnt++}</td><td>${cnt++}</td><td>${cnt++}</td></tr>`;
+        }
+        tableOutput += "</table>";
+        console.log(tableOutput);
+        document.write(tableOutput);
+
+        // 4) 1 ~ 100까지 누적 합을 구하고 출력하세요.
+        
+        let sum = 0;
+        for (let i = 0; i < 100; i++) {
+            sum += i + 1;
+        }
+        console.log(sum);
+        document.write(`1~100까지의 합은 : ${sum}입니다. <br/>`);
+
+        // 5) 1 ~ 100까지의 짝수합, 홀수합을 구하고 출력하세요.
+        
+        let evenSum = 0, oddSum = 0;
+        for (let i = 1; i < 101; i++) {
+            i % 2 == 0 ? evenSum += i : oddSum += i;
+        }
+        // for (let i = 1; i < 101; i += 2) {
+        //     oddSum += i;
+        //     evenSum += i + 1;
+        // }
+        document.write(`짝수합은 ${evenSum}이고, 홀수합은 ${oddSum} 입니다. <br/>`);
+
+        // 6) 유저에게 단을 입력받아서, 해당하는 단의 구구단을 출력
+        // 2 * 1 = 2  2 * 2 = 4 . . . 2 * 9 = 18
+
+        document.write(`<input type="text" id="input"><button onclick="process()">구구단 출력</button>`);
+        function process() {
+            let num = Number(document.getElementById("input").value);
+            console.log(num, typeof num);
+            let danTable = "<table>";
+            for (let i = 1; i < 10; i++) {
+                danTable += `<tr><td>${num} * ${i} = </td><td>${num * i}</td></tr>`;
+                // document.write(`${num} * ${i} = ${num * i} <br/>`);
+            }
+            danTable += "</table>"
+            document.write(danTable);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

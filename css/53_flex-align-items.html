@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교차축 정렬 방법을 지정하는 align-items 속성</title>
+    <style>
+        .wrap {
+            display: inline-flex;
+        }
+        .container {
+            width: 100%;
+            height: 150px;
+            background-color: royalblue;
+            display: flex;
+            margin-bottom: 30px;
+            border: 4px dashed red;
+        }
+        .box {
+            width: 80px;
+            background-color: lightgray;
+            margin: 5px;
+            padding: 5px 45px;
+            text-align: center;
+        }
+        #container1 {
+            /* 교차축의 시작점에 맞춰서 정렬 */
+            align-items: flex-start;
+        }
+        #container2 {
+            /* 교차축의 끝점에 맞춰서 정렬 */
+            align-items: flex-end;
+        }
+        #container3 {
+            /* 교차축의 중앙에 정렬 */
+            align-items: center;
+        }
+        #container4 {
+            /* 교차축의 문자 기준선(baseline)맞춰 정렬 */
+            align-items: baseline;
+        }
+        #container5 {
+            /* 아이템을 늘려서 교차축에 가득차게 정렬 */
+            align-items: stretch;
+        }
+    </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="container" id="container1">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+    <div class="container" id="container2">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+    <div class="container" id="container3">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+    <div class="container" id="container4">
+        <div class="box" style="font-size: 20px;">1</div>
+        <div class="box">2</div>
+        <div class="box" style="font-size: 25px;">3</div>
+        <div class="box" style="font-size: 10px;">3</div>
+    </div>
+    <div class="container" id="container5">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+  </div>
+</body>
+</html>

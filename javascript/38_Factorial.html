@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수의 재귀호출 : 팩토리얼</title>
+    <script>
+        
+        function factorial(n){
+            console.log("n = " + n);
+            if (n == 1){
+                return 1;
+            } else {
+                return n * factorial(n - 1);
+            }
+        }
+        console.log(factorial(3));
+
+        // 피보나치 수
+
+        // let memo = [];
+
+        // function fibonacci(n){
+        //     if (n <= 1){
+        //         return n;
+        //     } 
+
+        //     if(memo[n] != undefined){
+        //         return memo[n];
+        //     }
+
+        //     memo[n] = fibonacci(n - 1) + fibonacci(n - 2);
+        //     return memo[n];
+        // }
+
+        function fibonacci(n){
+            if (n <= 1){
+                return n;
+            } 
+            return fibonacci(n - 1) + fibonacci(n - 2);
+            
+        }
+
+
+        // for (let i = 0; i < 10; i++){
+        //     console.log("n= " + i, "Fibo = " + fibonacci(i));
+        // }
+        console.log("n = " , "Fibo = " + fibonacci(100));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

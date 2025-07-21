@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date 객체</title>
+    <script>
+        let date = new Date(); // 생성자를 이용해서 날짜 객체 생성
+        console.log(date);
+        console.log(typeof date); // object
+
+        console.log(`현재 : ${date.toDateString()}`); // Mon Jan 20 2025
+        console.log(`현재 : ${date.toLocaleDateString()}`); // 2025. 1. 20.
+        console.log(`현재 : ${date.toLocaleTimeString()}`); // 오후 3:16:42
+        console.log(`현재 : ${date.toLocaleString()}`); // 2025. 1. 20. 오후 3:17:46
+
+        let pastDate = new Date(2004, 6, 1, 1, 11, 11);
+        console.log(pastDate);
+        
+        let pastDate2 = new Date("Mon Jan 19 2025 15:19:58 GMT+0900 (한국 표준시)");
+        console.log(pastDate2);
+
+        // getter
+        console.log(`현재 연도: ${date.getFullYear()}`);
+        console.log(`현재 월: ${date.getMonth() + 1}월`); // 주의 !!! 1월 : 0
+        console.log(`현재 일: ${date.getDate()}일`);
+
+        // 요일을 담은 배열을 만들어서 출력
+        let yoil = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"];
+        console.log(`현재 요일: ${yoil[date.getDay()]}`);
+
+        // setter
+        let date2 = new Date();
+        console.log(date2);
+        date2.setDate(1); // 날짜 수정
+        console.log(`현재 setDate(1) : ${date2}`);
+        date2.setHours(1, 10, 11); // 시, 분, 초 (시간) 수정
+        console.log(`현재 setHours(1, 10, 11) : ${date2}`);
+        
+        // getTime() : 1970 년 1 월 1 일 00:00:00 UTC와 주어진 날짜 사이의 경과 시간 (밀리 초)을 나타내는 숫자
+        console.log(`현재 getTime() : ${date.getTime()}`); // 1737355656653
+
+        let myBirthday = new Date(1997, 3, 28);
+        console.log(myBirthday);
+        console.log(myBirthday.getTime()); // 862153200000 밀리초
+        console.log(date.getTime()); //      1737356284133 밀리초
+        console.log(date.getTime() - myBirthday.getTime()); // 875203222767 밀리초
+        console.log((date.getTime() - myBirthday.getTime()) / 1000 / 60**2 / 24); // 10129일
+        console.log((date.getTime() - myBirthday.getTime()) / 1000 / 60**2 / 24 / 30); // ~ 337개월
+        console.log(date - myBirthday); // 875203528524 밀리초
+
+        // 시계 출력
+        setInterval(function(){
+            let now = new Date();
+            document.getElementById("clock").innerHTML = now;
+        }, 1000);
+
+    </script>
+</head>
+<body>
+    <div id="clock"></div>
+</body>
+</html>

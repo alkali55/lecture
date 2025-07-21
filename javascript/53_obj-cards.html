@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 생성, 관리 연습</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        // 자동차 카탈로그
+        // 가격, 제조사, 모델명, 색상, 설명, 이미지, 링크 등....
+        // 1) 자동차 객체 생성 (3개 인스턴스)
+        // 2) 객체를 배열에 담기
+        // 3) catalog div요소에 부트스트랩 카드로 출력하기
+
+        function Car(price, brand, name, color) {
+            this.price = price;
+            this.brand = brand;
+            this.name = name;
+            this.color = color;
+            this.img = "";
+            this.link = "";
+        }
+
+        let car1 = new Car(27660000, "기아", "K5", "실버");
+        car1.img = "images/k5.jpg";
+        car1.link = "https://www.kia.com/kr/vehicles/k5/features";
+
+        let car2 = new Car(37110000, "현대", "GRANDEUR", "어비스 블랙 펄");
+        car2.img = "images/grandeur.png";
+        car2.link = "https://www.hyundai.com/kr/ko/e/vehicles/grandeur/intro";
+
+        let car3 = new Car(72776000, "아우디", "A5 Coupe", "블랙");
+        car3.img = "images/a5_coupe.jpg";
+        car3.link = "https://www.audi.co.kr/ko/models/a5/a5-coupe_2021/";
+
+        let carArr = [];
+        
+        // for (let i = 0; i < 3 ; i++){
+        //     carArr[i] = car?;
+        // }
+
+        carArr.push(car1);
+        carArr.push(car2);
+        carArr.push(car3);
+
+        console.log(car1);
+        console.log(carArr);
+
+        console.log(JSON.stringify(carArr));
+        let json = JSON.parse(JSON.stringify(carArr));
+        console.log(json);
+        
+        
+        let output = "";
+
+        for (let i = 0; i < carArr.length; i++){
+            output += `<div class = "card">`;
+            output += `<div class = "card-header"><img src = ${carArr[i].img} style="width: 100%; height: 100%;" ></div>`;
+            output += `<div class = "card-body">모델 : ${carArr[i].name} <br />제조사 : ${carArr[i].brand} <br />가격 : ${carArr[i].price} <br /> 색상 : ${carArr[i].color} </div>`;
+            output += `<div class = "card-footer"><a href="${carArr[i].link}" >홈페이지</a></div>`;
+            output += `</div>`;
+        }
+        
+        window.onload = function(){
+            document.getElementById("catalog").innerHTML = output;
+        }
+        
+
+    </script>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        #catalog {
+            display: flex;
+            justify-content: center;
+        }
+        .card-header {
+            width: 300px;
+            height: 200px;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>자동차 카탈로그</h1>
+        <div id="catalog">
+            <!-- <img src="" style="width: 100px; height: 100%;" > -->
+        </div>
+    </div>
+</body>
+</html>

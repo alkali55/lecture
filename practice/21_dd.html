@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function dpEx (a, b, c) {
+                if (a <= 0 || b <= 0 || c <= 0){
+                    return 1;
+                }
+                if (a > 20 || b > 20 || c > 20){
+                    return dpEx(20, 20, 20);
+                }
+                if (a < b && b < c){
+                    return dpEx(a, b, c - 1) + dpEx(a, b - 1, c - 1) - dpEx(a, b - 1, c);
+                }
+                return dpEx(a - 1, b, c) + dpEx(a - 1, b - 1, c) + dpEx(a - 1, b, c - 1) - dpEx(a - 1, b - 1, c - 1);
+        }
+
+        console.log(dpEx(15, 10, 10));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

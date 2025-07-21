@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            let btn3 = document.getElementById("btn3");
+
+            // .onclick 속성에 부여
+            btn3.onclick = sayHello;
+            btn3.onclick = function() {
+                alert("button3 click 1");
+            }
+
+            // addEventHandler() 메서드
+            btn3.addEventListener("click", function(){
+                alert("button3 클릭 1");
+            });
+
+            btn3.addEventListener("click", function(){
+                alert("button3 클릭 2");
+            });
+        }
+
+        function sayHello() {
+            alert("Hello!");
+        }
+    </script>
+</head>
+<body>
+    <button onclick="alert('버튼1 클릭'); alert('버튼1 클릭2')">버튼1</button>
+    <button onclick="sayHello(); sayHello();">버튼2</button>
+    <button id="btn3">버튼3</button>
+</body>
+</html>

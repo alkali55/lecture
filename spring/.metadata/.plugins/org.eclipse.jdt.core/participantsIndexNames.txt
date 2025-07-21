@@ -1,0 +1,21 @@
+INDEX VERSION 1.131
+C:\lecture\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2471596856.index
+\to-do-list\src\main\java
+C:\lecture\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3069515755.index
+\legacy-diary\src\main\java
+C:\lecture\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\153078822.index
+\legacy-diary\src\main\java
+C:\lecture\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3770079304.index
+\to-do-list\src\main\java
+C:\lecture\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2658272158.index
+\SpringBasic\src\main\java
+C:\lecture\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1853824938.index
+\legacy-diary\src\main\java
+C:\lecture\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1228774456.index
+\to-do-list\src\main\java
+C:\lecture\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\315039887.index
+\to-do-list\src\main\java
+C:\lecture\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3703158938.index
+\to-do-list\src\main\java
+C:\lecture\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\676728600.index
+\legacy-diary\src\main\java

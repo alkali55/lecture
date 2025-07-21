@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <title>성적표 차트 그리기</title>
+    <script>
+        // 두 명 학생의 이름, 국, 영, 수 데이터를 입력받아서
+        // 결과 버튼을 클릭하면
+        // 총점, 평균을 input 요소에 출력하고
+        // 콤보차트를 출력한다.
+        const STU_CNT = 2;
+
+        $(function(){
+            $("#resultBtn").click(function(){
+
+                let score2dArr = inputData();
+                drawChart(score2dArr);
+            });
+        });
+
+        function drawChart(scores){
+            // console.log(scores);
+
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawVisualization);
+
+            function drawVisualization() {
+                // Some raw data (not necessarily accurate)
+                var data = google.visualization.arrayToDataTable(scores);
+
+                var options = {
+                title : '성적표 V7',
+                vAxis: {title: '점수'},
+                hAxis: {title: '이름'},
+                seriesType: 'bars',
+                series: {4: {type: 'line'}}
+                };
+
+                var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+            }
+        }
+
+        function inputData(){
+            // 각 학생의 점수를 읽어와서 1배열만들고,
+            // 모든 학생의 데이터를 2차원 배열로 반환하는 함수
+
+            let scores = new Array();
+            scores[0] = ["이름", "국어", "영어", "수학", "총점", "평균"];
+            
+            $(".student").each(function(i, student){
+                let stuName = $(student).children().find(".name").val();
+                let kor = Number($(student).children().find(".kor").val());
+                let eng = Number($(student).children().find(".eng").val());
+                let math = Number($(student).children().find(".math").val());
+
+                let total = kor + eng + math;
+                let avg = total / 3;
+                scores.push([stuName, kor, eng, math, total, avg]);
+                // score[i+1] =[];
+                // for(let j = 0; j < 6; j++){
+                //     score[i+1][j] = $(student).children.eq(j).val();
+                // }
+
+                //총점 평균을 input 요소에 넣기
+                $(student).children().find(".total").val(total);
+                $(student).children().find(".avg").val(avg.toFixed(2));
+            })
+
+            // console.log(scores);
+
+            return scores;
+            
+        }
+
+
+
+
+    </script>
+
+    <style>
+        
+        
+        
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>이름</th>
+            <th>국어</th>
+            <th>수학</th>
+            <th>영어</th>
+            <th>총점</th>
+            <th>평균</th>
+        </tr>
+        <tr class="student">
+            <td><input type="text" class="name"></td>
+            <td><input type="text" class="kor"></td>
+            <td><input type="text" class="eng"></td>
+            <td><input type="text" class="math"></td>
+            <td><input type="text" class="total" disabled></td>
+            <td><input type="text" class="avg" disabled></td>
+        </tr>
+        <tr class="student">
+            <td><input type="text" class="name"></td>
+            <td><input type="text" class="kor"></td>
+            <td><input type="text" class="eng"></td>
+            <td><input type="text" class="math"></td>
+            <td><input type="text" class="total" disabled></td>
+            <td><input type="text" class="avg" disabled></td>
+        </tr>
+    </table>
+    <button id="resultBtn">결과</button>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 사용자에게 키(cm)와 몸무게(kg)를 입력받아,
+        // 체질량지수(bmi)와 비만도 결과를 출력하세요.
+        // "저체중" : 18.5 미만 (bmi < 18.5)
+        // "정상" : 18.5 ~ 23
+        // "과체중" : 23 ~ 25
+        // "비만" : 25이상
+        let height = Number(window.prompt("키(cm)를 입력하세요..")) / 100   ;
+        let weight = Number(window.prompt("몸무게(kg)를 입력하세요.."));
+        let bmi = weight / height ** 2
+        let result = ""
+        
+        if (bmi <= 18.5) {
+            result = "저체중";
+        } else if (18.5 < bmi && bmi<= 23) {
+            result = "정상";
+        } else if (23 < bmi && bmi <= 25) {
+            result = "과체중";
+        } else if (height < 0 || weight < 0){
+            document.write("잘못된 값입니다.")
+        } else {
+            result = "비만";
+        }
+        
+        document.write(`<div>비만도 결과 : ${result}입니다</div> <div>BMI 지수 : ${bmi.toFixed(2)} </div>`)
+
+        // let ex = 0;
+        // function tg() {
+        //     ex = document.getElementById("height").value;
+        //     console.log(ex);
+        // }
+        
+    
+        
+    </script>
+    <style>
+        .container {
+            display: flex;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="container">
+        <p>키</p>
+        <input type="text" id = "height" style="width: 50px;">
+        <button onclick="tg()">계산</button>
+    </div> -->
+</body>
+</html>

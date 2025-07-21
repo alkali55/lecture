@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오름차순 정렬</title>
+    <script>
+        // 칠판에 설명한 알고리즘을 잘 적용해서,
+        // 1 ~ 100까지의 랜덤한 수 10개를 배열에 넣고,
+        // 오름차순으로 정렬하고
+        // 정렬 전과 정렬 후의 배열을 각각 출력하세요.
+
+        let arr = new Array(10);
+        let swapV = 0; // 스왑용변수 if문 안에서 지역변수로 선언
+        let table = "<table border = '1'><tr>";
+        for (i = 0; i < arr.length; i++){
+            arr[i] = Math.ceil(Math.random() * 100);
+            table += `<td>${arr[i]}</td>`;
+        }
+        
+        // let result = arr.filter((number) => number < arr[0]);
+        // console.log(result);
+
+
+        table += "</tr></table>";
+        document.write("<h2>정렬 전</h2></br>" + table);
+
+        // 정렬
+
+        table = "<table border = '1'><tr>"; // 테이블 초기화
+
+        for (i = 0; i < arr.length; i++){ // arr.length -> arr.length - 1 로 최적화
+            for (j = i + 1; j < arr.length; j++){
+                if (arr[i] > arr[j]){
+                    swapV = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = swapV;
+                }
+            }
+            table += `<td>${arr[i]}</td>`;
+        }
+
+        table += "</tr></table>";
+        document.write("<h2>정렬 후</h2></br>" + table);
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

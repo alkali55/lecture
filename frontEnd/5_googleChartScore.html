@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <title>성적표 차트 그리기</title>
+    <script>
+        // 두 명 학생의 이름, 국, 영, 수 데이터를 입력받아서
+        // 결과 버튼을 클릭하면
+        // 총점, 평균을 input 요소에 출력하고
+        // 콤보차트를 출력한다.
+        const STU_CNT = 2;
+
+        
+
+        function output() {
+
+            let stuArr = [];
+
+            
+
+            for (let i = 0; i < STU_CNT; i++){
+                let stuObj = new Object();
+                stuObj.name = $(".name").eq(i).val();
+                stuObj.kor = Number($(".kor").eq(i).val());
+                stuObj.eng = Number($(".eng").eq(i).val());
+                stuObj.math = Number($(".math").eq(i).val());
+                stuObj.total = stuObj.kor + stuObj.eng + stuObj.math;
+                stuObj.avg = Number((stuObj.total / 3).toFixed(2));
+                $(".total").eq(i).val(stuObj.total);
+                $(".avg").eq(i).val(stuObj.avg);
+                stuArr.push(stuObj);
+            }
+
+
+            console.log(stuArr);
+            
+
+
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawVisualization);
+
+            function drawVisualization() {
+                // Some raw data (not necessarily accurate)
+                var data = google.visualization.arrayToDataTable([
+                ['Name', 'Kor', 'Eng', 'Math', 'Total', 'Avg'],
+                [stuArr[0].name, stuArr[0].kor, stuArr[0].eng, stuArr[0].math, stuArr[0].total, stuArr[0].avg],
+                [stuArr[1].name, stuArr[1].kor, stuArr[1].eng, stuArr[1].math, stuArr[1].total, stuArr[1].avg]
+                ]);
+
+                var options = {
+                title : 'ScoreChart',
+                vAxis: {title: 'Scores'},
+                hAxis: {title: 'Students'},
+                seriesType: 'bars',
+                series: {4: {type: 'line'}}
+                };
+
+                var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+            }
+        }
+
+
+    </script>
+
+    <style>
+        
+        
+        
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>이름</th>
+            <th>국어</th>
+            <th>수학</th>
+            <th>영어</th>
+            <th>총점</th>
+            <th>평균</th>
+        </tr>
+        <tr>
+            <td><input type="text" class="name"></td>
+            <td><input type="text" class="kor"></td>
+            <td><input type="text" class="eng"></td>
+            <td><input type="text" class="math"></td>
+            <td><input type="text" class="total" disabled></td>
+            <td><input type="text" class="avg" disabled></td>
+        </tr>
+        <tr>
+            <td><input type="text" class="name"></td>
+            <td><input type="text" class="kor"></td>
+            <td><input type="text" class="eng"></td>
+            <td><input type="text" class="math"></td>
+            <td><input type="text" class="total" disabled></td>
+            <td><input type="text" class="avg" disabled></td>
+        </tr>
+    </table>
+    <button onclick="output()">결과</button>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+</html>

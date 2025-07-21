@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/a5e7637fb6.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<script>
+    
+    const MY_KEY = "bodgvmkG3ToKBU%2F0FLZyS%2BqJqDmGqVwnPAUXUra4%2BDyM9KVDC8m2a2D37GdWyytohVNW92pmylfOVX4UamgU4w%3D%3D";
+
+    $(function(){
+        let exArr = [];
+        console.log(exArr[1]);
+        let exStr = "a02arrNum0"
+        console.log(exStr.split("arrNum"));
+        callAjax();
+        callServ();
+
+        
+    })
+    function callAjax(){
+        let baseUrl = `http://apis.data.go.kr/B551011/KorService1/areaCode1`;
+        let url = baseUrl + `?MobileOS=ETC&MobileApp=AppTest&serviceKey=${MY_KEY}&_type=json`;
+
+        $.ajax({
+            url: url, // 데이터가 송수신될 서버의 주소
+            type: "GET", // 통신 방식 (GET, POST, PUT, DELETE)
+            dataType: "json", // 수신받을 데이터의 타입 (MIME TYPE)
+            async: false,
+            success: function(data){ // 통신이 성공하면 수행할 함수
+                console.log(data);
+            },
+            error: function(){},
+            complete: function(){
+            }
+        });
+    }
+    function callServ(){
+        let baseUrl = `http://apis.data.go.kr/B551011/KorService1/categoryCode1`;
+        let url = baseUrl + `?MobileOS=ETC&MobileApp=AppTest&serviceKey=${MY_KEY}&_type=json&contentTypeId=14`;
+
+        $.ajax({
+            url: url, // 데이터가 송수신될 서버의 주소
+            type: "GET", // 통신 방식 (GET, POST, PUT, DELETE)
+            dataType: "json", // 수신받을 데이터의 타입 (MIME TYPE)
+            async: false,
+            success: function(data){ // 통신이 성공하면 수행할 함수
+                console.log(data);
+            },
+            error: function(){},
+            complete: function(){
+            }
+        });
+    }
+</script>
+<style>
+    i {
+        color: red;
+    }
+</style>
+<body>
+    <i class="fa-solid fa-heart"></i>
+    <button class="btn"><i class="fa-regular fa-heart"></i></button>
+</body>
+</html>

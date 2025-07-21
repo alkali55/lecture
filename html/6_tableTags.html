@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블 태그</title>
+</head>
+<body>
+    <h1>테이블 태그</h1>
+    <h2>3행 4열 짜리 표</h2>
+    <table border="1">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+
+    </table>
+    
+    <h2>2행 3열 짜리 표</h2>
+    <table border="1">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+    </table>
+
+    <h2>테이블 셀의 병합</h2>
+    <table border="1">
+        <tr>
+            <td colspan="2">1</td>
+            <!-- <td>2</td> -->
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td rowspan="2">8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <!-- <td>12</td> -->
+        </tr>
+
+    </table>
+    <!-- 8행 4열 -->
+    <h2>연습문제</h2>
+    <table border="1">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td colspan="2">3</td>
+            <!-- <td>4</td> -->
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td rowspan="3">10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <!-- <td>14</td> -->
+            <td>15</td>
+            <td>16</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <!-- <td>18</td> -->
+            <td>19</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>25</td>
+            <td colspan="3">26</td>
+            <!-- <td>27</td> -->
+            <!-- <td>28</td> -->
+        </tr>
+        <tr>
+            <td>29</td>
+            <td>30</td>
+            <td>31</td>
+            <td>32</td>
+        </tr>
+        
+
+    </table>
+
+    <h2>주소록</h2>
+    <table border="1">
+        <caption>
+            주소록
+        </caption>
+        <thead>
+            <th>이름</th>
+            <th>전화번호</th>
+            <th>주소</th>
+            <th>사진</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>aaa</td>
+                <td>010-0000-0000</td>
+                <td>a시 b구 c로</td>
+                <td><img src="avatar.png" alt="사진"></td>
+            </tr>
+            <tr>
+                <td>bbb</td>
+                <td>010-1234-5678</td>
+                <td>d시 e구 f로</td>
+                <td><img src="avatar2.png" alt="사진"></td>
+            </tr>
+        </tbody>
+        
+    </table>
+
+    <h2>연습문제</h2>
+    <!-- <table border="1">
+        <caption>정승환</caption>
+        <tr>
+            <th>출생</th>
+            <th>나이</th>
+            <th>소속그룹</th>
+            <th>소속사</th>
+            <th>사진</th>
+        </tr>
+        <tr>
+            <th>1996.08.21</th>
+            <th>28세</th>
+            <th><a href="https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&mra=bjky&pkid=1&os=28934976&qvt=0&query=%EA%B3%A0%EB%A7%89%EC%86%8C%EB%85%84%EB%8B%A8">고막소년단</a></th>
+            <th><a href="https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&qvt=0&query=%EC%95%88%ED%85%8C%EB%82%98">안테나</a></th>
+            <th><img src="jsh.jpg" width="100px%" alt="사진"></th>
+        </tr>
+    </table> -->
+
+    <table border="1" style="border-collapse: collapse;">
+        <caption>정승환 프로필</caption>
+        <tr>
+            <td>출생</td>
+            <td>1996.08.21, 사자자리, 쥐띠</td>
+            <td rowspan="4"><img src="jsh.jpg" width="200px"alt="사진"></td>
+        </tr>
+        <tr>
+            <td>나이</td>
+            <td>28세</td>
+        </tr>
+        <tr>
+            <td>소속그룹</td>
+            <td><a href="https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&mra=bjky&pkid=1&os=28934976&qvt=0&query=%EA%B3%A0%EB%A7%89%EC%86%8C%EB%85%84%EB%8B%A8">고막소년단</a></td>
+        </tr>
+        <tr>
+            <td>소속사</td>
+            <td><a href="https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&qvt=0&query=%EC%95%88%ED%85%8C%EB%82%98">안테나</a></td>
+        </tr>
+    </table>
+</body>
+</html>

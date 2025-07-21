@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function saveCookie() {
+            // 쿠키 저장
+            // 쿠키이름=값;expires=쿠키만료일;[domain=도메인명;path=쿠키저장경로]
+            let myCookie = "";
+            let now = new Date();
+            console.log(now);
+            // console.log(now.getSeconds() + 3);
+            // 2분 후에 만료
+            now.setMinutes(now.getMinutes() + 2);
+            console.log(now);
+            console.log(now.toUTCString());
+
+            myCookie = "myCook=jis;expires=" + now.toUTCString();
+            console.log(myCookie);
+
+            //쿠키 저장
+            document.cookie = myCookie;
+
+
+            let now2 = new Date();
+            now2.setMinutes(now2.getMinutes() + 5);
+            let myCookie2 = "myCook2=cookie2;expires=" + now2.toUTCString();
+            document.cookie = myCookie2;
+
+            
+        }
+
+        function readCookie() {
+            let cook = document.cookie;
+            console.log(cook); // "myCook=jis; myCook2=cookie2"
+            console.log(typeof cook);
+
+            // myCook이름의 쿠키의 값 jis
+            let cookArr = cook.split("; ");
+            console.log(cookArr);
+
+            // cookArr[1] = "myCook=jis"
+            // "myCook=jis".split("=") -> 쿠키이름 [0]번째 인덱스
+
+            let isFind = false;
+            let searchName = "myCook";
+
+            for (let i = 0; i < cookArr.length; i++){
+                let cookName = cookArr[i].split("=")[0];
+                console.log(cookName);
+
+                if (cookName == searchName) {
+                    // 찾았다 !
+                    alert("찾았다: " + cookArr[i].split("=")[1]);
+                    isFind = true;
+                }                
+            }
+
+            if (!isFind){
+                alert("그런 쿠키 없습니다....feat.쿠키먹고싶다");
+            }
+        }
+
+        function delCookie() {
+            // 쿠키 삭제 : myCook
+            // 삭제할 쿠키의 expires값을 현재 날짜시간으로 재설정하여 다시 저장
+            let delName = "myCook";
+            let now = new Date();
+            let cookie = delName + "=;expires=" + now.toUTCString();
+            document.cookie = cookie;
+
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="쿠키저장" onclick="saveCookie()">
+    <input type="button" value="쿠키읽기" onclick="readCookie()">
+    <input type="button" value="쿠키삭제" onclick="delCookie()">
+</body>
+</html>

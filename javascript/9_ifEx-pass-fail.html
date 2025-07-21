@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if 문</title>
+    <script>
+        // html, css, javascript 세 과목의 점수를 입력받아,
+        // 평균을 구하고,
+        // 평균이 60점 이상이고, 과목당 40점 이상이어야 합격.
+        // 40점 미만인 과목은 불합격이라고 출력하세요.
+
+        let htmlScore = 0;
+        let cssScore = 0;
+        let javaScore = 0;
+        let average = 0;
+        let result = "";
+        let pfcolor = "";
+        
+
+
+        function process() {
+
+            htmlScore = Number(document.getElementById("html").value);
+            cssScore = Number(document.getElementById("css").value);
+            javaScore = Number(document.getElementById("javascript").value);
+            average = (htmlScore + cssScore + javaScore) / 3;
+
+            if (htmlScore >= 40 && cssScore >= 40 && javaScore >=40 && average >= 60) {
+                // document.getElementById("passFail").textContent = "합격"
+                // document.getElementById("passFail").style.color = "blue"
+                // document.write("합격");
+                console.log(average);   
+                result = "합격"
+                pfcolor = "blue"
+            } else {
+                // document.getElementById("passFail").textContent = "불합격"
+                // document.getElementById("passFail").style.color = "red"
+                // document.write("불합격");
+                console.log(average);
+                result = "불합격"
+                pfcolor = "red"
+            }
+            document.getElementById("passFail").textContent = result;
+            document.getElementById("passFail").style.color = pfcolor;
+
+        }
+
+    </script>
+
+    <style>
+        .container1 {
+            width: 800px;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .container2 {
+            width: 500px;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        button {
+            margin-bottom: 20px;
+        }
+        #passFail {
+            font-size: 100px;   
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <p>html</p>
+        <input type="text" id="html">
+        <p>css</p>
+        <input type="text" id="css">
+        <p>javascript</p>
+        <input type="text" id="javascript">
+    </div>
+    <button onclick="process()">계산</button>
+    <div class="container2">
+        <p>합격여부 :</p>
+        <p id="passFail"></p>
+    </div>
+</body>
+</html>

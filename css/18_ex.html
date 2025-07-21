@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            text-align: center;
+            color: blue;
+        }
+        table, tr, td {
+            border: 1px solid #ccc;
+        }
+        table {
+            width: 200px;
+            margin: 0 auto;
+            border-collapse: collapse; 
+        }
+        td {
+            text-align: left;
+            padding: 10px;
+        }
+        table tr:nth-of-type(2n + 1) {
+            background-color: lightgray;
+        }
+        /* even은 짝수 odd는 홀수 */
+        table tr:nth-child(even) {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>웹 개발</h1>
+        <table>
+            <tr>
+                <td>HTML</td>
+            </tr>
+            <tr>
+                <td>CSS</td>
+            </tr>
+            <tr>
+                <td>JAVASCRIPT</td>
+            </tr>
+            <tr>
+                <td>DATABASE</td>
+            </tr>
+            <tr>
+                <td>JAVA</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

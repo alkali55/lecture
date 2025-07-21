@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navigator객체의 geolocation을 이용해서 위치 정보 얻기</title>
+    <script>
+        let output = "<ul>";
+        
+        function getLocation(){
+            console.log(navigator.geolocation.getCurrentPosition(showPosition, outputError));
+
+        }
+
+        function showPosition(pos) {
+            console.log(pos);
+            console.log(pos.coords.latitude); // 위도
+            console.log(pos.coords.longitude); // 경도
+
+            let lat = pos.coords.latitude;
+            let lon = pos.coords.longitude;
+
+            let timestamp = pos.timestamp;
+
+            let date = new Date(timestamp);
+            console.log(date.toLocaleString());
+
+            output += `<li>당신의 위치는 위도 : ${lat}, 경도 : ${lon}</li>`;
+            output += `<li>당신의 위치의 정확도 : ${pos.coords.accuracy}</li>`;
+            output += `<li>시간 : ${date}</li>`;
+            output += `</ul>`;
+            document.getElementById("output").innerHTML = output;
+        }
+
+        function outputError() {
+            document.getElementById("output").innerHTML = "위치 정보를 가져오는 데 실패했습니다.";
+        }
+    </script>
+</head>
+<body>
+    <button onclick="getLocation();">click</button>
+    <div id="output"></div>
+</body>
+</html>

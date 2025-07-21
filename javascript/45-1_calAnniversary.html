@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let date = new Date();
+        let maxDate = "";
+        maxDate += date.getFullYear();
+        if (date.getMonth() + 1 < 10){
+            maxDate += "-0" + (date.getMonth() + 1);
+        } else {
+            maxDate += "-" + date.getMonth() + 1;
+        }
+        if (date.getDate() < 10){
+            maxDate += "-0" + date.getDate();
+        } else {
+            maxDate += "-" + date.getDate();
+        }
+        console.log(maxDate);
+        window.onload = function(){
+            document.getElementById("inputDate").max = maxDate;
+        }
+
+        function calDate() {
+            let userInput = document.getElementById("inputDate").value;
+            let inputDate = new Date(userInput);
+            let nowDate = new Date();
+            let nowYear = nowDate.getFullYear();
+            console.log(userInput);
+            console.log(inputDate);
+
+            // nowDate.setMonth(3);
+            // console.log(nowDate);
+            // console.log(nowDate.getFullYear());
+            // console.log(nowDate.getDate());
+            
+            
+
+
+            if (userInput === ""){
+                document.getElementById("result").innerHTML = "날짜를 선택해 주세요";
+                document.getElementById("result").style.color = "red";
+            } else if (inputDate.getMonth == 1 && inputDate.getDate == 29){
+                if(nowYear % 4 == 0 && nowYear % 100 != 0 || nowYear % 100 == 0 && nowYear % 400 == 0){
+                    
+                }
+                // 윤년 계산 넣어보기 while 문 이용
+                // if 이번년도가 윤년?
+                // o -> 달, 일 비교 -> 지나갔으면? inputDate.setFullyear(다음윤년(변수선언 후 while문 이용))
+                //      안지나갔으면? inputDate.setFullyear(올해)
+                // x -> inputDate.setFullyear(다음윤년(변수선언 후 while문 이용))
+            } else {
+                if (inputDate.getMonth() < nowDate.getMonth()){
+                    inputDate.setFullYear(nowYear() + 1);
+                    // console.log(inputDate);
+                } else if (inputDate.getMonth() == nowDate.getMonth() && inputDate.getDate() < nowDate.getDate()){
+                    inputDate.setFullYear(nowYear() + 1);
+                } else {
+                    inputDate.setFullYear(nowYear());
+                }
+    
+                let calDate = Math.abs(Math.floor(((nowDate.getTime() - inputDate.getTime()) / 1000 / 60**2 / 24)));
+                document.getElementById("result").innerHTML = `기념일까지 ${calDate}일 남았습니다.`;
+                document.getElementById("result").style.color = "black";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="calendar">
+        기념일을 입력하고, 확인버튼을 누르세요.
+        <input type="date" id = "inputDate" min="1900-01-01">
+        <button onclick="calDate()">확인</button>
+    </div>
+    <div id="result"></div>
+</body>
+</html>

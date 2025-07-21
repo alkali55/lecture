@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체를 이용한 성적표 V5.0</title>
+    <script>
+        // input 태그를 이용해서 5명 학생의 이름, 국어, 영어, 수학 점수를 입력받아
+        // "성적처리" 버튼을 클릭하면 총접, 평균, 학점, (등수)을 테이블로 출력하되
+        // "성적처리" 버튼을 누르기 전에는 성적테이블이 보이지 않게 한다.
+        // 검색창을 만들어서, 학생 이름으로 검색하면, 그 학생의 성적이 보이도록 한다.
+        // 객체랑 1차원 배열을 활용
+
+        
+        let students = [];
+
+        // STU_CNT로 모든 요소 통제
+        const STU_CNT = 5;
+        
+
+        // 인풋 테이블 만들기
+        let makeTbody = "";
+        for (i = 0; i < STU_CNT; i++){
+            makeTbody += `<tr>`;
+            for (j = 0; j < 4; j++){
+                makeTbody += `<td><input type="text" id="stu${i}-${j}"></td>`
+            }
+            makeTbody += `</tr>`;
+        }
+
+        window.onload = function () {
+            document.getElementById("tbody").innerHTML = makeTbody;
+        }
+
+        // 성적처리 및 출력 (기본 내림차순 정렬)
+        function processScore() {
+            
+            for (i = 0; i < STU_CNT; i++){
+                students[i] = new Student(i)
+            }
+            // console.log(students);
+
+            desc();
+           
+            document.getElementById("order").innerHTML = "<button onclick='desc()'>평균 내림차순 정렬</button><button onclick='asc()'>평균 오름차순 정렬</button>"
+            document.getElementById("searchName").style.display = "block";
+
+        }
+        
+        // 내림차순 정렬
+        function desc() {
+            for (i = 0; i < students.length - 1; i++){
+                for (j = i + 1; j < students.length; j++){
+                    if (students[i].totalScore < students[j].totalScore){
+                        let tmp = students[i];
+                        students[i] = students[j];
+                        students[j] = tmp;
+                    }
+                }
+            }
+
+            for (i = 0; i < students.length; i++){
+                students[i].rank = i + 1;
+                if(i > 0 && students[i].totalScore == students[i-1].totalScore){
+                    students[i].rank = students[i-1].rank;
+                }
+            }
+
+            let output = `<table border = "1"><tr><th>이름</th><th>국어</th><th>영어</th><th>수학</th><th>총점</th><th>평균</th><th>학점</th><th>등수</th></tr>`;
+            for(let i = 0; i < students.length; i++){
+                output += `<tr class = "stu"><td>${students[i].name}</td><td>${students[i].koreanScore}</td><td>${students[i].englishScore}</td><td>${students[i].mathScore}</td>`;
+                output += `<td>${students[i].totalScore}</td><td>${students[i].avgScore}</td><td>${students[i].grade}</td><td>${students[i].rank}</td></tr>`;
+            }
+
+            document.getElementById("output").innerHTML = output;
+        }
+
+        // 오름차순 정렬
+        function asc() {
+            // console.log(students);
+            for (i = 0; i < students.length - 1; i++){
+                for (j = i + 1; j < students.length; j++){
+                    if (students[i].totalScore > students[j].totalScore){
+                        let tmp = students[i];
+                        students[i] = students[j];
+                        students[j] = tmp;
+                    }
+                }
+            }
+
+            for (i = students.length - 1; i >= 0; i--){
+                // console.log(i);
+                students[i].rank = students.length - i;
+                if(i < students.length - 1 && students[i].totalScore == students[i+1].totalScore){
+                    students[i].rank = students[i+1].rank;
+                }
+            }
+
+            let output = `<table border = "1"><tr><th>이름</th><th>국어</th><th>영어</th><th>수학</th><th>총점</th><th>평균</th><th>학점</th><th>등수</th></tr>`;
+            for(let i = 0; i < students.length; i++){
+                output += `<tr class = "stu"><td>${students[i].name}</td><td>${students[i].koreanScore}</td><td>${students[i].englishScore}</td><td>${students[i].mathScore}</td>`;
+                output += `<td>${students[i].totalScore}</td><td>${students[i].avgScore}</td><td>${students[i].grade}</td><td>${students[i].rank}</td></tr>`;
+            }
+
+            document.getElementById("output").innerHTML = output;
+        }
+
+        // 배열에 담을 student 객체 만들기
+        function Student(i) {
+            this.name = document.getElementById(`stu${i}-0`).value;
+            this.koreanScore = Number(document.getElementById(`stu${i}-1`).value);
+            this.englishScore = Number(document.getElementById(`stu${i}-2`).value);
+            this.mathScore = Number(document.getElementById(`stu${i}-3`).value);
+            this.totalScore = this.koreanScore + this.englishScore + this.mathScore;
+            this.avgScore = (this.totalScore / 3).toFixed(2);
+            this.grade = calGrade(this.avgScore);
+        }
+
+        // 학점 산정
+        function calGrade(average) {
+        switch (Math.floor(average / 10)) {
+          case 10:
+          case 9:
+            return "A";
+            break;
+          case 8:
+            return "B";
+            break;
+          case 7:
+            return "C";
+            break;
+          case 6:
+            return "D";
+            break;
+          default:
+            return "F";
+            break;
+        }
+      }
+
+        // 학생 검색
+        function search() {
+            let goalName = document.getElementById("search").value;
+            if (goalName != "") {
+                console.log(goalName);
+                let output = `<table border = "1"><tr><th>이름</th><th>국어</th><th>영어</th><th>수학</th><th>총점</th><th>평균</th><th>학점</th><th>등수</th></tr>`;
+                for(let item of students){
+                    if (item.name == goalName){
+                        output += `<tr><td>${item.name}</td><td>${item.koreanScore}</td><td>${item.englishScore}</td><td>${item.mathScore}</td>`;
+                        output += `<td>${item.totalScore}</td><td>${item.avgScore}</td><td>${item.grade}</td><td>${item.rank}</td></tr>`;
+                    }
+                }
+                output += `</table>`
+                document.getElementById("searchResult").innerHTML = output;
+            }
+        }
+
+        function findStudent() {
+            //학생 이름으로 검색
+            let findStudentName = document.getElementById("search").value;
+            
+            let findPos = -1;
+
+            for (let i = 0; i < STU_CNT; i++){
+                if (students[i].name == findStudentName){
+                    // 찾는 학생이 있음
+                    findPos = i;
+                }
+            }
+
+            if (findPos !== -1){
+                //하이라이트
+                document.getElementsByClassName("stu")[findPos].style.backgroundColor = "yellow";
+            } else {
+                window.alert("그런 학생 또 없습니다...");
+            }
+        }
+
+        // 정렬 - 배열 sort 메소드 써보기
+
+        
+
+    </script>
+    <style>
+        body > table {
+            border: 1px solid black;
+        }
+        td {
+            width: 100px;
+        }   
+        button {
+            margin: 5px;
+        }
+        #processB {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            
+        </tbody>
+    </table>
+
+    <input type="button" value="성적처리" onclick="processScore();" id="processB">
+    <div id="output"></div>
+    <div id="order"></div>
+    <div id="searchName" style="display: none;">
+        <input type="text" id="search" placeholder="검색할 학생이름을 입력하세요...">
+        <button onclick="search()">검색</button>
+    </div>
+    <div id="searchResult"></div>
+</body>
+</html>

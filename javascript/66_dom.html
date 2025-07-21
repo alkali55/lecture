@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            console.log(document.documentElement);
+            console.log(document.head);
+            console.log(document.body);
+            console.log(document.body.style); // CSSStyleDeclaration
+            console.log(document.body.style.backgroundColor = "gray");
+            let pList = document.getElementsByTagName("p");
+            console.log(pList);
+            console.log(pList.length);
+            console.log(pList[1]);
+            for (let p of pList){
+                p.style.fontSize = String(Math.random() * 50 + "px");
+            }
+            // pList.forEach(function(p){
+            //     p.style.fontsize = "30px"
+            // });  <- HTML Collection에서는 forEact가 작동안함
+
+            console.log(document.querySelectorAll("li"));
+            console.log(document.querySelector("#firstP"));
+            console.log(document.querySelectorAll("h2:nth-of-type(2n+1)"));
+
+            let h2List = document.querySelectorAll("h2:nth-of-type(2n+1)");
+            // for (let h of h2List) {
+            //     h.style.color = "#eee";
+            //     h.style.backgroundColor = "blue";
+            // }
+
+            h2List.forEach(function(h){
+                h.style.color = "#eee";
+                h.style.backgroundColor = "blue";
+            }) // 노드리스트에서는 forEach 동작
+
+            console.clear();
+            let pQsel = document.querySelectorAll("p");
+            let pGetEl = document.getElementsByTagName("p");
+            console.log(pQsel);
+            console.log(pGetEl);
+
+            // 새로운 p태그
+            let newP = document.createElement("p");
+            let newText = document.createTextNode("New Paragraph");
+            newP.appendChild(newText);
+            console.log(newP);
+
+            document.querySelector(".container").appendChild(newP);
+
+            console.log(pQsel);
+            console.log(pGetEl);
+            
+            console.log(document.querySelectorAll("p"));
+        }
+    </script>
+</head>
+<body>
+    <h1>노드와 엘리먼트</h1>
+    <div class="container">
+        <h2>title1</h2>
+        <p id="firstP">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat velit voluptas est ratione perspiciatis fuga et eveniet unde numquam esse? Officiis asperiores inventore corrupti eveniet enim, perspiciatis dicta ipsum similique?
+        </p>
+        <h2>title2</h2>
+        <p id="secondP">
+            Second Paragraph
+        </p>
+        <h2>title3</h2>
+        <p id="thirdP">
+            Third Paragraph
+        </p>
+
+        <!-- <ol>
+            <li><a href="https://www.naver.com">네이버</a></li>
+            <li><a href="https://www.google.com">구글</a></li>
+            <li><a href="https://www.daum.net">다음</a></li>
+        </ol> -->
+
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todolist.mapper.MemberMapper">
+	<select id="selectNow" resultType="string">
+  		select now();
+  	</select>
+  	
+  	<select id="idDupCheck" resultType="int">
+  		select count(*) from jis_member where memberId = #{tmpMemberId}
+  	</select>
+  	
+  	<insert id="insertMember">
+  		insert into jis_member values(#{memberId}, sha1(md5(#{memberPwd})), #{email}, #{memberName})
+  	</insert>
+  	
+  	<select id="loginMember" resultType="memberVO">
+  		select memberId, email, memberName from jis_member where memberId = #{memberId} and memberPwd = sha1(md5(#{memberPwd}))
+  	</select>
+  	
+  	<select id="selectEmailByMemberId" resultType="String">
+  		select email from jis_member where memberId = #{memberId}
+  	</select>
+  	
+  	<select id="emailDupCheck" resultType="int">
+  		select count(*) from jis_member where email = #{tmpEmail}
+  	</select>
+  	
+  	<update id="modifyMyInformation">
+  		update jis_member set email = #{email}, memberName = #{memberName}
+  		<if test="memberPwd != ''">, memberPwd = sha1(md5(#{memberPwd}))</if>
+  		where memberId = #{memberId}
+  	</update>
+  	
+  	<delete id="deleteMember">
+  		delete from jis_member where memberId = #{memberId}
+  	</delete>
+</mapper>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+      $(function () {
+        console.log($(".tr td").eq(0).html()); // 1
+        console.log($(".tr td").eq(2).html()); // 3
+        console.log($(".tr td").eq(3).html()); // 4
+        console.log($(".tr td").length); // 요소 갯수 확인
+
+        // next(): nextElementSibling
+        // prev() : previousElementSibling
+
+        console.log($(".tr td").eq(0).next().html()); // 2
+        console.log($(".tr td").eq(0).next().next().html()); // 3
+        console.log($("#td5").prev().html()); // 4
+
+        // parent()
+        // children()
+        console.log($(".tr td").eq(0).parent().next().children().eq(0).html()); // 4
+
+        // 1번의 배경색을 노란색 바꾸기
+        $(".tr td").eq(0).css("background-color", "yellow");
+        $(".tr td:first").css("background-color", "green");
+
+        console.log($("table"));
+        $("table").eq(0).css("width", "200px");
+        $("table").css("width", "200px");
+
+        // 5번 "5"글자 앞에 a글자를 진하게 넣기
+        $("#td5").prepend("<strong>a</strong>");
+
+        // 9번의 배경색을 파란색으로 바꾸고, 글자색은 흰색으로 바꾸기
+        // $("#td9").css("background-color", "blue").css("color", "white");
+        $("#td9").css({ "background-color": "blue", "color": "white" });
+
+        // 8번을 100으로 변경
+        $(".tr td").eq(7).html("100");
+        $("#td9").prev().html("100");
+      });
+    </script>
+  </head>
+  <body>
+    <table border="1">
+      <tr class="tr">
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr class="tr">
+        <td>4</td>
+        <td id="td5">5</td>
+        <td>6</td>
+      </tr>
+      <tr class="tr">
+        <td>7</td>
+        <td>8</td>
+        <td id="td9">9</td>
+      </tr>
+    </table>
+  </body>
+</html>

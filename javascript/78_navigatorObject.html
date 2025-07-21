@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navigator객체</title>
+    <script>
+        window.onload = function (){
+            let output = `appCodeName : ${navigator.appCodeName} <br />`;
+            output += `appName : ${navigator.appName} <br />`;
+            output += `appVersion : ${navigator.appVersion} <br />`;
+            output += `platform : ${navigator.platform} <br />`;
+            output += `userAgent : ${navigator.userAgent} <br />`;
+            output += `language : ${navigator.language} <br />`;
+
+            document.getElementById("output").innerHTML = output;
+
+        }
+    </script>
+</head>
+<body>
+    <div id="output"></div>
+</body>
+</html>

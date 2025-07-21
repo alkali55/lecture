@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Yeon+Sung&display=swap" rel="stylesheet">
+    
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        nav {
+            margin: 10px auto;
+            width: 800px;
+            height: 120px;
+            background-color: #CACACA;
+            border: 2px solid #878787;
+            border-radius: 20px;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            list-style-type: none;
+            font-family: "Gamja Flower", serif;
+            font-size: 40px;
+            width: 200px;
+            height: 120px;
+            float: left;
+            line-height: 120px;
+            text-align: center;
+        }
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+            transition: 0.2s;
+            color: black;
+            width: 170px;
+        }
+
+        a:hover {
+            font-size: larger;
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: black;
+        }
+
+        /* .clear::after{
+            content: "";
+            display: block;
+            clear: both;
+        } */
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">내정보</a></li>
+            <li><a href="#">주문내역</a></li>
+            <li><a href="#">리뷰목록</a></li>
+            <li class="clear"><a href="#">로그아웃</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

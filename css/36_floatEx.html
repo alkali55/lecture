@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mbti {
+            max-width: 800px;
+            padding: 30px;
+            border: 3px solid turquoise;
+            background-color: bisque;
+            /* height: 500px; */
+        }
+        h1 {
+            margin: 0 0 20px;
+            text-align: center;    
+        }
+        p {
+            background-color: darkcyan;
+            padding: 15px 25px;
+            text-align: justify;
+        }
+        .mbti-t {
+            float: left;
+            width: 40%;
+            border: 3px solid blueviolet;
+        }
+        .mbti-f {
+            float: right;
+            width: 40%;
+            border: 3px solid blueviolet;
+        }
+        .clear::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="mbti clear">
+        <h1>MBTI T와 F의 차이</h1>
+        <p class="mbti-t">
+            T : 객관적 사실 중시
+            원칙과 규범 중시
+            논리적이고 분석적
+            맞다 혹은 틀리다 식의 흑백사고
+            진실이 중요
+            사람에게 무관심한 사람으로 보일 수 있음
+        </p>
+        <p class="mbti-f">
+            F : 상황적 특성 증시
+            정서적인 측면 중시
+            사실보다는 상황으로 판단
+            좋다 나쁘다 식의 흑백사고
+            진실 보다는 감정이 중요
+            진실을 말하기를 어려워함
+            동정심이 강함
+        </p>
+    </div>
+    <p class="clear">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione voluptatum ducimus, placeat veniam laudantium magni rem explicabo quisquam quam consequuntur, aspernatur doloremque asperiores, repudiandae recusandae saepe omnis nisi ipsa deserunt!</p>
+</body>
+</html>

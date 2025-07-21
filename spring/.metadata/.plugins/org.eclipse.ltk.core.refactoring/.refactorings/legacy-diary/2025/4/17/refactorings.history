@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;EmailReminderScheduler.java&apos; to &apos;to-do-list/src/main/java/com.todolist.util&apos;&#x0D;&#x0A;- Original project: &apos;legacy-diary&apos;&#x0D;&#x0A;- Destination element: &apos;to-do-list/src/main/java/com.todolist.util&apos;&#x0D;&#x0A;- Original element: &apos;com.legacydiary.util.EmailReminderScheduler.java&apos;" description="Copy compilation unit" destination="=to-do-list/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.todolist.util" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.legacydiary.util{EmailReminderScheduler.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1745218190524" units="1" version="1.0"/>
+</session>

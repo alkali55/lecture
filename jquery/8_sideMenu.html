@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <title>Document</title>
+    <script>
+
+        $(function(){
+
+
+            $("#checkAll").click(function(){
+                if ($("#checkAll").prop("checked")){
+                    $.each($("input"), function(i, e){
+                        if(i > 0 && i < 5){
+                            $(e).prop("checked", true);
+                        }
+                    })
+                } else {
+                    $.each($("input"), function(i, e){
+                        if(i > 0 && i < 5){
+                            $(e).prop("checked", false);
+                        }
+                    })
+                }
+            });
+
+
+            $(".checkbox").click(function(){
+                cal();
+            });
+
+
+        })
+
+        function cal(){
+            // console.log("dd?");
+            let totalPrice = 6000;
+            $.each($("input"), function(i, e){
+                if(i > 0 && i < 5 && $(e).prop("checked")){
+                    totalPrice += Number($(e).attr("value"));
+                }
+            })
+            $("#totalPrice").val(totalPrice);
+        }
+    </script>
+
+</head>
+<body>
+    <h1>와퍼</h1>
+    <p id="itemPrice">6000원 <input type="checkbox" class = "checkbox" id = "checkAll">모두선택</p>
+
+    <input type="checkbox" class = "checkbox" value = "500">양상추 (500원)
+    <input type="checkbox" class = "checkbox" value = "2000">패티 (2000원)
+    <input type="checkbox" class = "checkbox" value = "1500">새우 (1500원)
+    <input type="checkbox" class = "checkbox" value = "1000">치즈 (1000원)
+    <input type="text" id="totalPrice" value="6000">
+</body>
+</html>

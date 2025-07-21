@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자식 선택자(>)</title>
+    <style>
+        div > p {
+            background-color: gold;
+        }
+        div p {
+            background-color: blue;
+        }
+
+        /* h2 > p { 
+            color: aquamarine;
+        } */
+
+        div > h2 > p {
+            color: seagreen;
+        }
+    </style>
+</head>
+<body>
+    <h1>자식 선택자(>)</h1>
+    <p>자식 선택자로 스타일을 꾸미면 어떻게 될까요?</p>
+    <div>
+        <p>div내부의 p태그</p>
+        <p>div내부의 p태그</p>
+        <p>div내부의 p태그</p>
+        <h2>
+            <p>h2의 자식p태그</p>
+        </h2>
+    </div>
+</body>
+</html>

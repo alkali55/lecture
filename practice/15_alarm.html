@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let H = 0;
+        let M = 55;
+
+        if (H == 0 && M - 45 < 0) {
+            H = 23;
+            M += 15;
+        } else if (M - 45 < 0) {
+            H -= 1;
+            M += 15;
+        } else {
+            M -= 45;
+        }
+        console.log(H, M);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

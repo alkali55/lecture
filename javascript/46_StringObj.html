@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 객체</title>
+    <script>
+        let str = new String("대핸민국");
+        console.log(str);
+        console.log(typeof str);
+        console.log(str[0] + str[1] + str[2]);
+        console.log(str[1]); // 핸
+        str[1] = "한"; // 수정 불가
+        console.log(str[1]); // 핸
+
+        str = "대한민국 우리나라 좋은나라";
+        console.log(str);
+        console.log(str.charAt(2)); // 2번 인덱스 문자를 출력
+        // console.log(str.concat(" ", "좋아요"));
+        // console.log(str.concat("   ", "좋아요"));
+        document.write(str.concat("   ", "좋아요")); // 화면에 공백은 한칸만 적용됨
+        document.write("<br />");
+        document.write(str + "<br />");
+    
+        // indexOf() : 일치하는 첫 번째 인덱스를 반환, 일치하는 값이 없으면 -1을 반환
+        // str.indexOf(searchValue[, fromIndex])
+        document.write(str.indexOf("나") + "<br />"); // 7
+        document.write(str.indexOf("나", 8) + "<br />"); // 12
+
+        // lastIndexOf() : 역순으로 탐색하여, 최초로 마주치는 인덱스를 반환, 없으면 -1을 반환
+        document.write(str.lastIndexOf("나") + "<br />"); // 12
+        document.write(str.lastIndexOf("민국") + "<br />"); // 2
+
+        // substr() : 지정된 인덱스에서 시작하여 
+        // 그 다음에 지정된 문자 수만큼 확장되는 이 문자열의 일부를 반환
+        // substr(start, length)
+        document.write("<hr/>");
+        document.write(str.substr(5, 4) + "<br />"); // 우리나라
+        document.write(str + "<br />");
+        document.write(str.substr(str.indexOf("좋은"), 2) + "<br />"); // 좋은
+
+        // substring() : 시작 인덱스로 부터 종료 인덱스 전 까지 문자열의 부분 문자열을 반환
+        // str.substring(indexStart[, indexEnd])
+        document.write(str.substring(5, 9) + "<br />"); // 우리나라
+        document.write(str.substring(5) + "<br />"); // 우리나라 좋은나라
+
+        let statement = "I am a student";
+        document.write(statement.toLowerCase() + "<br />"); // i am a student
+        document.write(statement.toUpperCase() + "<br />"); // I AM A STUDENT
+
+        // statement에서 student 단어를 추출해서 대문자로 변환하여 출력하세요.
+        document.write(statement.substring(statement.indexOf("student")).toUpperCase() + "<br />");
+
+        console.log(statement.split(" "));
+        console.log(statement.split(""));
+
+        console.log(statement);
+        let tmp = statement.split(" ");
+        // console.log(tmp.reverse());
+        console.log(tmp.reverse().join(" "));
+
+        // trim() : 문자열 양 끝의 공백을 제거하면서 원본 문자열을 수정하지 않고 새로운 문자열을 반환
+        let name = " 홍 길 동 ";
+        console.log(name);
+        document.write(name + "<br />");
+
+        console.log("[" + name.trim() + "]");
+        document.write("[" + name.trim() + "]" + "<br />");
+        
+        // 중간에 있는 공백들 어떻게 제거?
+        
+        console.log(name.split(" "));
+        console.log(name.split(" ").join(""));
+        console.log(name.replaceAll(" ",""));
+        document.write(name.split(" ").join(""));
+
+        console.log("홍길동" == "홍길동"); // true
+        console.log("홍길동" == "홍길동 "); // false
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

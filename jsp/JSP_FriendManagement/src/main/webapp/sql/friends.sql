@@ -1,0 +1,7 @@
+--CREATE TABLE `jis`.`friends` (
+--  `friendNo` INT NOT NULL AUTO_INCREMENT,
+--  `friendName` VARCHAR(45) NOT NULL,
+--  `mobile` VARCHAR(13) NULL,
+--  `addr` VARCHAR(100) NULL,
+--  PRIMARY KEY (`friendNo`),
+--  UNIQUE INDEX `mobile_UNIQUE` (`mobile` ASC) VISIBLE);

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display 속성</title>
+    <script>
+        function sizeUp() {
+            // alert("!")
+            document.getElementById("big").style.display = "block"
+        }
+
+        function sizeDown() {
+            document.getElementById("big").style.display = "none"
+        }
+    </script>
+    <style>
+        #big {
+            display: none;
+        }
+
+        li {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>menu 1</li>
+            <li>menu 2</li>
+            <li>menu 3</li>
+            <li>menu 4</li>
+        </ul>
+    </nav>
+    <div class="small">
+        <img 
+            src="../sunset.webp" 
+            width ="100px" 
+            alt="일몰이미지" 
+            onmouseover="sizeUp();"
+            onmouseout="sizeDown()"
+        >
+    </div>
+    <div id="big">
+        <img src="../sunset.webp" alt="일몰이미지">
+    </div>
+</body>
+</html>

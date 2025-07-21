@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘 점심에 뭐먹지?</title>
+    <script>
+        window.onload = function () {
+
+            // 1부터 7까지 랜덤한 수를 뽑아,
+            // 1: 짜장면, 2: 김치찌개, 3: 돈까스, 4: 햄버거, 5: 떡볶이, 6: 쌀국수, 7: 라면
+            // 1) 랜덤 수 (난수) 뽑기
+    
+            let randNum = 0;
+            let foodName = "";
+            let foodImg = "";
+            
+            // console.log(Math.random()); // 0이상 1미만의 실수를 생성
+            // console.log(Math.random() * 7); // 0이상 7미만의 실수를 생성
+            // console.log(Math.random() * 7 + 1); // 1이상 8미만의 실수를 생성
+            // console.log(Math.floor(Math.random() * 7 + 1)); // 1이상 8미만의 실수를 생성
+            
+            randNum = Math.floor(Math.random() * 7 + 1);
+    
+            // 2) 난수가 어떤 음식인지 비교 판단 (switch문)
+    
+            switch (randNum) {
+                case 1:
+                    foodName = "짜장면";
+                    foodImg = "images/jjajang.jpg"
+                    break;
+                case 2:
+                    foodName = "김치찌개";
+                    foodImg = "images/gimchi.jpg";
+                    break;
+                case 3:
+                    foodName = "돈까스";
+                    foodImg = "images/dongas.jpg";
+                    break;
+                case 4:
+                    foodName = "햄버거";
+                    foodImg = "images/hamburger.jpg";
+                    break;
+                case 5:
+                    foodName = "떡볶이.jpg";
+                    foodImg = "images/dduk.jpg";
+                    break;
+                case 6:
+                    foodName = "쌀국수.jpg";
+                    foodImg = "images/ssal.jpg";
+                    break;
+                case 7:
+                    foodName = "라면.jpg";
+                    foodImg = "images/ramyeon.jpg";
+            }
+    
+            // 화면에 음식이름과 이미지를 출력
+    
+            console.log(randNum);
+            document.getElementById("foodName").innerHTML = foodName;
+            document.getElementById("foodImg").src = foodImg;
+        }
+            
+        
+        
+        </script>
+</head>
+<body>
+    <h1>오늘의 추천 메뉴</h1>
+    <div id="foodName">음식이름</div>
+    <div class="food">
+        <img src="" alt="음식이미지" id ="foodImg">
+    </div>
+</body>
+</html>

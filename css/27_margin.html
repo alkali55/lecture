@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margin의 특성</title>
+    <style>
+        #container {
+            background-color: cadetblue;
+            width: 400px;
+            /* margin: 20px; top, bottom, left, right 모두 적용 */
+            /* margin-top: 20px; */
+            /* margin-left: 10px; */
+            /* margin: 10px 20px; 첫번째 : top, bottom, 두번째 : left, right */
+            /* margin: 10px 20px 30px; 첫번째 top, 두번째 left, right, 세번째 bottom */
+            margin: 10px 20px 30px 40px; 
+            /* 12시 기준으로 시계방향, border나 padding도 마찬가지 */
+            
+            /* 가로 가운데 정렬 */
+            /* margin: 20px auto; */
+        }
+
+        /* p {
+            margin-left: -20px; 
+            음수값도 가능
+        } */
+
+        .bx-container .box {
+            width: 200px;
+            height: 100px;
+            background-color: blue;
+            /* margin: 30px; */
+        }
+
+        #box1 {
+            margin-bottom: 50px; /* 마진 중첩 발생시 큰값으로 적용 */
+        }
+
+        #box2 {
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Margin 특성</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, doloremque sed neque quos perspiciatis eum veritatis labore corrupti dolore odio delectus consequatur, eligendi itaque repudiandae. Animi molestias fugit facere laudantium.</p>
+    </div>
+    <div class="bx-container">
+        <div id="box1" class="box"></div>
+        <div id="box2" class="box"></div>
+        <div id="box3" class="box"></div>
+    </div>
+</body>
+</html>

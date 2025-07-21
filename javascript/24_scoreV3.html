@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1차원 배열을 이용한 성적표</title>
+    <script>
+      //사용자에게 이름, 국어, 영어, 수학 점수를 입력받아
+      // 총점, 평균을 구하고,
+      // 학점을 구해 테이블로 출력하는 프로그램을 작성하세요.
+      // 단,
+      // 평균이 90점 이상, 100점 이하이면 A,
+      // 평균이 80점 이상, 90점 미만이면 B,
+      // 평균이 70점 이상, 80점 미만이면 C,
+      // 평균이 60점 이상, 70점 미만이면 D,
+      // 평균이 60점 미만이면 F
+
+    //   let student = []; // 배열 생성
+    //   student[0] = window.prompt("이름을 입력하세요 ...");
+    //   student[1] = Number(window.prompt("국어점수를 입력하세요 ..."));
+    //   student[2] = Number(window.prompt("영어점수를 입력하세요 ..."));
+    //   student[3] = Number(window.prompt("수학점수를 입력하세요 ..."));
+    //   student[4] = student[1] + student[2] + student[3];
+    //   // console.log(student);
+    //   student[5] = student[4] / 3;
+      
+    //   if(student[5] >= 90){
+    //     student[6] = "A";
+    //   } else if (student[5] >= 80 && student[5] < 90){
+    //     student[6] = "B";
+    //   } else if (student[5] >= 70 && student[5] < 80){
+    //     student[6] = "C";
+    //   } else if (student[5] >= 60 && student[5] < 70){
+    //     student[6] = "D";
+    //   } else {
+    //     student[6] = "F";
+    //   }
+
+    //   let write = `<table border="1"><tr><th>이름</th><th>국어</th><th>영어</th><th>수학</th><th>총점</th><th>평균</th><th>학점</th></tr>`;
+    //   write += `<tr><td>${student[0]}</td><td>${student[1]}</td><td>${student[2]}</td><td>${student[3]}</td><td>${student[4]}</td><td>${student[5].toFixed(2)}</td><td>${student[6]}</td></tr>`;
+    //   write += `</table>`;
+    //   document.write(write);
+
+      let student = new Array(7);
+      let dataName = ["이름", "국어", "영어", "수학", "총점", "평균", "학점"];
+      for (let i = 0; i < 4; i++){
+        student[i] = window.prompt(`${dataName[i]} 데이터를 입력하세요...`);
+      }
+
+      // 총점, 평균, 학점 계산
+      student[4] = Number(student[1]) + Number(student[2]) + Number(student[3]); // 총점
+      student[5] = student[4] / 3;
+
+      switch (Math.floor(student[5] / 10)){
+        case 10 :
+        case 9 :
+            student[6] = "A";
+            break;
+        case 8 :
+            student[6] = "B";
+            break;
+        case 7 :
+            student[6] = "C";
+            break;
+        case 6 :
+            student[6] = "D";
+            break;
+        default :
+            student[6] = "F";
+            break;
+      }
+
+      console.log(student);
+
+      // 테이블에 출력하기
+      let output = "<table><tr>";
+      for (let i = 0; i < student.length; i++){
+        output += `<th>${dataName[i]}</th>`;
+      }
+      output += `</tr><tr>`;
+      for (let i = 0; i < student.length; i++){
+        output += `<td>${student[i]}</td>`;
+      }
+      output += `</tr></table>`;
+      window.onload = function () {
+        document.getElementById("score").innerHTML = output;
+      }
+    </script>
+</head>
+<body>
+    <h1>성적표 v3.0</h1>
+    <div id="score"></div>
+</body>
+</html>

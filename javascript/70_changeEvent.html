@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // change: 상태가 변경되었을 때 (select, checkbox, radio)
+        function mySelect(obj) {
+            // console.log(obj.value);
+            // console.log(obj.options);
+            console.log(obj.options.selectedIndex);
+            console.log(obj.options[obj.options.selectedIndex]);
+            console.log(obj.options[obj.options.selectedIndex].value);
+        }
+
+    </script>
+</head>
+<body>
+    <select id="city" onchange="mySelect(this)">
+        <option value="seoul">서울</option>
+        <option value="busan">부산</option>
+        <option value="daejeon">대전</option>
+    </select>
+</body>
+</html>

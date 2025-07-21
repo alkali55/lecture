@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적입력</title>
+    <script>
+        window.onload = function() {
+            const STU_CNT = window.prompt("학생 수를 입력해주세요...");
+            let output = "";
+            for (i = 0; i < STU_CNT; i++){
+                output += `<div id = "container"><div>이름 : <input type="text" name="name${i}"></div>`
+                output += `<div>영어 : <input type="text" name="kor${i}"></div>`
+                output += `<div>국어 : <input type="text" name="eng${i}"></div>`
+                output += `<div>수학 : <input type="text" name="math${i}"></div></div>`
+            }
+            output += `<input type="text" id="stuCnt" name="stuCnt" value=${STU_CNT}>`
+            output += `<button type="submit">전송</button></div>`;
+
+            document.getElementById("form").innerHTML = output;
+
+        }
+    </script>
+    <style>
+        #container {
+            display: flex;
+        }
+        #stuCnt {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form action="90_sub-score.html" id="form">
+        <!-- 이름, 국어, 영어, 수학 -->
+        <!-- <div>이름 : <input type="text" id="name" name="name"></div>
+        <div>국어 : <input type="text" id="kor" name="kor"></div>
+        <div>영어 : <input type="text" id="eng" name="eng"></div>
+        <div>수학 : <input type="text" id="math" name="math"></div>
+        <div><button type="submit">전송</button></div> -->
+    </form>
+</body>
+</html>

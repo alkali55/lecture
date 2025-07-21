@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식 (regular expression)</title>
+    <script>
+       const str = `Lorem ipsum dolor sit amet, the
+       consectetur adipisicing elit. The Nam rem sit iusto corrupti ipsam porro doloremque,
+       deserunt perspiciatis est dignissimos eaque the tempora ex impedit suscipit.
+       The Nisi voluptatum officiis ad nobis.
+       `; 
+
+       // 생성자 방식 
+       const regExp = new RegExp("the");
+       console.log(str.match(regExp));
+
+       const regExp1 = new RegExp("the", "gi"); // g(global), i(대소문자 구분없이)
+       console.log(str.match(regExp1));
+
+       // 리터럴 방식
+       const regExp2 = /the/g;
+       console.log(typeof regExp2); // object
+       console.log(str.match(regExp2));
+       console.log(str.match(/The/g));
+
+       // 메서드
+       // str.match(regExp)
+       // regExp.test(str)
+       // str.replace(regExp, 대체할값)
+       const regExp3 = /sit/gi;
+       console.log(regExp3.test(str)); // true
+       console.log(regExp3.test("foo")); // false
+       console.log(str.replace(regExp3, "abc"));
+       console.log(str);
+
+       const regExp4 = /foo/gi;
+       console.log(regExp4.test(str)); // false
+       console.log(str.match(regExp4)); // null
+
+       //
+       console.log(str.match(/\.$/gi)); // \(역슬래시 : escape문자)
+       console.log(str.match(/\.$/gim)); // g(global), i(대소문자 구분없이), m (multi-line: 여러줄에서 각 줄 마다 확인)
+
+       // 이메일 형식
+       const emailExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+       console.log("abc@abc.com".match(emailExp));
+       console.log(emailExp.test("abc.def@abc.com"));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

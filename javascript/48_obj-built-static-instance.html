@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>객체의 종류</title>
+    <script>
+      // 1. 내장 객체
+      console.log("builtin");
+        // console = null;
+        // console.log("obj"); // Cannot read properties of null (reading 'log')
+
+      document.write("document");
+        // window.alert("alert");
+
+      // 2. static 객체
+      console.log(Math.random());
+      //   let math = new Math(); // 에러 : Math is not a constructor
+
+      // 3. instance 객체 : new연산자를 통해서 생성해야 사용할 수 있다.
+      let arr = new Array();
+      arr.push("1");
+      console.log(arr);
+    </script>
+  </head>
+  <body></body>
+</html>

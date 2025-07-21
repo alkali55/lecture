@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todolist.mapper.ToDoMapper">
+	<insert id="insertToDo">
+		insert into jis_todolist(toDo, dueDate, writer) values(#{toDo}, #{dueDate}, #{writer})
+	</insert>
+	
+	<select id="selectMyToDo" resultType="ToDoVO">
+		select * from jis_todolist where writer = #{memberId} order by tno desc
+	</select>
+	
+	<update id="updateFinished">
+		update jis_todolist set finished = #{finished} where tno = #{tno}
+	</update>
+	
+	<update id="modifyToDo">
+		update jis_todolist set toDo = #{toDo}, dueDate = #{dueDate}, finished = #{finished} where tno = #{tno};
+	</update>
+	
+	<select id="selectToDoDueTomorrow" resultType="ToDoVO">
+		select * from jis_todolist where datediff(dueDate, now()) between 0 and 3;
+	</select>
+	
+	<select id="selectNotFinishedList" resultType="ToDoVO">
+		select * from jis_todolist where writer = #{memberId} and finished = false order by dueDate
+	</select>
+	
+	<delete id="deleteToDo">
+		delete from jis_todolist where tno = #{tno}
+	</delete>
+</mapper>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수: 지역변수, 전역변수</title>
+    <script>
+        let gVar = "global"; // 전역변수
+
+        function myFunc() {
+            let lVar ="local";
+            console.log(lVar); // 지역변수
+            console.log(gVar);
+            function innerFunc() {
+                console.log(lVar);
+                console.log(gVar);
+                let innerVar = "inner"; // 지역변수
+                // var innerVar = "innerVar";
+            }
+            // console.log(innerVar); // 에러 innerVar is not defined
+            innerFunc();
+        }
+        myFunc();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

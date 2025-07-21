@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보</title>
+    <script>
+        // 컴퓨터와 유저의 가위바위보
+        // 컴퓨터 : 랜덤하게 가위(1), 바위(2), 보(3)를 낸다.
+        // 유저 : 가위(1), 바위(2), 보(3)를 select해서 [선택]버튼 누른다.
+        // 유저의 승패 결과를 화면에 출력한다.
+        
+        let totalW = 0;
+        let totalD = 0;
+        let totalL = 0;
+        let winRate = 0;
+
+        function gameStart() {
+            let cpus = Math.floor(Math.random() * 3 + 1);
+            let users = document.getElementById("userSelectVal").value;
+            let result = "";
+            let userImg = "";
+            let cpuImg = "";
+            let wlColor ="";
+            console.log(cpus , users);
+
+            //승패를 판단
+            
+            if (users == 1){
+                userImg = "images/scissors.png";
+            } else if ( users == 2) {
+                userImg = "images/rock.png";
+            } else {
+                userImg = "images/paper.png";
+            }
+
+            if (cpus == 1){
+                cpuImg = "images/scissors.png";
+            } else if ( cpus == 2) {
+                cpuImg = "images/rock.png";
+            } else {
+                cpuImg = "images/paper.png";
+            }
+
+
+            if (users - cpus == 0) {
+                result = "무";
+                wlColor = "black";
+                totalD += 1;
+            } else if (users == 1 && cpus == 3 || users == 2 && cpus == 1 || users == 3 && cpus == 2) {
+                result = "승";
+                wlColor = "blue";
+                totalW += 1;
+            } else {
+                result = "패";
+                wlColor = "red";
+                totalL += 1;
+            }
+
+            winRate = (totalW / (totalL + totalD + totalW)) * 100;
+            document.getElementById("total").innerHTML = `${totalW}승 ${totalD}무 ${totalL}패`;
+            document.getElementById("winRate").innerHTML = `승률 : ${winRate.toFixed(2)} %`
+            document.getElementById("userImg").src = userImg;
+            document.getElementById("cpuImg").src = cpuImg;
+            document.getElementById("result").innerHTML = result;
+            document.getElementById("result").style.color = wlColor;
+        }
+
+    </script>
+    <style>
+        
+        .container {
+            text-align: center;
+            width: 300px;
+        }
+        #result {
+            text-align: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>가위, 바위, 보!</h1>
+    <div class="userInput">
+        <select id="userSelectVal">
+            <option value="1">가위</option>
+            <option value="2">바위</option>
+            <option value="3">보</option>
+        </select>
+        <input type="button" value="선택" onclick="gameStart();">
+    </div>
+    <div id="container">
+        <table>
+            <thead>
+                <th>나</th>
+                <th>컴퓨터</th>
+            </thead>
+            <tr>
+                <td><img src="images/blackq.png" alt="유저이미지" id="userImg"></td>
+                <td><img src="images/whiteq.png" alt="컴퓨터이미지" id="cpuImg"></td>
+            </tr>
+            <tr>
+                <td id="result" colspan="2"></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div id="total">N승 M무 L패</div>
+    <div id="winRate">승률 :</div>
+</body>
+</html>

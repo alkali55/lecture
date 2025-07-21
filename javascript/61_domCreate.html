@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            // html 요소 생성
+            let divElt = document.createElement("div");
+            divElt.textContent = "Hello";
+            console.log(divElt);
+
+            let inputElt = document.createElement("input");
+            console.log(inputElt);
+
+            let parentElt = document.querySelector(".parent");
+            console.log(parentElt);
+
+            parentElt.append(divElt); // 마지막 자식요소 추가
+            parentElt.prepend(new Comment ("주석")); // 첫번째 자식 요소로 추가
+            parentElt.append("문자!!!");
+
+            // 요소 제거
+
+            let childElt = document.querySelector(".child"); // 첫번째 자식 요소
+            console.log(childElt);
+
+            childElt.remove(); // 첫번째 자식 요소 삭제
+
+            // insertAdjacentHTML()
+
+            let childElt2 = document.querySelector(".child");
+            console.log(childElt2);
+            let newElt = document.createElement("span");
+            newElt.textContent = "ThisIsSpan";
+
+            childElt2.insertAdjacentElement("beforebegin", newElt);
+            childElt2.insertAdjacentElement("beforeend", newElt);
+            childElt2.insertAdjacentElement("afterbegin", newElt);
+            childElt2.insertAdjacentElement("afterend", newElt);
+
+            // insertBefore()
+            // insertBefore(newNode, referenceNode)
+            console.log(parentElt);
+            let newElt2 = document.createElement("div");
+            newElt2.textContent = "test-insertBefore";
+
+            parentElt.insertBefore(newElt2, childElt2);
+        }
+    </script>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">content-1</div>
+        <div class="child" id="child2">content-2</div>
+    </div>
+</body>
+</html>

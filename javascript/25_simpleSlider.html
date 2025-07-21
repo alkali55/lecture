@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열을 이용한 간단한 이미지 슬라이드 만들기</title>
+    <script>
+        let images = new Array(5);
+        let num = 0;
+        let idInterVal = 0;
+
+        for (i = 0; i < images.length; i++){
+            images[i] = `images/icons8-${i}-100.png`;
+            console.log(images[i]);
+        }
+
+        function prev() {
+            // alert("pre")
+            // if (num != 0){
+            //     num--;
+            // } else {
+            //     num = images.length - 1;
+            // }
+
+            // ---------------------------------------
+
+            // if (--num == -1){
+            //     num = images.length - 1;
+            // }
+            // document.getElementById("numImg").src = images[num];
+
+            // -----------------------------------------
+
+            if (num == 0){
+                num = images.length;
+            }
+            document.getElementById("numImg").src = images[--num];
+        }
+
+        function next() {
+            // alert("nex")
+            // if (num != images.length - 1){
+            //     num++;
+            // } else {
+            //     num = 0;
+            // }
+            if (++num == images.length){
+                num = 0;
+            }
+            document.getElementById("numImg").src = images[num];
+        }
+
+        function auto() {
+            idInterval = window.setInterval(next , 1000);
+        }
+
+        function autostop () {
+            clearInterval(idInterval);
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <img src="images/icons8-0-100.png" alt="" id ="numImg">
+    </div>
+    <div>
+        <button onclick="prev()">이전</button>
+        <button onclick="next()">다음</button>
+        <button onclick="auto()">자동시작</button>
+        <button onclick="autostop()">자동정지</button>
+    </div>
+</body>
+</html>

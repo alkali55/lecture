@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 16 Jul 2025 07:40:25 GMT</lastBuildDate><item><title><![CDATA[This Week in Spring - July 15th, 2025]]></title><link>https://spring.io/blog/2025/07/15/this-week-in-spring-july-15-2025</link><guid isPermaLink="true">https://spring.io/blog/2025/07/15/this-week-in-spring-july-15-2025</guid><dc:creator><![CDATA[joshlong]]></dc:creator><pubDate>Tue, 15 Jul 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! It&apos;s already the 15th of July! We&apos;re closer to 2026 than we are to 2024. And time&apos;s sure flying. Like I will, tomorrow. I&apos;ll be flying to Denver for the amazing UBERCONF software show! I&apos;ll be doing a workshop and two talks, and if you&apos;re there, I hope you&apos;ll come say &quot;hi&quot;!&lt;/p&gt;
+&lt;p&gt;Let&apos;s get into this week&apos;s roundup, because it&apos;s a doozy!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;this is technically from more than a week ago, but &lt;a href=&quot;https://spring.io/blog/2025/07/04/spring-grpc-0-9-0-available-now&quot;&gt;Spring gRPC 0.9.0&lt;/a&gt; is available now!&lt;/li&gt;
+&lt;li&gt;In last week&apos;s &lt;em&gt;A Bootiful Podcast&lt;/em&gt;, I talked to Spring team alumnus and &lt;a href=&quot;https://spring.io/blog/2025/07/10/a-bootiful-podcast-arjen-poutsma&quot;&gt;API oracle Arjen Poutsma&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2025/07/14/spring-cloud-2024-0-2-aka-moorgate-has-been-released&quot;&gt;Spring Cloud 2024.0.2 (aka Moorgate) has been released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;An interesting article with a bold claim: Cron Jobs Are Dead: &lt;a href=&quot;https://medium.com/@kanhaaggarwal/cron-jobs-are-dead-how-i-used-temporal-to-future-proof-my-spring-boot-app-fd36117875f4&quot;&gt;How I Used Temporal to Future-Proof My Spring Boot App&lt;/a&gt;. I haven&apos;t played too much with Temporal, but it looks like its solving an interesting problem - workflow orchestration - in an interesting way, and offers a good Spring Boot integration.&lt;/li&gt;
+&lt;li&gt;I did a talk for Jetbrains with IntelliJ IDEA lead Aleksey Stukalov looking at a &lt;a href=&quot;https://www.youtube.com/watch?v=CsR7pFFhmIM&quot;&gt;lot of the amazing new features in IntelliJ IDEA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;did you see Spring Boot lead Phil Webb&apos;s amazing talk, &lt;a href=&quot;https://youtube.com/watch?v=rJcQqBGEJw4&amp;#x26;si=r499UdHjMg1AsVKw&quot;&gt;lessons from 12 years of Spring Boot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;This is a nice look at the new &lt;a href=&quot;https://blog.stackademic.com/spring-boot-4-released-a-full-analysis-of-11-major-changes-c98bda2bb358&quot;&gt;Spring Boot 4 release (coming in November!)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;the amazing &lt;code&gt;datasource-proxy&lt;/code&gt; project - which makes it trivial to create adapters around JDBC code - &lt;a href=&quot;1.11.0&quot;&gt;has a new release! &lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Eeenteresting&lt;/em&gt;! The CEO of Akka, the new name for the company formerly known as Lightbend, which is the new name for the company formerly known as Typesafe, has just announced a &lt;a href=&quot;https://www.linkedin.com/feed/update/urn:li:activity:7350256382626975745&quot;&gt;new &lt;em&gt;agentic&lt;/em&gt; AI framework&lt;/a&gt; and its integration with Spring Boot.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Finally&lt;/em&gt;! Tired of those long Maven builds, especially when doing GraalVM native image compilations? Want some good music? Well, I &lt;a href=&quot;https://github.com/oracle/graal/issues/5327&quot;&gt;certainly do&lt;/a&gt;! And the community did not disappoint!   Richard Fichtner developed the &lt;a href=&quot;https://bsky.app/profile/richard.fichtner.dev/post/3lfmusrdxor2i&quot;&gt;Music Maven Plugin, which plays music while your build is running&lt;/a&gt;! Amazing. But wouldn&apos;t it be great if it could also play music from Spotify? Mohammed Aboullaite, who works at Spotify, sent a PR! &lt;a href=&quot;https://github.com/xdev-software/music-maven-plugin?tab=readme-ov-file#spotify&quot;&gt;And now it can&lt;/a&gt;!&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Spring Cloud 2024.0.2 (aka Moorgate) Has Been Released]]></title><link>https://spring.io/blog/2025/07/14/spring-cloud-2024-0-2-aka-moorgate-has-been-released</link><guid isPermaLink="true">https://spring.io/blog/2025/07/14/spring-cloud-2024-0-2-aka-moorgate-has-been-released</guid><dc:creator><![CDATA[spencergibb]]></dc:creator><pubDate>Mon, 14 Jul 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the community, I am pleased to announce that the General Availability (RELEASE) of the &lt;a href=&quot;https://cloud.spring.io&quot;&gt;Spring Cloud 2024.0.2&lt;/a&gt; (aka Moorgate) Release Train is available today. The release can be found in &lt;a href=&quot;https://repo1.maven.org/maven2/org/springframework/cloud/spring-cloud-dependencies/2024.0.2/&quot;&gt;Maven Central&lt;/a&gt;. You can check out the 2024.0 &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-release/wiki/Spring-Cloud-2024.0-Release-Notes&quot;&gt;release notes for more information&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;changes-in-the-202402-release-train&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#changes-in-the-202402-release-train&quot; aria-label=&quot;changes in the 202402 release train permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Changes in the 2024.0.2 Release Train&lt;/h2&gt;
+&lt;p&gt;This is primarily a bugfix and dependency bump release compatible with the Spring Boot 3.4.x generation.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;The following modules were updated as part of 2024.0.2:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Module&lt;/th&gt;
+&lt;th&gt;Version&lt;/th&gt;
+&lt;th&gt;Issues&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Kubernetes&lt;/td&gt;
+&lt;td&gt;3.2.2&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-kubernetes/releases/tag/v3.2.2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Function&lt;/td&gt;
+&lt;td&gt;4.2.3&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-function/releases/tag/v4.2.3&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Zookeeper&lt;/td&gt;
+&lt;td&gt;4.2.2&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-zookeeper/releases/tag/v4.2.2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Commons&lt;/td&gt;
+&lt;td&gt;4.2.2&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-commons/releases/tag/v4.2.2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Task&lt;/td&gt;
+&lt;td&gt;3.2.2&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-task/releases/tag/v3.2.2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Vault&lt;/td&gt;
+&lt;td&gt;4.2.2&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-vault/releases/tag/v4.2.2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Openfeign&lt;/td&gt;
+&lt;td&gt;4.2.2&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-openfeign/releases/tag/v4.2.2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Circuitbreaker&lt;/td&gt;
+&lt;td&gt;3.2.2&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-circuitbreaker/releases/tag/v3.2.2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Netflix&lt;/td&gt;
+&lt;td&gt;4.2.2&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-netflix/releases/tag/v4.2.2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Starter Build&lt;/td&gt;
+&lt;td&gt;2024.0.2&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-starter-build/releases/tag/v2024.0.2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Stream&lt;/td&gt;
+&lt;td&gt;4.2.2&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-stream/releases/tag/v4.2.2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Gateway&lt;/td&gt;
+&lt;td&gt;4.2.4&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-gateway/releases/tag/v4.2.4&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Config&lt;/td&gt;
+&lt;td&gt;4.2.3&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-config/releases/tag/v4.2.3&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Consul&lt;/td&gt;
+&lt;td&gt;4.2.2&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-consul/releases/tag/v4.2.2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Build&lt;/td&gt;
+&lt;td&gt;4.2.2&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-build/releases/tag/v4.2.2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spring Cloud Contract&lt;/td&gt;
+&lt;td&gt;4.2.2&lt;/td&gt;
+&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-contract/releases/tag/v4.2.2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;As always, we welcome feedback on &lt;a href=&quot;https://github.com/spring-cloud/&quot;&gt;GitHub&lt;/a&gt;, on &lt;a href=&quot;https://gitter.im/spring-cloud/spring-cloud&quot;&gt;Gitter&lt;/a&gt;, on &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-cloud&quot;&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href=&quot;https://twitter.com/SpringCloud&quot;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;To get started with Maven with a BOM (dependency management only):&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;#x3C;dependencyManagement&gt;
+    &amp;#x3C;dependencies&gt;
+        &amp;#x3C;dependency&gt;
+            &amp;#x3C;groupId&gt;org.springframework.cloud&amp;#x3C;/groupId&gt;
+            &amp;#x3C;artifactId&gt;spring-cloud-dependencies&amp;#x3C;/artifactId&gt;
+            &amp;#x3C;version&gt;2024.0.2&amp;#x3C;/version&gt;
+            &amp;#x3C;type&gt;pom&amp;#x3C;/type&gt;
+            &amp;#x3C;scope&gt;import&amp;#x3C;/scope&gt;
+        &amp;#x3C;/dependency&gt;
+    &amp;#x3C;/dependencies&gt;
+&amp;#x3C;/dependencyManagement&gt;
+&amp;#x3C;dependencies&gt;
+    &amp;#x3C;dependency&gt;
+        &amp;#x3C;groupId&gt;org.springframework.cloud&amp;#x3C;/groupId&gt;
+        &amp;#x3C;artifactId&gt;spring-cloud-starter-config&amp;#x3C;/artifactId&gt;
+    &amp;#x3C;/dependency&gt;
+    &amp;#x3C;dependency&gt;
+        &amp;#x3C;groupId&gt;org.springframework.cloud&amp;#x3C;/groupId&gt;
+        &amp;#x3C;artifactId&gt;spring-cloud-starter-netflix-eureka-client&amp;#x3C;/artifactId&gt;
+    &amp;#x3C;/dependency&gt;
+    ...
+&amp;#x3C;/dependencies&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or with Gradle:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-groovy&quot;&gt;plugins {
+	id &apos;java&apos;
+	id &apos;org.springframework.boot&apos; version &apos;3.4.7&apos;
+	id &apos;io.spring.dependency-management&apos; version &apos;1.1.7&apos;
+}
+
+// ...
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set(&apos;springCloudVersion&apos;, &quot;2024.0.1&quot;)
+}
+
+dependencyManagement {
+	imports {
+		mavenBom &quot;org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}&quot;
+	}
+}
+
+dependencies {
+	implementation &apos;org.springframework.cloud:spring-cloud-starter-config&apos;
+    implementation &apos;org.springframework.cloud:spring-cloud-starter-netflix-eureka-client&apos;
+	// ...
+}
+
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title><![CDATA[A Bootiful Podcast: API oracle Arjen Poutsma]]></title><link>https://spring.io/blog/2025/07/10/a-bootiful-podcast-arjen-poutsma</link><guid isPermaLink="true">https://spring.io/blog/2025/07/10/a-bootiful-podcast-arjen-poutsma</guid><dc:creator><![CDATA[joshlong]]></dc:creator><pubDate>Thu, 10 Jul 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! In this edition, I had the pleasure of chatting with the brilliant Arjen Poutsma, our go-to API oracle.&lt;/p&gt;
+&lt;p&gt;If you¡¯re curious about his fantastic insights, thoughts, and consultancy services, be sure &lt;a href=&quot;https://poutsma-principles.com&quot;&gt;to check out &lt;code&gt;poutsma-principles.com&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;iframe title=&quot;API oracle Arjen Poutsma&quot; allowtransparency=&quot;true&quot; height=&quot;300&quot; width=&quot;100%&quot; style=&quot;border: none; min-width: min(100%, 430px);height:300px;&quot; scrolling=&quot;no&quot; data-name=&quot;pb-iframe-player&quot; src=&quot;https://www.podbean.com/player-v2/?from=embed&amp;i=xdezw-19010f1-pb&amp;square=1&amp;share=1&amp;download=1&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;rtl=0&amp;logo_link=&amp;btn-skin=7&amp;size=300&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content:encoded></item><item><title><![CDATA[This Week in Spring - July 8th, 2025]]></title><link>https://spring.io/blog/2025/07/08/this-week-in-spring-july-8th-2025</link><guid isPermaLink="true">https://spring.io/blog/2025/07/08/this-week-in-spring-july-8th-2025</guid><dc:creator><![CDATA[joshlong]]></dc:creator><pubDate>Tue, 08 Jul 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! I write this having spent a wonderful week in paradise (Bora Bora, French Polynesia, to be precise) with my partner Tam Mie. We were so very sad to have to say goodbye.&lt;/p&gt;
+&lt;p&gt;But that means I&apos;m officially back at my desk, with nary a manta ray to be found anywhere. Sigh. That&apos;s okay, though, as there are a ton of amazing things to read and catch up on - so let&apos;s dive into this week&apos;s roundup (if not the pearly blue, crystal-clear oceans of the South Pacific)!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Good news, everybody! &lt;a href=&quot;https://spring.io/blog/2025/07/04/spring-grpc-0-9-0-available-now&quot;&gt;Spring gRPC 0.9.0 is available now!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;In last week&apos;s installment of &lt;em&gt;A Bootiful Podcast&lt;/em&gt;, I talked to &lt;a href=&quot;https://spring.io/blog/2025/07/03/a-bootiful-podcast-dr-heinz-kabutz&quot;&gt;the legendary Dr. Heinz Kabutz&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Andres Almiray did a follow-up blog to our post introducing Spring AI and Oracle DB as a vector store back in May?&lt;a href=&quot;https://blogs.oracle.com/developers/post/connecting-spring-ai-to-oracle-autonomous-database&quot;&gt;this one on connecting Spring AI to Oracle Autonomous DB&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A nice blog post looking at what&apos;s &lt;a href=&quot;https://medium.com/@umeshcapg/whats-new-in-spring-boot-4-0-0-preview-a-deep-dive-into-spring-framework-7-0-0-04cadbb675a9&quot;&gt;new in Spring Boot 4.0&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Come watch AWS developer advocate and industry legend James Ward, and yours truly, as we &lt;a href=&quot;https://www.youtube.com/watch?v=mJHKmYpfGU0&quot;&gt;explore AI with Spring AI and Amazon Bedrock&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.junit.org/6.0.0-M1/release-notes/&quot;&gt;JUnit 6.0.0.M1 is available for, erm, &lt;em&gt;testing&lt;/em&gt;!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Modulith lead Oliver Drotbohm looks at &lt;a href=&quot;https://www.linkedin.com/posts/odrotbohm_overhaul-event-publication-lifecycle-issue-activity-7344117716452093952-Ms4J/&quot;&gt;the overhauled event publication registry support in Spring Modulith 2.0&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Demystifying the &lt;a href=&quot;https://blog.jetbrains.com/idea/2025/06/demystifying-spring-boot-with-spring-debugger/&quot;&gt;Spring Debugger in JetBrains IntelliJ IDEA&lt;/a&gt;?a nice post by Andrey Belyaev.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.wimdeblauwe.com/blog/2025/06/24/how-i-write-production-ready-spring-boot-applications/&quot;&gt;How I write production-ready Spring Boot applications&lt;/a&gt;?another banger of a post by Wim Deblauwe!&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item></channel></rss>

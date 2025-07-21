@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자의 종류</title>
+    <script>
+        // ######### 산술 연산자 #########
+        // +, -, *, /, %(나머지)
+        let a = 3, b = 5;
+        console.log(b % a); // 2
+        console.log(a + a * b); // 18
+        console.log(b ** a); // 125 (b^a)
+        console.log(b ** a ** 2); // 기본 결합 방향 b ** (a ** 2) 1953125
+        console.log((b ** a) ** 2); //15625
+
+        console.log("증감 ---------")
+        // ######### 증감 연산자 #########
+        // ++, --
+        // a = 3, b = 5
+        // 증감 연산자는 연산자의 위치에 따라서 우선순위가 달라진다.
+        // - 전치 연산자 (연산자가 변수 앞에 있을때) : 선증감 후대입
+        // - 후치 연산자 (연산자가 변수 뒤에 있을때) : 선대입 후증감
+        
+        console.log(a++); // 3
+        console.log(a);   // 4
+
+        console.log(++a); // 5
+        console.log(a);   // 5
+
+        console.log(b++ * ++a); // 30 = 5 * 6
+        console.log(a, b); // 6, 6
+
+        let i = 1;
+        let j = i++ + 1;
+        let k = ++i + 1;
+        console.log(i, j, k); // 3, 2, 4
+
+        console.log("관계 연산자 ---------")
+        // ######### 관계 연산자 #########
+        // : 연산의 결과가 true 또는 false가 나오게 하는 연산자
+        // >(크다), <(작다), >=(크거나 같다), <=(작거나 같다)
+        // ==(같다), !=(같지 않다)
+
+        console.log(a > b); // false
+        console.log(a != b); // false
+        console.log(a == b); // true
+        console.log(++a == b); // false
+        console.log(b % 2 == 0); // true
+
+        console.log("논리 연산자 ----------");
+        // ######### 논리 연산자 #########
+        // : 관계 연산자와 관계연산자의 조합을 하는 연산자
+        // and (&&) : 수식이 모두 참일 때만 결과가 참
+        // or (||) : 수식이 하나라도 참인 값이 있으면 결과가 참, 수식이 모두 거짓이면 결과가 거짓
+        // not (!) : 수식이 참이면 거짓으로, 거짓이면 참으로
+        console.log(a,b); // 7, 6
+        console.log(a > b && b != 3); // true && true  ==> true
+        console.log(a == 6 && b == 6); // false && true ==> false
+        console.log(a == 6 && b == 6 && b % 2 == 0); // false && true && true ==> false
+
+        console.log(a > 2 || b == 6); // true || true ==> true
+        console.log(a < 0 || b > 0); // false || true ==> true
+        console.log(a > 0 || b < 0); // true || false ==> true
+        console.log(a < 0 || b < 0); // false || false ==> false
+
+        console.log(!a < 0); // false
+        console.log(!(a < 0)); // true
+        
+        console.log(!a > b); // false
+        console.log(!(a > b)) // false
+        console.log(!!a > b); // false
+
+        console.log("A" > "a"); // false 65 > 97
+
+        console.log("대입 연산자 ------------")
+        // ######### 대입 연산자 #########
+        // =, += (더해서 대입한다), -= (빼서 대입한다), *= (곱해서 대입한다),
+        // /= (나눠서 대입한다)
+        let result = 0;
+        result += 3; // result = result + 3
+        console.log(result); // 3
+
+        result += 2;
+        console.log(result); // 5
+
+        result /= 2;
+        console.log(result); // 2.5
+
+        result %= 2;
+        console.log(result); // 0.5
+
+        // ######### 동등 연산자 #########
+        console.log(1 == 1); // true
+        console.log("1" == 1); // true
+
+        // ######### 일치 연산자 #########
+        // 데이터 값 뿐만 아니라, 데이터의 타입까지 같은지 비교        
+        console.log("1" === 1); // false
+
+        console.log("1" != 1); // false
+        console.log("1" !== 1); // true
+
+
+        // 위의 연산자들은 꼭 알아두기!!
+        // --------------------------------------------------------------
+        // ######### 비트 연산자 #########
+        // : 2진수로 바꾸어서 비트 단위로 연산
+        // and (&), or (|), xor (^), not (~)
+        a = 5;
+        b = 3;        
+        console.log(a, b); // 5, 3
+        console.log(a & b); // 1 (모두 1일 때만 1, 나머지는 0)
+        // 0101
+        // 0011
+        // ------
+        // 0001
+        console.log(a | b); // 7 (모두 0일 때만 0, 나머지는 1)
+        // 0101
+        // 0011
+        // ------
+        // 0111 = 4 + 2 + 1 = 7
+        console.log(a ^ b); // 6 (서로 다른 값이면 1, 같은 값이면 0)
+        // 0101
+        // 0011
+        // ------
+        // 0110
+
+        console.log(~a); // -6 (단항 연산자: 1은 0으로, 0은 1로)
+        // 0000 0101
+        // 1111 1010
+
+        // 0000 0101
+        //         1
+        // ===============
+        // 0000 0110 => 6
+
+        // 쉬프트 연산자 (자리이동 연산자)
+        // << (왼쪽 쉬프트 연산), >> (오른쪽 쉬프트 연산)
+        // a << 2 : a * 2^2 = 20
+        // 0101 -> 1010 -> 10100 (십진수로 20)
+        console.log(a << 2); // 20
+
+        // a >> 2 : a * 2^(-2) = 5 / 4 = 1
+        // 0101 -> 0010 -> 0001
+        console.log(a >> 2); // 1
+
+        // a << 4 : 5 * 2^4 = 80
+        console.log(a << 4);
+
+        // 왼쪽 쉬프트 연산
+        // a << n -> a * 2^n
+
+        // 오른쪽 쉬프트 연산
+        // a >> n -> a * 2^(-n)
+
+        
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

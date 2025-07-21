@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 운행</title>
+    <script>
+        window.onload = function() {
+            let elt = document.querySelector(".child");
+            console.log(elt);
+            console.log(elt.parentElement); // 노드의 부모요소 반환
+
+            console.log(elt.previousSibling); // 이전 형제 노드
+            console.log(elt.nextSibling); // 다음 형제 노드
+
+            console.log(elt.previousElementSibling); // 이전 형제 요소
+            console.log(elt.nextElementSibling); // 다음 형제 요소
+
+            console.log(elt.previousSibling.parentElement);
+
+            let eltParent = document.querySelector(".parent");
+            console.log(eltParent.children); // 모든 자식 요소
+
+            console.log(eltParent.firstElementChild);
+            console.log(eltParent.firstChild);
+
+            
+        }
+    </script>
+</head>
+<body>
+    <div class="parent">
+        <!-- 주석 -->
+        <div class="child">content-1</div>
+        text1
+        <div class="child" id="child2">content-2</div>
+        text2
+    </div>
+</body>
+</html>

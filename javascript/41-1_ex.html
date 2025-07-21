@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let arr = new Array(99);
+        let tmp = 0;
+
+        for (let i = 0; i < arr.length; i++){
+            do {
+                tmp = Math.floor(Math.random() * 100) + 1;
+            } while (isDuplicate());
+
+            arr[i] = tmp;
+        }
+
+        console.log("정렬 전", arr);
+        // sortAsc();
+        // arr.sort(function (a, b) {
+        //     return a - b; // 오름차순
+        //     // return b - a; // 내림차순
+            
+        // });
+
+        arr.sort((a, b) => a - b); // 오름차순
+        arr.sort((a, b) => b - a); // 내림차순
+
+        console.log("정렬 후", arr);
+        
+
+        // 1 ~ 100까지의 합
+        let sum = 0;
+        
+        for (let i = 0; i < 101; i++){
+            sum += i;
+        }
+        console.log("1 ~ 100까지의 총합 : ", sum);
+
+        // arr 배열의 요소의 총합
+        let arrSum = 0;
+        for (let i = 0; i < arr.length; i++){
+            arrSum += arr[i];
+        }
+        console.log("arr배열의 총합 : ", arrSum);
+        console.log(sum - arrSum);
+
+        function sortAsc() {
+            for (let i = 0; i < arr.length - 1; i++){
+                for (let j = i + 1; j < arr.length; j++){
+                    //오름차순 정렬
+                    if (arr[i] > arr[j]){
+                        let tmp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = tmp;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        function isDuplicate(){
+            for (let item of arr) {
+                if (tmp == item) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

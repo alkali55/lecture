@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            let newP = document.createElement("p");
+            let newText = document.createTextNode("첫 p태그 텍스트가 생성되었습니다");
+            console.log(newP);
+            console.log(newText);
+            newP.appendChild(newText);
+            document.body.appendChild(newP);
+            newP.setAttribute("class", "accent");
+
+            let newP1 = document.createElement("p");
+            let newText1 = document.createTextNode("p태그 텍스트가 생성되었습니다");
+            newP1.appendChild(newText1);
+
+            let firstP = document.querySelector(".accent");
+            console.log(firstP);
+
+            document.body.insertBefore(newP1, firstP); // firstP앞에 newP1을 넣어라.
+
+            let newP2 = newP1.cloneNode();
+            console.log(newP2);
+            document.body.appendChild(newP2);
+
+            let newP3 = newP1.cloneNode(true);
+            console.log(newP3);
+            document.body.appendChild(newP3);
+
+            // let test = new Object();
+            // console.log(test);
+            // test.arr = 1;
+            // test.arr -= 1;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

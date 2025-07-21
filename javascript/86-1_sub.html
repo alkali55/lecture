@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/commonJS.js"></script>
+    <script>
+        // 유저가 checkbox에 체크를 했다면 -> 쿠키를 저장하고 닫기
+        // 유저가 checkbox에 체크를 하지 않았다면 -> 그냥 닫기
+
+        // function checkClose() {
+            
+        //     let check = document.getElementsByClassName("closeChkBox");
+        //     // console.log(check[0].checked);
+
+        //     if (check[0].checked){
+        //         let oneDayCook = "";
+        //         let now = new Date();
+        //         now.setDate(now.getDate() + 1);
+        //         oneDayCook = "oneDay=true;expires=" + now.toUTCString();
+        //         document.cookie = oneDayCook;
+        //     }
+            
+        //     window.close();
+        // }
+
+        function checkClose() {
+            let chkBox = document.getElementById("closeChkBox");
+            console.log(chkBox.checked); // true | false
+            if (chkBox.checked == true) {
+                // 쿠키 저장
+                // notice=Y
+                saveCookie("notice", "Y", 1);
+            }
+            window.close();
+        }
+    </script>
+</head>
+<body>
+    <div class="notice">
+        <h1>공지사항</h1>
+        <div>쿠키를 열심히 공부해 봅시다</div>
+        <div class="check">
+            <input type="checkbox" id="closeChkBox" class="closeChkBox">
+            하루 동안 이 창 열지 않기
+        </div>
+        <div class="close">
+            <input type="button" value="닫기" onclick="checkClose();">
+        </div>
+    </div>
+</body>
+</html>

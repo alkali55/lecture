@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            let childElt = document.querySelector(".child");
+
+            // 인라인 방식으로 css를 적용
+            childElt.style.width = "200px";
+            childElt.style.fontSize = "40px";
+            childElt.style.backgroundColor = "pink";
+            // childElt.style = "width: 200px; font-size: 40px;"
+
+            childElt.addEventListener("click", function(){
+                // "click" 이벤트가 일어날 때 실행할 문장(들)
+                childElt.classList.add("first");
+
+            });
+
+            // 버튼을 클릭하면, alert("클릭했습니다");
+            let btn = document.querySelector("button");
+            console.log(btn);
+
+
+            // btn.addEventListener("click", function(){
+            //     // alert("클릭했습니다");
+            //     btn.setAttribute("disabled", "");
+            // });
+
+            btn.addEventListener("click", openAlert);
+
+            function openAlert() {
+                alert("클릭했습니다");
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">content-1</div>
+        <div class="child">content-2</div>
+    </div>
+    <button>버튼</button>
+</body>
+</html>

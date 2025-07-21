@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="to-do-list"/>
+<aop-project name="legacy-diary"/>
+<aop-project name="SpringBasic"/>
+</aop-reference-model>

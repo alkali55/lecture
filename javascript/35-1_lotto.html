@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let lotto = new Array(6);
+        let tmp = 0;
+
+        for (let i = 0; i < lotto.length; i++){
+            console.log("i = " + i);
+            do {
+                tmp = Math.floor(Math.random() * 45 + 1);
+            } while (isDuplicate());
+
+            lotto[i] = tmp;
+        }
+
+
+
+
+        function isDuplicate() {
+            // 중복이 있으면 true, 중복이 없으면 false 반환
+            for (let item of lotto) {
+                console.log(tmp, item);
+                if (tmp == item){
+                    console.log("중복!!");
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        
+        lotto = sortAsc(lotto);
+        // console.log(tmp);
+        let divBox = "";
+
+        for (let i in lotto) {
+            let color = pickColor(lotto[i]);
+            divBox += `<div class = "box" style="background-color : ${color};">${lotto[i]}</div>`;
+        }
+
+        window.onload = function () {
+            console.log(divBox);
+            document.getElementById("lottoContainer").innerHTML = divBox;
+        }
+
+        console.log(lotto);
+
+        function sortAsc(arr){
+            for (let i = 0; i < arr.length - 1; i++){
+                for (let j = i; j < arr.length; j++){
+                    // 오름차순
+                    if (arr[i] > arr[j]){
+                        // swap
+                        let tmp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = tmp;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        function pickColor (lottoNum){
+            let color = "";
+            if (lottoNum > 0 && lottoNum <= 10){
+                color = "yellow";
+            } else if (lottoNum > 10 && lottoNum <= 20){
+                color = "blue";
+            } else if (lottoNum > 20 && lottoNum <= 30){
+                color = "red";
+            } else if (lottoNum > 30 && lottoNum <= 40){
+                color = "black";
+            } else {
+                color = "green";
+            }
+            console.log(color);
+            return color;
+        }
+    </script>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        #lottoContainer {
+            display: flex;
+            justify-content: center;
+        }
+        .box {
+            width: 100px;
+            height : 100px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+            font-size: 50px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lotto Numbers</h1>
+    <div id="lottoContainer">
+
+    </div>
+</body>
+</html>

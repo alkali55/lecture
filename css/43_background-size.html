@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경 사이즈</title>
+    <style>
+        .box { 
+            width: 300px;
+            height: 300px;
+            border: 1px solid #222;
+            margin: 20px;
+            background: url("img/ice.jpg") no-repeat left top;
+        }
+
+        #bg1 {
+            background-size: auto;
+            /* 원래 배경 이미지 크기 */
+        }
+        #bg2 {
+            background-size: 200px;
+        }
+        #bg3 {
+            background-size: 60%;
+        }
+        #bg4 {
+            background-size: contain;
+        }
+        #bg5 {
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="box" id="bg1"></div>
+        <div class="box" id="bg2"></div>
+        <div class="box" id="bg3"></div>
+        <div class="box" id="bg4"></div>
+        <div class="box" id="bg5"></div>        
+    </div>
+</body>
+</html>

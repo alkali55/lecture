@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>문화시설 관광 정보</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles2.css" rel="stylesheet" />
+        <!-- jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!-- font awesome -->
+        <script src="https://kit.fontawesome.com/a5e7637fb6.js" crossorigin="anonymous"></script>
+        <script src="js/commonJS.js"></script>
+        <script>
+            const MY_KEY = "bodgvmkG3ToKBU%2F0FLZyS%2BqJqDmGqVwnPAUXUra4%2BDyM9KVDC8m2a2D37GdWyytohVNW92pmylfOVX4UamgU4w%3D%3D";
+            let baseUrl = `http://apis.data.go.kr/B551011/KorService1/areaBasedList1`;
+            // let baseUrl = `http://apis.data.go.kr/B551011/KorService1/searchKeyword1`; // 검색버튼을 누르면 url 바꾸기
+            
+            let keyword = ""; // $keyword=유저검색어
+            let tenPaging = 0; // 페이지의 범위(ex. 1~10, 11~20)를 결정하는 변수
+            let pageNum = 1; // 현재 페이지의 숫자
+            let numOfRows = 9; // 9개씩 불러오기
+            let totalCnt = 0; // 불러온 데이터의 총 숫자
+            let totalPage = 0; // 총 페이지
+            
+
+            let cat1 = "";
+            let cat2 = "";
+            let cat3 = "";
+            let bigSortMemo = [];
+            let middleSortMemo = [];
+            let smallSortMemo = [];
+
+            let areaCode = "";
+            let sigunguCode = "";
+            let areaMemo = [];
+            let sigunguMemo = [];
+            
+            // 추가 해야 할 것
+            // 스피너
+            // .sort-modal.btn : 서비스분류 css 용, 지역기반 버튼은 클래스이름 다르게 주기
+            // 분류선택후 페이지 버튼 누를 시 
+
+            
+            $(function(){
+
+                // ajax 호출
+                callAjax();
+                // 페이지 버튼 만들기
+                addPageList();
+
+                // 찜하기 버튼
+                $("#cardBox").on("click", ".saveBtn", function(){
+
+                    if($(this).find("i").hasClass("fa-regular") == true){
+
+                        // 하트 색 바꾸기
+                        $(this).find("i").removeClass("fa-regular");
+                        $(this).find("i").addClass("fa-solid");
+
+                        // 쿠키저장
+                        let now = new Date();
+                        now.setMonth(now.getMonth() + 6);
+                        document.cookie = `like${$(this).find("i").attr("id")}=14;expires=${now.toUTCString()}`;
+
+                    } else {
+                        
+                        // 찜 취소
+
+                        $(this).find("i").removeClass("fa-solid");
+                        $(this).find("i").addClass("fa-regular");
+
+                        let now = new Date();
+                        document.cookie = `like${$(this).find("i").attr("id")}=14;expires=${now.toUTCString()}`;
+                    }
+                })
+                
+                // 지역 선택
+                $("#sort-area-btn").click(function(){
+                    if (areaCode == ""){
+                        if (areaMemo[0] == undefined){
+                            callAreaSortAjax();
+                        } else {
+                            $(".area-sort").html(areaMemo[0]);
+                        }
+                    }
+                    $('#myModal2').modal('show');
+                })
+
+                // 광역시/도 버튼 클릭
+                $(".modal-body").on("click", ".area-sort-modal-btn", function(){
+
+                    // 선택된 시군구 리셋
+                    sigunguCode = "";
+                    $(".sigungu-sort-modal-btn").removeClass("btn-primary");
+                    $("#sortedSigungu").empty();
+
+                    $(".area-sort-modal-btn").removeClass("btn-primary");
+                    $(this).addClass("btn-primary");
+                    
+                    $("#sortedArea").empty();
+                    $("#sortedArea").text(`광역시/도 : ${$(this).text()}`);
+
+                    if($(this).attr("id") == "allArea"){
+                        // 전국버튼 클릭
+                        areaCode = ""
+                        $(".sigungu-sort").empty();
+                    } else {
+                        // 전국버튼 제외 광역시/도 버튼 클릭
+
+                        areaCode = `&areaCode=${readId($(this).attr("id"), "code")}`;
+                        
+                        // 시군구 버튼 만들기
+                        let arrNum = readId($(this).attr("id"), "arrNum");
+                        if (sigunguMemo[arrNum] == undefined){
+                            callAreaSortAjax(arrNum);
+                        } else {
+                            $(".sigungu-sort").html(sigunguMemo[arrNum]);                        
+                        }
+                    }
+
+                    
+                })
+
+                // 시군구 버튼 클릭
+                $(".modal-body").on("click", ".sigungu-sort-modal-btn", function(){
+                    $(".sigungu-sort-modal-btn").removeClass("btn-primary");
+                    $(this).addClass("btn-primary");
+                    
+                    $("#sortedSigungu").empty()
+                    $("#sortedSigungu").text(`, 시/군/구 : ${$(this).text()}`);
+
+                    if ($(this).attr("id") == "allSigungu"){
+                        sigunguCode = "";
+                    } else {
+                        sigunguCode = `&sigunguCode=${readId($(this).attr("id"), "code")}`;
+                    }
+
+                })
+
+                // 서비스 분류 선택
+                $("#sort-service-btn").click(function(){
+                    if (cat1 == ""){
+                        if (bigSortMemo[0] == undefined){
+                            callServSortAjax();
+                        } else {
+                            $(".big-sort").html(bigSortMemo[0]);
+                        }
+                    }
+                    $('#myModal1').modal('show');
+                });
+
+                // 대분류 버튼 클릭
+                $(".modal-body").on("click", ".big-sort-modal-btn", function(){
+                    
+                    cat1 = `&cat1=${readId($(this).attr("id"), "code")}`;
+
+                    $(".big-sort-modal-btn").removeClass("btn-primary");
+                    $(this).addClass("btn-primary");
+
+                    $("#sortedBig").empty();
+                    $("#sortedBig").text(`대분류 : ${$(this).text()}`);
+                    
+                    // 중분류 버튼 만들기
+                    let arrNum = readId($(this).attr("id"), "arrNum");
+                    if (middleSortMemo[arrNum] == undefined){
+                        callServSortAjax(arrNum);
+                    } else {
+                        $(".middle-sort").html(middleSortMemo[arrNum]);                        
+                    }
+                    
+                })
+                
+                // 중분류 버튼 클릭
+                $(".modal-body").on("click", ".middle-sort-modal-btn", function(){
+                    cat2 = `&cat2=${readId($(this).attr("id"), "code")}`;
+
+                    $(".middle-sort-modal-btn").removeClass("btn-primary");
+                    $(this).addClass("btn-primary");
+
+                    $("#sortedMiddle").empty();
+                    $("#sortedMiddle").text(`, 중분류 : ${$(this).text()}`);
+
+                    // 소분류 버튼 만들기
+                    let arrNum = readId($(this).attr("id"), "arrNum");
+                    if (smallSortMemo[arrNum] == undefined){
+                        callServSortAjax(arrNum);
+                    } else {
+                        $(".small-sort").html(smallSortMemo[arrNum]);
+                    }
+                    
+                })
+
+                // 소분류 버튼 클릭
+                $(".modal-body").on("click", ".small-sort-modal-btn", function(){
+                    cat3 = `&cat3=${readId($(this).attr("id"), "code")}`;
+
+                    $(".small-sort-modal-btn").removeClass("btn-primary");
+                    $(this).addClass("btn-primary");
+
+                    $("#sortedSmall").empty()
+                    $("#sortedSmall").text(`, 소분류 : ${$(this).text()}`);
+                })
+
+                // 검색버튼에 이벤트 걸기
+                $("#search").click(function(){
+                    if ($("#searchWord").val().trim() !== ""){
+                        // console.log($("#searchWord").val());
+                        baseUrl = `http://apis.data.go.kr/B551011/KorService1/searchKeyword1`;
+                        keyword = `&keyword=${encodeURIComponent($("#searchWord").val())}`;
+                        console.log(keyword);
+                        pageNum = 1;
+                        tenPaging = 0;
+                        callAjax();
+                        addPageList();
+                    } else {
+                        baseUrl = `http://apis.data.go.kr/B551011/KorService1/areaBasedList1`;
+                        keyword = "";
+                        pageNum = 1;
+                        tenPaging = 0;
+                        callAjax();
+                        addPageList();
+                    }
+                })
+
+                // 엔터버튼으로 검색하기
+                $("#searchWord").on("keydown", function(event){
+                    if(event.keyCode == 13 && $("#searchWord").val().trim() !== ""){
+                        baseUrl = `http://apis.data.go.kr/B551011/KorService1/searchKeyword1`;
+                        keyword = `&keyword=${encodeURIComponent($("#searchWord").val())}`;
+                        pageNum = 1;
+                        tenPaging = 0;
+                        callAjax();
+                        addPageList();
+                    } else if (event.keyCode == 13){
+                        baseUrl = `http://apis.data.go.kr/B551011/KorService1/areaBasedList1`;
+                        keyword = "";
+                        pageNum = 1;
+                        tenPaging = 0;
+                        callAjax();
+                        addPageList();
+                    }
+                })
+
+                // 취소버튼으로 검색창 비우기
+                $("#cancel").click(function(){
+                    $("#searchWord").val("");
+                    cat1 = "";
+                    cat2 = "";
+                    cat3 = "";
+                    areaCode = "";
+                    sigunguCode = "";
+                    $(".sortBox").empty();
+                    $(".sortedText").empty();
+                })
+
+                // 페이지숫자에 이벤트 걸기
+                $(".page-list").on("click", ".page-num", function(){
+                    pageNum = Number($(this).html());
+                    $.each($(".page-num"), function(i, item){
+                        $(item).attr("class", "page-link page-num");
+                    })
+                    $(this).addClass("active");
+                    callAjax();
+                });
+
+                // 이전 페이지 이벤트 걸기
+                $(".page-prev").click(function(){
+                    if (tenPaging > 0){
+                        tenPaging -= 1;
+                        pageNum = tenPaging * 10 + 1;
+                        addPageList();
+                        callAjax();
+                    }
+                });
+
+                // 다음 페이지 이벤트 걸기
+                $(".page-next").click(function(){
+                    if (tenPaging < Math.ceil(totalPage/10) - 1){
+                        tenPaging += 1;
+                        pageNum = tenPaging * 10 + 1;
+                        addPageList();
+                        callAjax();
+                    }
+                });
+            })
+
+            function addPageList(){
+
+                // console.log(totalCnt);
+                // console.log(totalPage);
+
+                let output = '';
+                let num = 0; // 페이지 넘버
+                for(let i = 0; i < 10; i++){
+                    num = tenPaging * 10 + i + 1; // 페이지 넘버
+                    if (i == 0 && num <= totalPage){
+                        output += `<li class="page-item"><a class="page-link page-num active" href="#!">${num}</a></li>`;
+                    } else if (num <= totalPage){
+                        output += `<li class="page-item"><a class="page-link page-num" href="#!">${num}</a></li>`;
+                    }
+                }
+                // console.log(output);
+                $(".page-list").html(output);
+            }
+
+            function callAjax(){
+                let url = baseUrl + `?MobileOS=ETC&MobileApp=AppTest&serviceKey=${MY_KEY}&_type=json`;
+                url += `&contentTypeId=14&pageNo=${pageNum}&numOfRows=${numOfRows}${keyword}`;
+                url += `${cat1}${cat2}${cat3}`;
+                url += `${areaCode}${sigunguCode}`;
+                $.ajax({
+                    url: url, // 데이터가 송수신될 서버의 주소
+                    type: "GET", // 통신 방식 (GET, POST, PUT, DELETE)
+                    dataType: "json", // 수신받을 데이터의 타입 (MIME TYPE)
+                    async: false,
+                    success: function(data){ // 통신이 성공하면 수행할 함수
+                        console.log(data);
+                        parsingJSON(data);
+                    },
+                    error: function(){},
+                    complete: function(){
+                        // $(".loading").hide();
+                    }
+                });
+            }
+
+            function parsingJSON(json){
+                totalCnt = json.response.body.totalCount;
+                totalPage = Math.ceil(totalCnt/9);
+                let cultureArr = json.response.body.items.item;
+                let output = ``;
+                $.each(cultureArr, function(i, tour){
+                    // console.log(tour.title);
+                    
+                    output += `<div class="col-md-4 mb-5"><a href="cultureDetail.html?contentid=${tour.contentid}"><div class="card h-100"><div class="card-body">`;
+
+                    if (tour.firstimage == ""){
+                        output += `<img src="images/noImage.jpeg">`;
+                    } else {
+                        output += `<img src="${tour.firstimage}">`;
+                    }
+
+                    output += `<div class="card-title">${tour.title}</div>`;
+                    output += `</div><div class="card-footer">`
+                    
+                    // 쿠키 읽고 찜한 컨텐츠 하트 표시
+                    if (readCookie(`like${tour.contentid}`) == null){
+                        output += `<button class="btn saveBtn"><i class="fa-regular fa-heart" id ="${tour.contentid}"></i></button></div></div></a></div>`;
+                    } else {
+                        output += `<button class="btn saveBtn"><i class="fa-solid fa-heart" id ="${tour.contentid}"></i></button></div></div></a></div>`;
+                    }
+                    
+                });                
+                $("#totalCount").html(`조회된 데이터 수 : ${totalCnt}`);
+                $("#cardBox").html(output);
+            }
+
+            function callServSortAjax(arrNum){
+                let sortUrl = `http://apis.data.go.kr/B551011/KorService1/categoryCode1?contentTypeId=14&`;
+                sortUrl += `MobileOS=ETC&MobileApp=AppTest&serviceKey=${MY_KEY}&_type=json&numOfRows=50`;
+                sortUrl += `${cat1}`;
+                sortUrl += `${cat2}`;
+
+                $.ajax({
+                    url: sortUrl, // 데이터가 송수신될 서버의 주소
+                    type: "GET", // 통신 방식 (GET, POST, PUT, DELETE)
+                    dataType: "json", // 수신받을 데이터의 타입 (MIME TYPE)
+                    async: false,
+                    success: function(data){ // 통신이 성공하면 수행할 함수
+                        console.log(data);
+                        makeServSortBox(data, arrNum);
+                    },
+                    error: function(){},
+                    complete: function(){
+                        // $(".loading").hide();
+                    }
+                });
+            }
+
+            function makeServSortBox(json, arrNum){
+                let sortArr = json.response.body.items.item
+                let output = "";
+                if (cat1 == "" && cat2 == ""){
+                    $.each(sortArr, function(i, item){
+                        output += `<button type="button" class="btn big-sort-modal-btn sort-modal-btn" id = "${item.code}arrNum${i}">${item.name}</button>`
+                    })
+                    bigSortMemo[0] = output;
+                    $(".big-sort").html(output);
+                } else if (cat1 != "" && cat2 == ""){
+                    $.each(sortArr, function(i, item){
+                        output += `<button type="button" class="btn middle-sort-modal-btn sort-modal-btn" id = "${item.code}arrNum${i}">${item.name}</button>`
+                    })
+                    middleSortMemo[arrNum] = output;
+                    $(".middle-sort").html(output);
+                } else {
+                    $.each(sortArr, function(i, item){
+                        output += `<button type="button" class="btn small-sort-modal-btn sort-modal-btn" id = "${item.code}arrNum${i}">${item.name}</button>`
+                    })
+                    smallSortMemo[arrNum] = output;
+                    $(".small-sort").html(output);
+                }
+            }
+
+            function callAreaSortAjax(arrNum){
+                let sortUrl = `http://apis.data.go.kr/B551011/KorService1/areaCode1?`;
+                sortUrl += `MobileOS=ETC&MobileApp=AppTest&serviceKey=${MY_KEY}&_type=json&numOfRows=50`;
+                sortUrl += `${areaCode}`;
+
+                $.ajax({
+                    url: sortUrl, // 데이터가 송수신될 서버의 주소
+                    type: "GET", // 통신 방식 (GET, POST, PUT, DELETE)
+                    dataType: "json", // 수신받을 데이터의 타입 (MIME TYPE)
+                    async: false,
+                    success: function(data){ // 통신이 성공하면 수행할 함수
+                        console.log(data);
+                        makeAreaSortBox(data, arrNum);
+                    },
+                    error: function(){},
+                    complete: function(){
+                        // $(".loading").hide();
+                    }
+                });
+            }
+
+            function makeAreaSortBox(json, arrNum){
+                let sortArr = json.response.body.items.item
+                let output = "";                
+                if (areaCode == ""){
+                    output += `<button type="button" class="btn area-sort-modal-btn sort-modal-btn" id = "allArea">전국</button>`
+                    $.each(sortArr, function(i, item){
+                        output += `<button type="button" class="btn area-sort-modal-btn sort-modal-btn" id = "${item.code}arrNum${i}">${item.name}</button>`
+                    })
+                    areaMemo[0] = output;
+                    $(".area-sort").html(output);
+                } else {
+                    output += `<button type="button" class="btn sigungu-sort-modal-btn sort-modal-btn" id = "allSigungu">전체</button>`
+                    $.each(sortArr, function(i, item){
+                        output += `<button type="button" class="btn sigungu-sort-modal-btn sort-modal-btn" id = "${item.code}arrNum${i}">${item.name}</button></div>`
+                    })
+                    sigunguMemo[arrNum] = output;
+                    $(".sigungu-sort").html(output);
+                }
+            }
+
+            function readId (id, valName){
+                if (valName = "code"){
+                    return id.split("arrNum")[0];
+                } else if (valName = "arrNum"){
+                    return id.split("arrNum")[1];
+                }
+            }
+        </script>
+        <style>
+            #page{
+                display: flex;
+                justify-content: center;
+            }
+            .page-list{
+                display: flex;
+            }
+            .card-body{
+                padding: 0px;
+            }
+            img{
+                /* width: 282px; */
+                width: 100%;
+                height: 144px;
+            }
+            .card-title{
+                text-align: center;
+                margin-top: 10px;
+            }
+            .sort{
+                display: flex;
+                margin-bottom: 10px;
+            }
+            .modal-body{
+                display: flex;
+            }
+            .div-serv-sort{
+                width: 30%;
+                text-align: center;
+            }
+            .sort-modal-btn{
+                border: 1px solid gray;
+                font-size: 13px;
+                width: 80%;
+                margin: 2px;
+            }
+            .div-area-sort{
+                width: 45%;
+                text-align: center;
+            }
+            .card-footer{
+                position: relative;
+                display: flex;
+                justify-content: center;
+            }
+            .saveBtn {
+                position: absolute;
+                right: 10px;
+                height: 80%;
+                width: 50px;
+            }
+            i {
+                font-size: 25px;
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" href="#!">Tour API</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">문화 시설</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">찜</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container px-4 px-lg-5">
+            <!-- Heading Row-->
+            <div class="row gx-4 gx-lg-5 align-items-center my-5 headDiv">
+                <div >
+                    <h1 class="font-weight-light">문화시설 관광 정보</h1>
+                </div>
+            </div>
+            <!-- Call to Action-->
+            <div class="card text-white bg-secondary my-5 py-4 text-center">
+                <div class="card-body">
+                    <div class="sort-service sort">
+                        <button id="sort-service-btn" class="btn btn-primary">서비스 분류 선택</button>
+                        <div id="sorted-service">
+                            <span id="sortedBig" class="sortedText"></span><span id="sortedMiddle" class="sortedText"></span><span id="sortedSmall" class="sortedText"></span>
+                        </div>
+                    </div>
+                    <div class="sort-area sort">
+                        <button id="sort-area-btn" class="btn btn-primary">지역 선택</button>
+                        <div id="sorted-area">
+                            <span id="sortedArea" class="sortedText"></span><span id="sortedSigungu" class="sortedText"></span>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" id="searchWord" class="form-control" placeholder="검색어를 입력하세요..">
+                        <button id="search" class="btn btn-primary" type="button">검색</button>
+                        <button id="cancel" class="btn btn-danger" type="button">취소</button>
+                    </div>
+                </div>
+            </div>
+            <div id="totalCount">
+
+            </div>
+            <!-- Content Row-->
+            <div class="row gx-4 gx-lg-5" id="cardBox">
+                
+            </div>
+        </div>
+        
+        <!-- 페이징 -->
+        <nav aria-label="Page navigation example" id="page">
+            <ul class="pagination">
+              <li class="page-item">
+                <button class="page-link page-prev" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </button>
+              </li>
+              <div class="page-list">
+                
+              </div>
+              
+              <li class="page-item">
+                <button class="page-link page-next" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </button>
+              </li>
+            </ul>
+        </nav>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Goot5</p></div>
+        </footer>
+
+        <!-- modal 1 -->
+        <div class="modal" id="myModal1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">서비스 분류 선택</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="div-serv-sort">
+                    <h5>대분류</h5>
+                    <div class="big-sort sortBox">
+                        
+                    </div>
+                  </div>
+                  <div class="div-serv-sort">
+                    <h5>중분류</h5>
+                    <div class="middle-sort sortBox">
+                        
+                    </div>
+                  </div>
+                  <div class="div-serv-sort">
+                    <h5>소분류</h5>
+                    <div class="small-sort sortBox">
+                        
+                    </div>
+                  </div>
+                </div>
+          
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+          
+              </div>
+            </div>
+        </div>
+
+        <!-- modal 2 -->
+        <div class="modal" id="myModal2">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">지역 선택</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="div-area-sort">
+                    <h5>광역시/도</h5>
+                    <div class="area-sort sortBox">
+                        
+                    </div>
+                  </div>
+                  <div class="div-area-sort">
+                    <h5>시/군/구</h5>
+                    <div class="sigungu-sort sortBox">
+                        
+                    </div>
+                  </div>
+                  
+                </div>
+          
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+          
+              </div>
+            </div>
+        </div>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

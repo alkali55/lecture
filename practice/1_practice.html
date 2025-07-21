@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 1~n 까지의 완전수 판별 후 출력 -->
+
+    <script>
+        let num = window.prompt("숫자를 입력해주세요.");
+        let sum = 0
+        for (let i = 1; i <= num; i++){
+
+            if (num % i == 0){
+                sum = sum + i
+            }
+
+            if (i == num){
+                sum = sum - i
+
+                if(sum == num){
+                    document.write(num + "은 완전수 입니다.")
+                } else { 
+                    document.write(num + "은 완전수가 아닙니다.")
+                }
+            }
+
+        }
+
+
+    </script>
+    
+</head>
+<body>
+    
+</body>
+</html>

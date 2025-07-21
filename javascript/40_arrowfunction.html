@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 함수 선언식
+        function sumTwnNums(a, b = 20) {
+            // 함수 파라미터의 기본값을 줄 수 있다.
+            console.log("sumTwoNums함수", a, b, a + b);
+        }
+
+        sumTwnNums (100, 200);
+        sumTwnNums (10);
+        sumTwnNums();
+
+        function sumThreeNums (a, b = 500, c = 100) {
+            console.log("sumThreeNums함수: ", a, b, c, a + b + c);
+        }
+
+        // sumThreeNums(100, 200, 300);
+        // sumThreeNums(10);
+        // sumThreeNums(10, 20);
+        sumThreeNums(1, undefined, 3); // 1 500 3 504 
+        // sumThreeNums(1, null, 3); // 1 null 3 4
+
+        // 함수 표현식
+        // greeting(); // 에러: ReferenceError: Cannot access 'greeting' before initialization
+        let greeting = function () {
+            console.log("Hi");
+        };
+
+        greeting();
+
+        function sayHello() {
+            document.write("Hello <br />");
+        }
+
+        // console.log(sayHello);
+        // greeting2();
+        const greeting2 = sayHello;
+        // greeting2();
+
+        // 화살표 함수 (=>)
+        const greeting3 = () => "Hello3 <br />"
+        document.write(greeting3());
+
+        const hi = (name) => name + "님 안녕하세요 <br />";
+        document.write(hi("홍길동"));
+
+        const sum = (a, b) => a + b;
+        console.log(sum(10, 20));
+
+        let age = prompt("나이를 입력하세요");
+        let welcome = age >= 14 ? () => alert("환영합니다") : () => alert("안녕히 가세요");
+        welcome();
+
+        const double = (n) => {
+            console.log(2 * n);
+            return 2 * n;
+        };
+        double(10);
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

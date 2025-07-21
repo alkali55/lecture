@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/commonJS.js"></script>
+    <!-- 쿼리스트링에서 이름, 국어, 영어, 수학 점수를 읽어와서 총점, 평균, 학점을 출력 -->
+    <script>
+        // let total = Number(getParameter("kor3")) + Number(getParameter("eng3")) + Number(getParameter("math3"));
+        // let avg = (total / 3).toFixed(2);
+        // let grade = calGrade(avg);
+        // console.log(getParameter("name3"), total, avg, grade);
+
+        const STU_CNT = getParameter("stuCnt"); 
+        let students = [];
+
+        // let paramNameArr = ["name", "kor", "eng", "math"];
+        // let scores = new Array(4);
+        
+        // for (let i = 0; i < paramNameArr.length; i++){
+        //     scores[i] = decodeURIComponent(getParameter(paramNameArr[i]));
+        // }
+
+        for (let i = 0; i < STU_CNT; i++){
+            students[i] = new Object();
+            students[i].name = decodeURIComponent(getParameter(`name${i}`));
+            students[i].kor = getParameter(`kor${i}`);
+            students[i].eng = getParameter(`eng${i}`);
+            students[i].math = getParameter(`math${i}`);
+            students[i].total = Number(getParameter(`kor${i}`)) + Number(getParameter(`eng${i}`)) + Number(getParameter(`math${i}`));
+            students[i].avg = (students[i].total / 3).toFixed(2);
+            students[i].grade = calGrade(students[i].avg);
+        }
+        console.log(students[0]);
+
+        window.onload = function(){
+            desc();
+        }
+
+        function desc() {
+            for (i = 0; i < students.length - 1; i++){
+                for (j = i + 1; j < students.length; j++){
+                    if (students[i].total < students[j].total){
+                        let tmp = students[i];
+                        students[i] = students[j];
+                        students[j] = tmp;
+                    }
+                }
+            }
+
+            for (i = 0; i < students.length; i++){
+                students[i].rank = i + 1;
+                if(i > 0 && students[i].total == students[i-1].total){
+                    students[i].rank = students[i-1].rank;
+                }
+            }
+
+            let output = `<table border = "1"><tr><th>이름</th><th>국어</th><th>영어</th><th>수학</th><th>총점</th><th>평균</th><th>학점</th><th>등수</th></tr>`;
+            for(let i = 0; i < students.length; i++){
+                output += `<tr class = "stu"><td>${students[i].name}</td><td>${students[i].kor}</td><td>${students[i].eng}</td><td>${students[i].math}</td>`;
+                output += `<td>${students[i].total}</td><td>${students[i].avg}</td><td>${students[i].grade}</td><td>${students[i].rank}</td></tr>`;
+            }
+
+            document.getElementById("output").innerHTML = output;
+        }
+
+        function calGrade(average) {
+            switch (Math.floor(average / 10)) {
+            case 10:
+            case 9:
+                return "A";
+                break;
+            case 8:
+                return "B";
+                break;
+            case 7:
+                return "C";
+                break;
+            case 6:
+                return "D";
+                break;
+            default:
+                return "F";
+                break;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="output"></div>
+</body>
+</html>
