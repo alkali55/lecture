@@ -35,7 +35,6 @@
         });
 
         function getWeatherData(cityName, unit){
-            // https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=da682723f3f3090676e3c74c221876e0&units=metric
             let url = baseurl +"&q=" + cityName + "&units=" + unit;
             $.ajax({
                 url: url, // 데이터가 송수신될 서버의 주소
